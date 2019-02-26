@@ -70,26 +70,33 @@
 
 %----------------------------------------------------Intro ----------------------------------------------------------------
 \section{Introduction} \label{sec:intro}
-Stellar streams form when a gravitationally bound ensemble of stars tidally tare apart due to an underlying galactic potential. To date, we have observed several stellar streams in our own Galaxy, emerging as leading and trailing tidal streams from both open clusters (e.g. \citealt{roser19}) and globular clusters (e.g. GD1: \citealt{grillmair06}, Palomar 5: \citealt{oden01}), as well as dwarf galaxies (e.g. Sagittarius: \citealt{ibata01}, Orphan: \citealt{belokurov06}). Several stellar streams have additionally been discovered in external galaxies (e.g. \citealt{ibata00}, \citealt{delgado10}), and based on the widths and surface brightnesses of the stellar streams in external galaxies, they are likely relics from disrupted dwarf galaxies.
+Stellar streams form when a gravitationally bound ensemble of stars tidally tare apart due to an underlying galactic potential. To date, we have observed several stellar streams in our own Galaxy, emerging as leading and trailing tidal tails from both open clusters (e.g. \citealt{roser19}) and globular clusters (e.g. GD1: \citealt{grillmair06}, Palomar 5: \citealt{oden01}), as well as dwarf galaxies (e.g. Sagittarius: \citealt{ibata01}, Orphan: \citealt{belokurov06}). Several stellar streams have additionally been discovered in external galaxies (e.g. \citealt{ibata00}, \citealt{delgado10}), and based on the widths and surface brightnesses of the stellar streams in external galaxies, they are likely relics from disrupted dwarf galaxies.
 
-\citet{johnston98} proposed that stellar streams can be used to measure properties of the underlying Galactic potential of the Milky Way. Stellar streams from globular clusters (GCs) are of particularly interest, as they are dynamically cold (i.e. the internal velocities of globular clusters are much smaller than their orbital velocity around their hosts). As a consequence,  the streams from GCs phase-mix slowly along their orbits, leaving behind stars moving coherently in phase-space for several gigayears (Gyr). This makes them sensitive probes of the underlying mass distribution of their hosts. However, GC streams have smaller masses and are thinner than streams from dwarf galaxies, as the globular cluster streams emerge from objects with smaller tidal radii. Therefore, globular cluster streams are harder to detect in external galaxies (although we might have one example: \citealt{abraham18}). 
+%GCs as potential probes
+\citet{johnston98} proposed that stellar streams can be used to measure properties of the underlying Galactic potential of the Milky Way. Stellar streams from globular clusters (GCs) are of particularly interest, as they are dynamically cold (i.e. the internal velocities of globular clusters are much smaller than their orbital velocity around their hosts). As a consequence,  the streams from GCs phase-mix slowly along their orbits, leaving behind stars moving coherently in phase-space for several gigayears (Gyr). This makes thin GC stellar streams sensitive probes of the underlying mass distribution of their hosts. 
 
-\citet{ibata02} showed that the interaction between dark matter subhalos can leave behind signatures in the structure of the tidal tails. As the $\Lambda$-cold dark matter ($\Lambda$CDM) paradigm predicts a specific distribution and mass range of subhalos in our Galaxy (see e.g. \citealt{bovy17}, \citealt{bonaca19}), density fluctuations in cold stellar streams, can be used as indirect evidence of interactions with dark matter substructure (e.g. \citealt{yoon11}) and serve as a test of $\Lambda$CDM. Expanding the sample of globular cluster streams is therefore crucial. 
+%GC streams as LCDM probes
+\citet{ibata02} showed that the interaction between dark matter subhalos can leave behind signatures in the structure of the tidal tails. As the $\Lambda$-cold dark matter ($\Lambda$CDM) paradigm predicts a specific distribution and mass range of subhalos in our Galaxy (see e.g. \citealt{bovy17}, \citealt{bonaca19}), density fluctuations in GC stellar streams, can be used as indirect evidence of interactions with dark matter substructure (e.g. \citealt{yoon11}) and serve as a test of $\Lambda$CDM. Expanding the sample of globular cluster streams is therefore crucial. 
 
-Additionally, cold stellar streams can be used to map out orbit structures in our Galaxy through the morphology of the streams alone (\citealt{pearson15}). Therefore, finding cold stellar streams in external galaxies will help us map the orbit structures and shapes of the potentials, as  thin stream should only be detectable on regular orbits (\citealt{price16}, Yavetz et al., {\it in prep.}).  To use globular cluster streams as potential probes and to set constraints on dark matter, we need larger samples. 
+%GC streams to probe orbit structure
+Additionally, GC stellar streams can be used to distinguish between potential shapes through the morphology of the streams alone as only certain orbits allow thin, long streams to exist (\citealt{pearson15}). In particular, thin stream should only be detectable on regular orbits (\citealt{price16}, Yavetz et al., {\it in prep.}), and finding GC stellar streams in external galaxies can therefore help us map the orbit structures and shapes of the potential. 
 
+To use globular cluster streams as potential probes and to set constraints on dark matter, we need larger samples. However, GC streams have smaller masses and are thinner than streams from dwarf galaxies. Therefore, globular cluster streams are harder to detect in external galaxies. Interestingly, \citet{abraham18} reported a detection of the ``Maybe Stream" with HST, which they suggest could be a GC stream 20 Mpc away. 
+
+%Therefore, finding cold stellar streams in external galaxies will help us map the orbit structures and shapes of the potentials, as t%This paper
 
 In this paper, we investigate the future prospect of observing thin, globular cluster streams in external galaxies both through resolved stars and integrated light. 
 %In particular, we focus our attention on the well-studied stream, Palomar 5. 
 %, which was first discovered in SDSS (Oden03), and which has since been mapped in great detail by (\citealt{ibata16}). 
-Specifically, we ask whether globular cluster streams will be observable in resolved stars with upcoming telescopes such as WFIRST (\citealt{spergel13}) and in integrated light with current telescopes such as the Hyper Suprime-Cam (HSC: \citealt{miyazaki12}) and future telescopes such as LSST (\citealt{ivezi08}). In particular, we explore the observability of globular cluster streams at various locations in their host galaxies, and we ask how far away the host galaxies can be for the thin streams to be detectable.
+Specifically, we ask whether globular cluster streams will be observable in resolved stars with upcoming telescopes such as WFIRST (\citealt{spergel13}) and in integrated light with current telescopes such as the Hyper Suprime-Cam (HSC: \citealt{miyazaki12}) and future telescopes such as LSST (\citealt{ivezi08}). % In particular, we explore the observability of globular cluster streams at various locations in their host galaxies, and we ask how far away the host galaxies can be for the thin streams to be detectable.
 
+%Organization of paper 
 The paper is organized as follows: in Section \ref{sec:coldstreams}, we describe the properties of globular cluster streams and how we create mock-streams to test whether they are observable. In particular we describe Palomar 5 (Pal 5) which we use as our poster child (Section \ref{sec:pal5}), we describe how we populate our streams with stars (Section \ref{sec:lum}), and we calculate various widths and lengths of mock streams at various galactocentric radii (Section \ref{sec:length}). In Section \ref{sec:results}, we present the results on detecting streams in resolved stars in M31 (Section \ref{sec:resolved}), in other external galaxies (Section \ref{sec:resother}) and in integrated light (Section \ref{sec:integrated}). We discuss the implications of our results in Section \ref{sec:discussion} and conclude in Section \ref{sec:conclusion}.
 %
 
-\section{Cold stellar streams}
+\section{Cold globular cluster stellar streams}
 \label{sec:coldstreams}
-In this Section, we describe the framework we use to create mock streams streams to estimate the observability of cold, stellar streams in external galaxies. We chose the Milky Way's poster-child stellar stream, Pal 5,  as our reference stream, as Pal 5 is the only globular cluster stream in the Milky Way for which we know the progenitor. This enables us to determine the properties of the overall system more precisely (such as age, mass, metallicity, orbit etc.). 
+In this Section, we describe the framework we use to create mock streams streams to estimate the observability of GC stellar streams in external galaxies. We chose the Milky Way's poster-child stellar stream, Pal 5,  as our reference stream, as Pal 5 is the only globular cluster stream in the Milky Way for which we know the progenitor. This enables us to determine the properties of the overall system more precisely (such as age, mass, metallicity, orbit etc.). 
 
 \subsection{Pal 5 data}
 \label{sec:pal5}
@@ -97,7 +104,7 @@ In this Section, we describe the framework we use to create mock streams streams
  
 We use this sample to estimate how many stream stars there are in Pal 5's stellar stream (see section below). From \citet{ibata16} figure 7, we estimate that there are 1767 stars with 20 $< g <$ 23 in the stream over a length of 20 $\deg$  and a width of 0.14 $\deg$  (excluding the cluster stars). \todo{Ibata did not remove underlying background population of Galactic (and Sagittarius stream) stars that contaminate the Palomar 5 sample.}  
 
-\subsection{Isochrones \& luminosity functions}
+\subsection{Isochrones \& luminosity functions of streams}
 \label{sec:lum}
 To construct mock streams, we first download isochrones for a Pal 5-like cluster from the PARSEC evolutionary tracks (\citealt{bressan12}). We use the same values for the Pal 5-like cluster as \citet{ibata17}: the age of the cluster is set to 11.5 Gyr and [Fe/H] $= -1.3$. We download the isochrone for both CFHT bands and WFIRST bands and move the isochrone to Pal 5's current distance in the Milky Way (d = 23 kpc, see left panel of Figure \ref{fig:iso_cfht}). 
 
@@ -113,14 +120,14 @@ In the bottom row of Figure \ref{fig:iso_cfht}, we show the same panels as in th
 
 To estimate how many stars WFIRST should be able to observe in a Pal 5-like stream, we normalized the luminosity function by sampling the exact same initial masses in the dowloaded WFIRST isochrone as for the $g$-band CFHT masses. This yields the number of stars WFIRST will observe at a given magnitude. 
 
-At the distance of M31, WFIRST will be able to detect $\sim$ 154 stars in a Pal 5-like stream and $\sim$ 1540 stars for a stream that is ten times more massive than Pal 5 (Figure \ref{fig:iso_cfht}, bottom right panel). We explore the observability of resolved stars in cold streams in M31 with the PANDAS survey (\citealt{mcconnachie09}) and with WFIRST in Section \ref{sec:resolved}. 
+At the distance of M31, WFIRST will be able to detect $\sim$ 154 stars in a Pal 5-like stream and $\sim$ 1540 stars for a stream that is ten times more massive than Pal 5 (Figure \ref{fig:iso_cfht}, bottom right panel). We explore the observability of resolved stars in GC streams in M31 with the PANDAS survey (\citealt{mcconnachie09}) and with WFIRST in Section \ref{sec:resolved}. 
 
 
 
 
 \subsection{Length \& width of streams}
 \label{sec:length}
-In the previous section, we found the amount of observable stars in cold streams at the distance of M31 for the limiting magnitudes of PANDAS and WFIRST. In this Section, we determine how to populate mock streams with the given number of stars. I.e. we compute widths and lengths of mock cold streams on circular orbits, again taking Pal 5 as our starting point. 
+In the previous section, we found the amount of observable stars in GC streams at the distance of M31 for the limiting magnitudes of PANDAS and WFIRST. In this Section, we determine how to populate mock streams with the given number of stars. I.e. we compute widths and lengths of mock GC streams on circular orbits, again taking Pal 5 as our starting point. 
 
 To place a Pal 5-like stream in the Andromeda halo, % we assume a flat rotation curve (constant $v_{circ}$) and keep the age of Pal 5 fixed. Hence Pal 5's dynamical time to form a stream remains unchanged. 
 we scale the mock streams from the initial length and width of Palomar 5 in our Galaxy: length = 8.5 kpc, width = 58 pc (\citealt{ibata16}). We assume a circular orbit with a distance from the center of the Galaxy of R$_{GC}$ = 15 kpc, which is similar to the average of Pal 5's actual apocentric and pericentric distance (see e.g. \citealt{erkal17}). 
@@ -132,7 +139,7 @@ Following \citet{johnston01} equation 8, we can express the width, $w$, of the s
 \begin{equation}
 w = R_{GC} \left[\frac{m}{M(R_{GC})}\right]^{1/3} = R_{GC} \left[\frac{m G}{v_c^2 R_{GC}}\right]^{1/3} 
 \end{equation}
-where $R_{GC}$ is the radius of the orbit of the globular cluster around its host (which is normally expressed as $R_p$, but since we have a circular orbit, this remains constant over the entire orbit), $m$ is the mass of the cluster, $M(R_{GC})$ is the enclosed mass of the host within the stream's orbit, $v_c$ is the circular velocity at radius, $R_{GC}$, and $G$ is the gravitational constant. We assume a flat rotation curve and therefore constant  $v_c$, which is a valid assumption at $R_{GC} > 15$ kpc (e.g. \citealt{chemin09}). Thus the width of a cold stream scales as:
+where $R_{GC}$ is the radius of the orbit of the globular cluster around its host (which is normally expressed as $R_p$, but since we have a circular orbit, this remains constant over the entire orbit), $m$ is the mass of the cluster, $M(R_{GC})$ is the enclosed mass of the host within the stream's orbit, $v_c$ is the circular velocity at radius, $R_{GC}$, and $G$ is the gravitational constant. We assume a flat rotation curve and therefore constant  $v_c$, which is a valid assumption at $R_{GC} > 15$ kpc (e.g. \citealt{chemin09}). Thus the width of a GC stream scales as:
 
 \begin{equation}
 \label{eq:w}
@@ -160,68 +167,13 @@ The physical length of the stream can thus be expressed as:
 L \propto R_{GC} \frac{m^{1/3}}{R_{GC}^{4/3}} v_c^{1/3}t = \frac{m^{1/3}}{R_{GC}^{1/3}} v_c^{1/3}t
 \end{equation}
 
-We scale  the length of Pal 5 based on each parameter in Equation \ref{eq:l} separately. We contrast streams all of the same age (i.e.  t = constant). Thus, we make the stream longer by a factor of $(\frac{v_{c,M31}}{v_{c,MW}})^{1/3} = 1.04$. Subsequently, we update the length of the stream based on the location in M31's halo. Thus, as the stream is placed at larger radii, we shorten the length by a factor of  $R_{corr} = \left(\frac{R_{GC}}{R_{GC,Pal5}}\right)^{-1/3}$ %(\todo{this is the same as before as I first did $R_{corr} = \left(\frac{R_p}{R_{p,Pal5}}\right)^{2/3}$ and then $ L_{corr} = \frac{R_{p,pal5}}{R_{p,new}}$  }). 
+We scale  the length of Pal 5 based on each parameter in Equation \ref{eq:l} separately. We contrast streams all of the same age (i.e.  t = constant). Thus, we make the stream longer by a factor of $(\frac{v_{c,M31}}{v_{c,MW}})^{1/3} = 1.04$. Subsequently, we update the length of the stream based on the location in M31's halo. Thus, as the stream is placed at larger radii, we shorten the length by a factor of  $R_{corr} = \left(\frac{R_{GC}}{R_{GC,Pal5}}\right)^{-1/3}$. %(\todo{this is the same as before as I first did $R_{corr} = \left(\frac{R_p}{R_{p,Pal5}}\right)^{2/3}$ and then $ L_{corr} = \frac{R_{p,pal5}}{R_{p,new}}$  }). 
 Additionally, we scale the length of the stream by a factor of $m_{corr} = 10^{1/3}$ for the more massive cluster. 
 
-To summarize, we now have six different examples of mock cold stellar streams of various lengths and widths scaled from Pal 5's initial properties of $l = 8.5$ kpc and $w = 58$ pc in the Milky Way (see Table \ref{tab:Pal5}).
+To summarize, we have the framework to construct six different mock stellar streams of various lengths and widths scaled from Pal 5's initial properties of $L = 8.5$ kpc and $w = 58$ pc in the Milky Way (see Table \ref{tab:Pal5}).
 
 
-%\todo{\bf OLD SECTION:
-%\begin{itemize}
-%\item {\bf Circular velocity}: A larger circular velocity yields a narrower stream.  $v_{circ, M31} = 250 ~\kms$ and  $v_{circ, MW} = 220 ~\kms$. Thus, the tidal field of M31 is stronger than in the MW. Thus the difference in the tidal radius is set by: 
-%
-%\begin{equation}
-%r_{\rm t} \propto \left(\frac{m}{M}\right)^{(1/3)} \propto \left(\frac{1}{(\frac{v_{c,M31}}{v_{c,MW}})^{2}}\right)^{1/3}  
-%\end{equation}
-%and therefore the tidal radius of stars escaping is smaller by a correction factor of:
-%
-%\begin{equation}
-%v_{\rm corr} = \frac{1}{(\frac{v_{c,M31}}{v_{c,MW}})^{2/3}} \sim 0.92
-%\end{equation}
-%Thus, the stream gets narrower and shorter by a factor of 0.92 due to the difference in M31's and the MW's tidal fields. 
-%
-%\item {\bf Various $R_p$}: We use three different $R_{GC}$. The tidal radius is defined as:
-%\begin{equation}
-%r_{\rm t} = R_p \left(\frac{m}{M}\right)^{(1/3)}  = R_p \left(\frac{m}{\frac{v_c^2 R}{G}}\right)^{(1/3)} \propto R_p^{(2/3)}
-%\end{equation}
-%Thus, as we move Pal 5 further out in the halo, we update the width and length of the stream to be larger by a factor of:
-%
-%\begin{equation}
-%R_{corr} = \left(\frac{R_p}{R_{p,Pal5}}\right)^{2/3}
-%\end{equation}
-%
-%However, the stream will have completed fewer orbits at larger radii if we assume the same dynamical age. Using \citet{johnston01}, Eq. 5, and assuming the cluster has been disrupted for the same amount of time (same age), we have that the length, L, of Pal 5:
-%
-%\begin{equation}
-% L_{Pal_5} \propto \frac{1}{T_{\psi}} \propto \Omega 
-%\end{equation}
-%where, $T_{\psi}$ is the azimuthal time period, $\Omega$ is the angular velocity of the cluster. If we assume Pal 5 has the same velocity, $v_{Pal 5}$, at all radii: 
-%\begin{equation}
-%\Omega \times R_p = v_{Pal5} 
-%\end{equation}
-%then
-%\begin{equation}
-% L_{Pal_5} \propto \frac{1}{R_p}
-%\end{equation}
-%
-%Hence, $L_{Pal_5} \propto \frac{1}{R_p}$. Thus, further out in the halo, the angular length of the stream is smaller by a factor of: 
-%
-%\begin{equation}
-% L_{corr} = \frac{R_{p,pal5}}{R_{p,new}}
-%\end{equation}
-%
-%
-%\item {\bf More massive cluster}: When we change the cluster of the mass by a factor of 10, but keep the distance and enclosed mass the same, we change the tidal radius by:
-%\begin{equation}
-%r_{\rm t} = R_p \left(\frac{m}{M}\right)^{(1/3)}  \propto 10^{1/3} = 2.154
-%\end{equation}
-%Hence, more massive cluster leads to wider and longer stream by a factor of 2.154. 
-%
-%
-%
-%
-%\end{itemize}
-%}
+
 
 \begin{figure*}
 \centerline{\includegraphics[width=\textwidth]{FIG1_CFHT_WFIRST.pdf}}
@@ -242,17 +194,17 @@ To summarize, we now have six different examples of mock cold stellar streams of
 
 
 \section{Results}\label{sec:results}
-In this Section, we present results on the detectability of cold stellar streams for resolved stars in M31 (Section \ref{sec:resolved}), for resolved stars in other external galaxies (Section \ref{sec:resother}), and by using integrated light (Section \ref{sec:integrated}). 
+In this Section, we present results on the detectability of GC stellar streams for resolved stars in M31 (Section \ref{sec:resolved}), for resolved stars in other external galaxies (Section \ref{sec:resother}), and by using integrated light (Section \ref{sec:integrated}). 
  
 
 \subsection{Cold streams in M31: resolved stars}
 \label{sec:resolved}
-We first explore whether cold streams should be observable in M31 given the PANDAS limiting magnitudes (subsection \ref{sec:PANDAS}), and test the same scenario given the WFIRST limiting magnitudes and bands (subsection \ref{sec:WFIRST}). %Additionally, we explore what we can learn from color information and with lower metallicity streams (subsection \ref{sec:color}).
+We first explore whether GC streams should be observable in M31 given the PANDAS limiting magnitudes (subsection \ref{sec:PANDAS}), and test the same scenario given the WFIRST limiting magnitudes and bands (subsection \ref{sec:WFIRST}). %Additionally, we explore what we can learn from color information and with lower metallicity streams (subsection \ref{sec:color}).
 
 
 \subsubsection{PANDAS}
 \label{sec:PANDAS}
-The columns in Figure \ref{fig:M31_pandas} show 10 $\times$ 10 kpc PANDAS areas of M31's halo at various galactocentric radii ($R_{GC}$ = 15  kpc, $R_{GC}$ = 35 kpc and $R_{GC}$ = 55 kpc), and each row shows the same areas after we have applied various metallicity cuts: [Fe/H] = all,  [Fe/H] = $>$ 0, and  [Fe/H] = $> -1 $, respectively. Recall that the Pal 5 cluster metallicity is  [Fe/H] = -1.3 and all Pal 5 stars will therefore be visible for these metallicity cuts. 
+The columns in Figure \ref{fig:M31_pandas} show 10 $\times$ 10 kpc PANDAS areas of M31's halo at various galactocentric radii ($R_{GC}$ = 15  kpc, $R_{GC}$ = 35 kpc and $R_{GC}$ = 55 kpc), and each row shows the same areas after we have applied various metallicity cuts: [Fe/H] = all,  [Fe/H] = $>$ 0, and  [Fe/H] = $> -1 $, respectively. Recall that the Pal 5 cluster metallicity is  [Fe/H] $= -1.3$ and all Pal 5 stars will therefore be visible for these metallicity cuts. 
 
 In each panel, we have injected a Pal 5 mock stellar streams and Pal 5 mock stellar streams with properties scaled to have 10 times the mass of Pal 5. We have populated the streams with stars using the PANDAS limiting magnitude calculated in Section \ref{sec:lum} (32 and 320 stars for the less and more massive stream, respectively).  The streams lengths and widths have been calculated based on the streams distances from M31's galactic center. Additionally, the more massive stream is longer and wider by a factor of $10^{1/3}$ (see Section \ref{sec:length}). 
 
@@ -275,15 +227,15 @@ From Figure \ref{fig:M31_wfirst}, it is evident that a Pal 5-like stream will be
 %\end{figure}
 
 
-\subsection{Cold streams in external galaxies: resolved stars}
+\subsection{Cold globular cluster streams in external galaxies: resolved stars}
 \label{sec:resother}
-In the previous Section, we showed that a cold stream containing less than xx stars, does not stand out out against the background of an M31-like halo, even when we apply metallicity cuts. 
+In the previous Section, we showed that a GC stream containing less than xx stars, does not stand out out against the background of an M31-like halo, even when we apply metallicity cuts. 
 
-To determine whether we can detect cold stellar streams in external galaxies in resolved stars with WFIRST, in Figure \ref{fig:distance} we show the number of resolved stars in a Pal 5-like stream (solid) and a ten times more massive stream (dashed) as a function of distance to external galaxies. To compute this plot, we use the normalized luminosity function shown in the bottom panel of Figure \ref{fig:iso_cfht} to determine the amount of resolved stars based on WFIRST's limiting magnitude (Z062 $<$ 27.15) at a given distance.
+To determine whether we can detect GC stellar streams in external galaxies in resolved stars with WFIRST, in Figure \ref{fig:distance} we show the number of resolved stars in a Pal 5-like stream (solid) and a ten times more massive stream (dashed) as a function of distance to external galaxies. To compute this plot, we use the normalized luminosity function shown in the bottom panel of Figure \ref{fig:iso_cfht} to determine the amount of resolved stars based on WFIRST's limiting magnitude (Z062 $<$ 27.15) at a given distance.
 
-The vertical lines show the distances to four well-known galaxies in which it could be of interest to search for cold stellar streams. The dark grey shaded region shows the limiting number of stars for which we would no longer be able to detect a Pal 5-like stellar stream, and the light shaded grey region demonstrates the same limitation for the more massive, and therefore longer and wider, stream. 
+The vertical lines show the distances to four well-known galaxies in which it could be of interest to search for GC stellar streams. The dark grey shaded region shows the limiting number of stars for which we would no longer be able to detect a Pal 5-like stellar stream, and the light shaded grey region demonstrates the same limitation for the more massive, and therefore longer and wider, stream. 
 
-We conclude that Pal 5-like streams should be detectable out to the distance of Cen A and that ten times more massive streams should be observed out to the distance of M101. We encourage observers to look for these streams in the future, and we emphasize that the results presented in Figure \ref{fig:distance} are conservative, as we could do even better with color cuts and metallicity cuts (see discussion in Section \ref{sec:discussion}). 
+We conclude that Pal 5-like streams should be detectable out to the distance of Cen A and that ten times more massive streams should be observed out to the distance of M101. We encourage observers to look for these streams in the future, and we emphasize that the results presented in Figure \ref{fig:distance} are conservative, as we could do even better with color cuts and metallicity cuts (see discussion in Section \ref{sec:discussion}). \todo{Comment on the fact that according to this plot, \citet{abraham18} should not have detected the thin stream}
 
 \subsection{Cold streams in external galaxies: Integrated light}
 \label{sec:integrated}
@@ -293,7 +245,7 @@ To determine whether we should find streams in external galaxies in integrated l
 
 We compute the surface brightness, $\mu$, by converting the magnitudes of each star in the normalized luminosity function (see middle, bottom row, Figure \ref{fig:iso_cfht}), to a luminosity. We then sum up the luminosities for all stars in the stream to obtain a total luminosity. We divide this by the area of each stream in arcsec$^2$ and calculate the surface brightness, $\mu$, in [mag/arcsec$^2$]. See all values in Table \ref{tab:Pal5}. The surface brightnesses are independent of the distance.  
 
-The width of a stream, however, will change with distance to the external galaxy which hosts the stream. To determine whether we would observe cold stellar streams with current and upcoming telescopes, given the telescopes resolution limits, in Figure \ref{fig:int} we plot the range of widths for our six mock-streams (blue shaded region). Recall that smaller galactocentric radii and lower mass streams, yield narrower streams and vice versa. %Note that the narrowest massive stream overlaps with the second narrowest Pal 5-like stream. 
+The width of a stream, however, will change with distance to the external galaxy which hosts the stream. To determine whether we would observe GC stellar streams with current and upcoming telescopes, given the telescopes resolution limits, in Figure \ref{fig:int} we plot the range of widths for our six mock-streams (blue shaded region). Recall that smaller galactocentric radii and lower mass streams, yield narrower streams and vice versa. %Note that the narrowest massive stream overlaps with the second narrowest Pal 5-like stream. 
 
 The vertical lines in Figure \ref{fig:int} show the distances to four nearby galaxies, which could be targeted for thin stellar stream observations. We have labeled the lines by the typical surface brightness of the stellar halo for these systems. The horizontal lines show the resolution limitations of HSC, LSST (limited by seeing: 0.7 arcsec) and WFIRST (limited by the pixel scale: 0.11 arcsec: \citealt{spergel13}).
 
@@ -309,7 +261,7 @@ However, the statements above are only valid if the surface brightness of the st
 %Figure \ref{fig:int}: compute surface brightness for all 6 streams depending on their area (length and width). Surface brightness does not vary with distance. 
 
 \begin{figure*}
-\centerline{\includegraphics[width=\textwidth]{Fig2_M31_Pandas_mag255.pdf}}
+\centerline{\includegraphics[width=\textwidth]{Fig2_M31_Pandas_mag255.png}}
 \caption{{\bf Cold streams in M31 - with PANDAS ($g < 25.5$)}. In this plot we demonstrate the observability of a Pal 5-like stream and a 10 times more massive Pal 5-like stream for the PANDAS survey of the M31 halo. Each row shows the PANDAS background fields at three different M31 galactocentric, $R_{GC}$ radii ($R_{GC}$ = 15  kpc, $R_{GC}$ = 35 kpc and $R_{GC}$ = 55 kpc). In the first row we show all stars observed in the PANDAS fields, in the second row we show all stars observed in PANDAS with a metallicity [Fe/H] $< 0$, and in the third row we show all stars with [Fe/H] $< -1$. In each panel, we have injected two streams: a Pal 5-like stream and a Pal 5-like stream with 10 times the mass of Pal 5. Recall that the Pal 5-like stream has [Fe/H] $\sim$ -1.5, and should therefore be visible in all three rows. We determine the number of stars in the two streams by summing up the cumulative number of stars in the streams at the limiting magnitude of the PANDAS survey ($g < 25.5$) at the distance of M31 (see Figure \ref{fig:iso_cfht}, right panel). There are are 200 stars in the more massive stream and only 20 in Pal 5-like stream. The length and width of streams are updated based on their location in galaxy and the mass of stream. At each $R_{GC}$, we have updated the width and lengths of the streams based on the tidal field they experience at these distances. Additionally, the 10 times more massive stream is wider and longer by a factor of $10^{1/3}$  (see Section \ref{sec:length}). We note that the Pal 5-like stream is not visible in any of the panels, but that the 10 times more massive stream becomes apparent further out in the halo when we apply metallicity cuts (see middle and right panels in row two and three). Hence, it is {\bf not surprising that PANDAS have not detected globular cluster streams like Pal 5} with simple metallicity cuts, however it should be feasible to find a 10 times more massive Pal 5-like stream. \todo{Maybe try an even lower metallicity stream such that it would show up at a [Fe/H] cut of -2. Also: we can show the homogeneous fields with i $<$ 24 instead.}  }
 \label{fig:M31_pandas}
 \end{figure*}
@@ -401,7 +353,7 @@ In addition to color and metallicity cuts, another method to detect streams is b
 
 
 \subsection{Gaps in cold stellar streams in external galaxies}
- At Pal 5's location in our Galaxy, \citet{bovy17} predict that within the framework of $\Lambda CDM$, only 1.3 subhalos should interact with the stream. This estimates were made without including baryons in the estimates of subhalo populations in the inner Galaxy, and \citet{garrison17} suggest that many of these should be destroyed by the disk. The MW stellar stream GD1 is similarly probing the same region of the Galaxy as Pal 5 (GD1 pericent = 12 kpc, GD1 apocenter = ), and we should not expect many encounters with dark matter subhalos at these radii (although the recent detection of a gap in GD1 could point to an interaction with a dark substructure: \citealt{price18}, \citet{bonaca19}).  In any case,  a larger sample of cold stellar streams is valuable.  
+ At Pal 5's location in our Galaxy, \citet{bovy17} predict that within the framework of $\Lambda CDM$, only 1.3 subhalos should interact with the stream. This estimates were made without including baryons in the estimates of subhalo populations in the inner Galaxy, and \citet{garrison17} suggest that many of these should be destroyed by the disk. The MW stellar stream GD1 is similarly probing the same region of the Galaxy as Pal 5 (GD1 pericent = 12 kpc, GD1 apocenter = ), and we should not expect many encounters with dark matter subhalos at these radii (although the recent detection of a gap in GD1 could point to an interaction with a dark substructure: \citealt{price18}, \citealt{bonaca19}).  In any case,  a larger sample of cold stellar streams is valuable.  
  
 Our work shows that WFIRST should detect many thin stellar streams in nearby galaxies. Thus, this will simultaneously extend our search for evidence for indirect detections of dark matter through density distortions and gaps in thin stellar streams. 
 
