@@ -211,7 +211,7 @@ The columns in Figure \ref{fig:M31_pandas} show 10 $\times$ 10 kpc regions from 
 
 In each panel, we have injected a Pal 5 mock stellar stream and mock stellar stream with properties scaled to have 10 times the mass of Pal 5. We have populated the streams with stars using the PAndAS limiting magnitude calculated in Section \ref{sec:lum} (39 and 390 stars for the less and more massive stream, respectively).  The streams' lengths and widths have been calculated based on the streams' distances from M31's galactic center. Additionally, the more massive stream is longer and wider by a factor of $10^{1/3}$ (see Section \ref{sec:length}). 
 
-The Pal 5-like stream is not visible in any of the panels of Figure \ref{fig:M31_pandas}, but the 10 times more massive stream becomes apparent at larger galactocentric radii, when we apply metallicity cuts (see middle and right panels in row two and three). Hence, it is not surprising that PAndAS has not detected globular cluster streams like Pal 5 with simple metallicity cuts. However, it should be feasible to find a 10 times more massive Pal 5-like stream in the PAndAS data, should such a stream exist.
+The Pal 5-like stream is not visible in any of the panels of Figure \ref{fig:M31_pandas}, but the 10 times more massive stream is apparent by eye at larger galactocentric radii, when we apply metallicity cuts (see middle, right panels in row two and three). Hence, it is not surprising that PAndAS has not detected globular cluster streams like Pal 5 with simple metallicity cuts. However, it should be feasible to find a 10 times more massive Pal 5-like stream in the PAndAS data, should such a stream exist.
 
 \subsubsection{WFIRST}
 \label{sec:WFIRST}
@@ -234,11 +234,16 @@ From Figure \ref{fig:M31_wfirst}, it is evident that a Pal 5-like stream will be
 
 \subsection{Cold globular cluster streams in external galaxies: resolved stars}
 \label{sec:resother}
-In the previous Section, we showed that a GC stream containing less than xx stars, does not stand out out against the background of an M31-like halo, even when applying metallicity cuts. 
+In the previous Section, we showed that only some streams were detectable by eye against the background of M31. To test the threshold of when streams are detectable, we computed the contribution of the stream signal to the M31 background at each different galactocentric radius ($R_{GC} = 15, 35, 55$ kpc), with the three different metallicity cut ([Fe/H] = all, $<$ 0, $< -1$). In particular, we computed the counting error, C$_{\rm err}$: 
+
+\begin{equation}
+{\rm C}_{\rm err} = \frac{N_{\rm stream}}{\sqrt{N_{\rm background}}}
+\end{equation}
+where $N_{\rm stream}$ is the number of stars in the mock streams, and $N_{\rm background}$ is the number of stars in the M31 background within the same area as the particular mock stream. We varied $N_{\rm stream}$ and determined through visual inspections of mock streams injected to the various panels in Figure \ref{fig:M31_pandas} and \ref{fig:M31_wfirst} that only streams with C$_{\rm err} > 15$ were detectable  against both backgrounds, at all $R_{GC}$ with all three different [Fe/H] cuts. 
 
 To determine whether we can detect GC stellar streams in external galaxies in resolved stars with WFIRST, in Figure \ref{fig:distance} we show the number of resolved stars in a Pal 5-like stream (solid) and a ten times more massive stream (dashed) as a function of distance to external galaxies. We used the normalized luminosity function shown in the bottom panel of Figure \ref{fig:iso_cfht} based on WFIRST's limiting magnitude (Z062 $<$ 27.15), to obtain the number of resolved stars various distances. The vertical lines show the distances to four well-known galaxies in which it could be of interest to search for GC stellar streams. 
 
-The dark grey shaded region shows the limiting number of stars for which a Pal 5-like stellar stream would no longer be detectable ($<xx$ stars). Similarly, the light shaded grey region shows the limitation for the more massive, and therefore longer and wider, stream ($<xx$ stars). The limiting number of stars needed to observe each stream, were determined through visual inspections of mock streams with a varying number of stars, injected to Figure \ref{fig:M31_wfirst}-like panels. \todo{I am waiting to do this part until our Fig. \ref{fig:M31_wfirst} is finished.}
+Motivated by our finding that only streams for which C$_{\rm err} > 15$ were detectable by eye,  we illustrate the threshold for the number of stars needed to detect the stream. In particular, we add a dark grey shaded region for the Pal 5 like stream, and a light grey shaded region for the more massive stream. We  calculated these limits by assuming the two mock streams are located at $R_{GC} = 35$ kpc (to fix the areas of the two mock streams), and that no metallicity cuts have been made (to use one specific background estimate). To ensure that C$_{\rm err} > 15$, this yields a detectability threshold of $>xx$ stars for the Pal 5 like stream, and $> xx$ stars for the more massive stream. \todo{I'll calculate the actual number when I know what our WFIRST background is}.
 
 We conclude that Pal 5-like streams should be detectable with WFIRST out to the distance of Cen A and that ten times more massive streams should be observed out to the distance of M101. We encourage observers to look for these streams in the future, and we emphasize that the results presented in Figure \ref{fig:distance} are conservative, as we could do even better with color cuts and metallicity cuts (see discussion in Section \ref{sec:discussion}). \todo{Comment on the fact that according to this plot, \citet{abraham18} should not have detected the thin stream}. 
 
@@ -284,12 +289,22 @@ However, the statements above are only valid if the surface brightness of the st
  %&[kpc]&[kpc]&[kpc]&[]& [arcsec$^2$]  & mag/[arcsec$^2$]  \\
 {\bf Pal 5-like mass} & &&\\
 $l$ [kpc] & 7.8 & 10.4 &  12.0  \\
-$w$ [pc] & 53 & 94  & 127  \\
+$w$ [kpc] & 0.053 & 0.094  & 0.127  \\
+$Area$ [kpc$^2$] & 0.414 & 0.973 &1.53 \\
+$\sqrt{N_{\rm PAndAS, background}}$\footnote{Number of stars in background for an equal area as stream covers}& .& .&. \\
+$\sqrt{N_{\rm WFIRST, background}}^{\rm a}$& .& .&. \\
+$\frac{N_{\rm stream,stars}}{\sqrt{N_{\rm PAndAS}}}$& .& .&. \\
+$\frac{N_{\rm stream,stars}}{\sqrt{N_{\rm WFIRST}}}$& .& .&. \\
 $\mu$ [mag/arcsec$^2$] &. &.  &.  \\
 \hline
 {\bf 10 $\times$ Pal 5-like mass} & &&\\ 
 $l$ [kpc] &16.8 & 22.3 & 25.9 \\
-$w$ [pc]& 115 & 202 & 273  \\
+$w$ [kpc]& 0.115 & 0.202 & 0.273  \\
+$Area$ [kpc$^2$] &  1.93& 4.51   & 7.08  \\
+$\sqrt{N_{\rm PAndAS, background}}^{\rm a}$& .& .&. \\
+$\sqrt{N_{\rm WFIRST, background}}^{\rm a}$& .& .&. \\
+$\frac{N_{\rm stream,stars}}{\sqrt{N_{\rm PAndAS}}}$& .& .&. \\
+$\frac{N_{\rm stream,stars}}{\sqrt{N_{\rm WFIRST}}}$& .& .&. \\
 $\mu$ [mag/arcsec$^2$] &. &.  &.  \\
 
 \hline 
@@ -323,7 +338,7 @@ $\mu$ [mag/arcsec$^2$] &. &.  &.  \\
 
 \begin{figure}
 \centerline{\includegraphics[width=\columnwidth]{Fig4_distance.pdf}}
-\caption{{\bf Cold streams in external galaxies: resolved stars}. The number of resolved WFIRST Z062-band stars in a Pal 5-like stream (solid) and a ten times more massive Pal 5-like stream (dashed) as a function of distance. We compute this figure based on the cumulative luminosity function in the WFIRST Z062-band (see right, bottom panel of Figure \ref{fig:iso_cfht}). The vertical lines show the distances to four well-known galaxies within 10 Mpc of the Milky Way. From Figure \ref{fig:M31_pandas}, we concluded that we cannot detect Pal 5-like streams based on metallicity cuts, unless the stream has more than $\sim 40$ resolved stars. The dark shaded grey region shows the limit where less $<$ 40 stars are resolved. The light grey area similarly shows the region for which we will note be able to detect a ten times more massive stellar stream ($<$ 90 stars). \todo{I'll figure out how to determine this number of stars more rigorously. 40/90 are placeholders}.
+\caption{{\bf Cold streams in external galaxies: resolved stars}. The number of resolved WFIRST Z062-band stars in a Pal 5-like stream (solid) and a ten times more massive Pal 5-like stream (dashed) as a function of distance. We compute this figure based on the cumulative luminosity function in the WFIRST Z062-band (see right, bottom panel of Figure \ref{fig:iso_cfht}). The vertical lines show the distances to four well-known galaxies within 10 Mpc of the Milky Way. The dark shaded grey region shows the threshold for where a Pal 5 like stream will not be detectable by eye ($<$ xx stars are resolved). The light grey area similarly shows the threshold for where a ten times more massive stellar stream will not be detectable ($<$ xx stars). See Section \ref{sec:resother} for a discussion on these thresholds.  \todo{I need the WFIRST backgrounds to compute these numbers}.
 Pal 5-like streams should be detectable in resolved stars with WFIRST out to the distance of Cen A (see intersect of solid line and dark grey shaded region), and ten times more massive streams should be observed out to distances slightly smaller than M101 (see intersect of dashed line and light gray shaded region). This conclusion is drawn without the use of color-cuts, and we could also use more conservative metallicity cuts than in Figure \ref{fig:M31_pandas}. As seen in Figure \ref{fig:M31_wfirst}, this will also depend on the location in the host galaxy (easier to detect in outer halo), and the exact background and metallicity of the specific host.}
 \label{fig:distance}
 \end{figure}
