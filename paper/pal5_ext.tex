@@ -29,23 +29,14 @@
 \newcommand{\todo}[1]{{\color{red} TODO: #1}}
 
 \newcommand{\changes}[1]{{\textbf{#1}}}
-% \newcommand{\changes}[1]{{#1}}
 
-
-% aastex parameters
-% \received{not yet; THIS IS A DRAFT}
-%\revised{not yet}
-%\accepted{not yet}
-% % Adds "Submitted to " the arguement.
-%\submitjournal{ApJ}
-\shorttitle{Cold streams}
+\shorttitle{Detecting cold streams}
 \shortauthors{Pearson et al. }
 
-%@arxiver{}
 
-\begin{document}\sloppy\sloppypar\raggedbottom\frenchspacing % trust me
-% All code used in this work and all results are available at
-% \url{https://github.com/adrn/GD1-DR2}.
+
+\begin{document}\sloppy\sloppypar\raggedbottom\frenchspacing 
+
 \title{Detecting Thin Stellar Streams in External Galaxies:\\ Resolved Stars \& Integrated Light}
 
 
@@ -54,157 +45,140 @@
  \email{spearson@flatironinstitute.org}
  \correspondingauthor{Sarah Pearson}
 
-\author{Tjitske Starkenburg}
+\author{Tjitske K. Starkenburg}
 \affiliation{Center for Computational Astrophysics, Flatiron Institute, 162 5th Av., New York City, NY 10010, USA}
 
 \author{Kathryn V. Johnston}
 \affiliation{Department of Astronomy, Columbia University, Mail Code 5246, 550 West 120th Street, New York, New York 10027, USA}
 
 \author{Benjamin F. Williams}
-\affiliation{Department of Astronomy, Box 351580, University of Washington, Seattle, WA 98195}
+\affiliation{Department of Astronomy, Box 351580, University of Washington, Seattle, WA 98195, USA}
 
 \author{Rodrigo A. Ibata}
 \affiliation{Observatoire astronomique de Strasbourg, Université de Strasbourg, CNRS, UMR 7550, 11 rue de l’Université, F-67000 Strasbourg, France}
+%
+%\author{Rubab Khan}
+%\affiliation{Department of Astronomy, Box 351580, University of Washington, Seattle, WA 98195, USA}
+%
 
 
 
 \begin{abstract}\noindent 
-Stellar streams can be used to test the nature and behavior of dark matter. By investigating the morphology of thin stellar streams from globular clusters, the 
-power spectrum of dark matter substructure can potentially be uncovered, as well as the shape of dark matter halos. It is therefore crucial to extend our searches for thin globular cluster streams to other galaxies than the Milky Way. In this paper, we investigate the current and future prospects of detecting globular cluster streams in external galaxies in both resolved stars (e.g. with WFIRST) and using integrated light (e.g. with HSC and LSST). In particular, we inject mock-streams to real data from the PAndAS M31 survey, and create simulated M31 backgrounds mimicking what WFIRST will observe in M31. Additionally, we estimate the distance limit to which globular cluster streams will be observable in resolved stars and integrated light. Our results demonstrate that  WFIRST should easily detect a globular cluster stream in resolved stars in external galaxies out to distances of ${\sim}$10 MPC. With integrated light, the widths of thin streams can be resolved out to 100 Mpc with  HSC and LSST and to 600 Mpc with WFIRST, depending on the stream properties. However, the low surface brightness of the streams will make them very hard to detect, unless the streams originate from very young clusters. We conclude that WFIRST will discover a vast number of thin stellar streams with resolved stars in external galaxies. We emphasize that if these external galaxies do not host spiral arms, bars and molecular clouds, gaps in thin streams in such galaxies are ideal laboratories in which to search for evidence of interactions between dark matter subhalos and stellar streams. Furthermore, statistical samples of thin stellar streams can further help constrain orbit distributions and potentially triaxiality of external halos. 
-
-\end{abstract}
+The morphology of thin stellar streams can be used to test the nature of dark matter. It is therefore crucial to extend searches for globular cluster streams to other galaxies than the Milky Way. In this paper, we investigate the current and future prospects of detecting globular cluster streams in external galaxies in resolved stars (e.g. with WFIRST) and using integrated light (e.g. with HSC, LSST and Euclid). In particular, we inject mock-streams to data from the PAndAS M31 survey, and produce simulated M31 backgrounds mimicking what WFIRST will observe in M31. Additionally, we estimate the distance limit to which globular cluster streams will be observable. Our results demonstrate that for a 1 hour (1000 sec.) exposure, using conservative estimates, WFIRST should detect globular cluster streams in resolved stars in galaxies out to distances of ${\sim}$3.5 Mpc (${\sim}$2 Mpc). This volume contains 199 (122) galaxies of which $>$90\% are dwarfs. With integrated light, thin streams can be resolved out to ${\sim}$100 Mpc with HSC and LSST and to ${\sim}$600 Mpc with WFIRST and Euclid. The low surface brightness of the streams (typically $>$30 mag/arcsec$^{2}$), however, will make them difficult to detect, unless the streams originate from very young clusters. We emphasize that if the external galaxies do not host spiral arms or galactic bars, gaps in their stellar streams provide an ideal test case for evidence of interactions with dark matter subhalos. Furthermore, obtaining a large samples of thin stellar streams can help constrain the orbital structure and hence the potentials of external halos. \end{abstract}
 \keywords{{\bf Key words:} dark matter — Galaxy: halo — Galaxy: structure — Galaxy: kinematics
-and dynamics — globular clusters: individual (Palomar 5): }% {\bf Methods:} }
+and dynamics — globular clusters: individual (Palomar 5): }
 
 %----------------------------------------------------Intro ----------------------------------------------------------------
 \section{Introduction} \label{sec:intro}
-Stellar streams form when a gravitationally bound ensemble of stars tidally tears apart, due to an underlying galactic potential. To date, we have observed a multitude of stellar streams in our own Galaxy, emerging as leading and trailing tidal tails from both open clusters (e.g. \citealt{roser19}) and globular clusters (e.g. GD1: \citealt{grillmair06}, Palomar 5: \citealt{oden01}), as well as dwarf galaxies (e.g. Sagittarius: \citealt{ibata01}, Orphan: \citealt{belokurov06}). Following the release of Gaia DR2 (\citealt{gaiadr2}), more than 60 stellar stream candidates have been suggested in the Milky Way alone (e.g. \citealt{ibata19}). 
+Stellar streams form when a gravitationally bound ensemble of stars tidally tears apart, due to an underlying galactic potential. To date, we have observed a multitude of stellar streams in our own Galaxy, emerging as leading and trailing arms from both open clusters (e.g. \citealt{roser19}) and globular clusters (e.g. GD1: \citealt{grillmair06}, Palomar 5: \citealt{oden01}), as well as dwarf galaxies (e.g. Sagittarius: \citealt{ibata01}, Orphan: \citealt{belokurov06}). Following the release of Gaia DR2 (\citealt{gaiadr2}), more than 60 stellar stream candidates have been suggested in the Milky Way alone (e.g. \citealt{ibata19}). 
 Several stellar streams have additionally been discovered in external galaxies (e.g. \citealt{ibata00}, \citealt{delgado10}). Based on the widths and surface brightnesses of the stellar streams in external galaxies, these streams are likely relics from tidally disrupted dwarf galaxies (e.g. \citealt{delgado12}, \citealt{rich12}, \citealt{annibali12}).
 
-%GCs as potential probes
-Since the discovery of stellar streams, several studies have proposed to use the observed properties of streams to measure the mass distribution in our Galaxy, including its dark matter (e.g. \citealt{johnston99}, \citealt{koposov10}, \citealt{law10}, \citealt{bovy16}). Stellar streams from globular clusters (GCs) are of particular interest, as they are dynamically cold (i.e. the internal kinematics of globular clusters are much smaller than the clusters' orbital velocities around their host galaxies). As a consequence, the streams from GCs phase-mix slowly and leave behind stars moving coherently in phase-space along thin leading and trailing arms for several gigayears (Gyr) that can be dense enough to be detectable with todays surveys. %This makes thin GC stellar streams sensitive probes of the underlying mass distribution of their hosts. 
-Moreover, because they are so cold, these streams are particularly sensitive to any deviations to smooth, symmetric potentials - and hence particularly useful for probing dark matter distributions.
+Since the discovery of stellar streams, several studies have proposed to use the observed properties of streams to measure the mass distribution in our Galaxy, including its dark matter (e.g. \citealt{johnston99}, \citealt{koposov10}, \citealt{law10}, \citealt{sanderson15}, \citealt{bovy16}). Stellar streams from globular clusters (GCs) are of particular interest, as they are dynamically cold (i.e. the internal kinematics of globular clusters are much smaller than the clusters' orbital velocities around their host galaxies). As a consequence, the streams from GCs phase-mix slowly and leave behind stars moving coherently in phase-space along thin leading and trailing arm for several gigayears (Gyr) that can be dense enough to be detectable with today's surveys. 
+Because the streams are so cold, they are particularly sensitive to any deviations from smooth, symmetric potentials - and hence particularly useful for probing dark matter distributions.
 
-%GC streams as LCDM probes
-While studies to measure the potential of the Galaxy have typically relied on multiple dimensions of data, including kinematics, there are some specific examples where the morphology of thin streams are alone informative. For example, the $\Lambda$-cold dark matter ($\Lambda$CDM) paradigm predicts a specific distribution and mass range of dark matter subhalos in our Galaxy (see e.g. \citealt{diemand08}, \citealt{bovy17}, \citealt{bonaca19}). Additionally, \citet{ibata02} and \citet{johnston02} showed that the interaction between dark matter subhalos can leave behind signatures in the structure of stellar streams. Density fluctuations in GC stellar streams, can therefore, in principle, provide indirect evidence of interactions with dark matter substructure, and serve as a test of $\Lambda$CDM (e.g. \citealt{yoon11}, \citealt{erkal16}, \citealt{bovy17}, \citealt{bonaca19}).
+While studies to measure the potential of the Galaxy have typically relied on multiple dimensions of data, including kinematics, there are some specific examples where the morphology of thin streams are alone informative. For example, the $\Lambda$-cold dark matter ($\Lambda$CDM) paradigm predicts a specific distribution and mass range of dark matter subhalos in our Galaxy (see e.g. \citealt{diemand08}, \citealt{bovy17}, \citealt{bonaca19}). \citet{ibata02} and \citet{johnston02} showed that the interaction between dark matter subhalos can leave behind signatures in the structure of stellar streams. Density fluctuations in GC stellar streams can therefore, in principle, provide indirect evidence of interactions with dark matter substructure, and serve as a test of $\Lambda$CDM (e.g. \citealt{yoon11}, \citealt{erkal16}, \citealt{bovy17}, \citealt{bonaca19}).
 
-%GC streams to probe orbit structure
-In addition, the morphology of GC stellar streams provide broad constraints on  dark matter halo shapes, as only certain orbits in triaxial matter distributions allow thin, long streams to exist (\citealt{pearson15}). In particular, thin, long stream should only be detectable on regular or resonantly trapped orbits, so their presence and location can provide a map of these regions in the orbit structure of a potential (\citealt{pearson15}, \citealt{price16}, Yavetz et al., {\it in prep.}).
+In addition, the morphology of GC stellar streams provide broad constraints on  dark matter halo shapes, as only certain orbits in triaxial matter distributions allow thin, long streams to exist (\citealt{pearson15}). In particular, thin, long streams should only be detectable on regular or resonantly trapped orbits. Thus, their presence and location can provide a map of these regions in the orbit structure of a potential (\citealt{pearson15}, \citealt{price16}, Yavetz et al., {\it in prep.}).
 
-The fact that useful information can be extracted from the morphology of thin GC streams alone opens up the exciting possibility of applying some of the intuition built for streams around our own Milky Way to other galaxies.  GC streams, however, have lower masses and are thinner than streams from dwarf galaxies, and are therefore harder to detect in external galaxies. Interestingly, \citet{abraham18} reported a detection of the ``Maybe Stream" with HST, which they suggest could be a GC stream 20 Mpc away. 
+The fact that useful information can be extracted from the morphology of thin GC streams alone opens up the exciting possibility of applying some of the intuition built for streams around our own Milky Way to other galaxies.  GC streams, however, have lower masses, are thinner than streams from dwarf galaxies, and are therefore harder to detect in external galaxies. Interestingly, \citet{abraham18} reported a detection of the ``Maybe Stream" with the Hubble Space Telescope (HST), which they suggest could be a GC stream 20 Mpc away. 
 
-%Therefore, finding cold stellar streams in external galaxies will help us map the orbit structures and shapes of the potentials, as t%This paper
+In this paper, we investigate current and future prospect of observing thin, globular cluster streams in external galaxies both through resolved stars and integrated light. 
+Specifically, we ask whether globular cluster streams will be observable in resolved stars with upcoming telescopes such as WFIRST (\citealt{spergel13}, \citealt{spergel15}), or in integrated light with current telescopes such as the Hyper Suprime-Cam (HSC: \citealt{miyazaki12}) and future telescopes such as LSST (\citealt{ivezi08}) and Euclid (\citealt{racca16}). % In particular, 
 
-In this paper, we investigate the future prospect of observing thin, globular cluster streams in external galaxies both through resolved stars and integrated light. 
-%In particular, we focus our attention on the well-studied stream, Palomar 5. 
-%, which was first discovered in SDSS (Oden03), and which has since been mapped in great detail by (\citealt{ibata16}). 
-Specifically, we ask whether globular cluster streams will be observable in resolved stars with upcoming telescopes such as WFIRST (\citealt{spergel13}), or in integrated light with current telescopes such as the Hyper Suprime-Cam (HSC: \citealt{miyazaki12}) and future telescopes such as LSST (\citealt{ivezi08}). % In particular, we explore the observability of globular cluster streams at various locations in their host galaxies, and we ask how far away the host galaxies can be for the thin streams to be detectable.
+The paper is organized as follows: in Section \ref{sec:coldstreams}, we describe the properties of globular cluster streams and how we create mock-streams to test whether they are observable. In particular we describe the Palomar 5 (Pal 5) globular cluster stellar stream which we use as our fiducial model (Section \ref{sec:pal5}), we describe how we populate our streams with stars (Section \ref{sec:lum}), and how we calculate widths and lengths of mock-streams at various galactocentric radii (Section \ref{sec:length}). In Section \ref{sec:results}, we present the results on detecting streams in resolved stars in the Andromeda galaxy (M31) (Section \ref{sec:resolved}), in other external galaxies (Section \ref{sec:resother}) and in integrated light (Section \ref{sec:integrated}). We discuss the implications of our results in Section \ref{sec:discussion} and conclude in Section \ref{sec:conclusion}.
 
-%Organization of paper 
-The paper is organized as follows: in Section \ref{sec:coldstreams}, we describe the properties of globular cluster streams and how we create mock-streams to test whether they are observable. In particular we describe Palomar 5 (Pal 5) which we use as our fiducial model (Section \ref{sec:pal5}), we describe how we populate our streams with stars (Section \ref{sec:lum}), and we calculate widths and lengths of mock streams at various galactocentric radii (Section \ref{sec:length}). In Section \ref{sec:results}, we present the results on detecting streams in resolved stars in the Andromeda galaxy (M31) (Section \ref{sec:resolved}), in other external galaxies (Section \ref{sec:resother}) and in integrated light (Section \ref{sec:integrated}). We discuss the implications of our results in Section \ref{sec:discussion} and conclude in Section \ref{sec:conclusion}.
-%
 
 \section{Cold globular cluster stellar streams}
 \label{sec:coldstreams}
-Our goal is to estimate the observability of GC stellar streams in external galaxies. In this Section, we describe the framework we use to create mock stellar streams.  We chose the Milky Way's stellar stream, Pal 5,  as our reference stream, because the progenitor cluster of Pal 5's stream has been observed, which is only the case for very few known streams. Knowing the progenitor, enables us to determine the properties of the overall system more precisely (such as age, mass, metallicity, orbit). 
+Our goal is to estimate the observability of GC stellar streams in external galaxies. In this Section, we describe the framework we use to create mock stellar streams.  We chose the Milky Way's stellar stream, Pal 5,  as our reference stream, because the progenitor cluster of Pal 5's stream has been observed, which is only the case for very few known streams. Knowing the progenitor, enables us to determine the properties of the overall system more precisely (such as age, mass, metallicity, and orbit). 
 
 
 \begin{figure*}
-\centerline{\includegraphics[width=\textwidth]{FIG1_CFHT_WFIRST_IMF3000.pdf}}
-\caption{%{\bf Cold streams: what will  observe.} \\
-{\bf Top Left:} CHFT $g, i$ color-magnitude diagram (CMD) showing a Pal 5-like cluster isochrone from the PARSEC system moved to the distance of Pal 5 in the Milky Way (d = 23 kpc). We use the same values for the cluster as \citet{ibata17}: the age of the cluster is set to 11.5 Gyr and [Fe/H] $= -1.3$. The three horizontal lines show faintest magnitude, SDSS and CHFT can observe for the cluster at Pal 5's current distance in the Galaxy ($d = 23$ kpc), and the faintest magnitude PAndAS observes in M31 ($d = 785$ kpc). Note that at M31's distance, only the brightest red giant branch stars can be observed. The lifetimes of these stars are very short, which is why the luminosity function (see middle) have so few stars $<$20 mag. {\bf Top Middle}: The normalized luminosity function for the PARSEC Pal 5-like cluster. We have normalized the luminosity function such that the amount of stars between $20 < g < 23 = 3000 \pm 100$ (Bonaca et al., {\it in prep.}). %We computed the luminosity function by sampling a full power law initial mass function (IMF: $m^{-0.5}$) between $0.01 - 120 ~\msun$. 
-{\bf Top Right:} The cumulative number of stars in a Pal 5-like stream (solid line), a 5 times more massive Pal 5-like stream (dotted line), and a 10 times more massive Pal 5-like stream (dashed line) for a given limiting $g$-mag. The vertical lines show the limiting magnitude of SDSS ($g < 22.5$) and PAndAS ($g < 25.5$) at the distance of M31 (i.e. shifted by 7.66 magnitudes from Pal 5's current location), and the limiting magnitudes of SDSS ($g < 22.5$) and CHFT ($g < 24$) at the distance of Pal 5 in the Milky Way. We indicate the amount of stars PAndAS should be able to observe for the Pal 5-like and 10 $\times$  Pal 5-like stream in M31 (see n$^*$). 
-%We note that PAndAS should be able to observe ${\sim}$59 stream stars at the distance of M31 for a Pal 5-like cluster and ${\sim}$375 stream stars for a stream emerging from a cluster with 10 times the mass of Pal 5. 
-{\bf Bottom Left:} This row shows the same as top row but for a Pal 5-like isochrone from WFIRST bands ($R062$ and $Z087$) and limiting magnitudes (Z087 $<$ 27.15). {\bf Bottom middle:} To compute the WFIRST luminosity function, we sampled the exact same initial masses from the WFIRST isochrone downloaded from the PARSEC system as for the $g$-band above. This leads to a different number of stars between the magnitude of 20 - 23, which is consistent with what WFIRST should observe for a Pal 5-like stream. {\bf Bottom right:} We note that WFIRST should be able to observe ${\sim}$258 $\pm 17$ stream stars at the distance of M31 for a Pal 5-like cluster, ${\sim}1278 \pm86$ stream stars for the 5 times more massive cluster, and ${\sim}$2448 $\pm165$ stream stars for a stream emerging from a cluster with 10 times the mass of Pal 5. All of these stars should be on the red giant branch and later evolutionary stages (see left panel).}
+\centerline{\includegraphics[width=\textwidth]{Fig1.pdf}}
+\caption{
+{\bf Top Left:} CHFT $(g, i)_0$ color-magnitude diagram (CMD) showing a Pal 5-like cluster isochrone from the PARSEC system moved to the distance of Pal 5 in the Milky Way ($d$ = 23.5 kpc, $d_{mod} = 16.86$: \citealt{dotter11}). We use the same values for the cluster as \citet{ibata17}: Age = 11.5 Gyr and [Fe/H] $= -1.3$. The two horizontal lines show the faintest magnitude CHFT can observe ($g_0 < 24.0$) at Pal 5's current distance in the Galaxy, and the faintest magnitude PAndAS can observe ($g_0 < 25.5$) in M31 ($d = 785$ kpc, $d_{mod} = 24.47$). Note that at M31's distance, only the brightest red giant branch stars can be observed. 
+{\bf Top Middle}: The luminosity function for the PARSEC Pal 5-like cluster normalized such that the amount of stars between $20 < g_0 < 23 = 3000$ (Bonaca et al., {\it in prep.}). 
+{\bf Top Right:} The cumulative number of stars in a Pal 5-like stream (solid line), a 5 $\times$  more massive Pal 5-like stream (dotted line), and a 10 $\times$  more massive Pal 5-like stream (dashed line) for a given limiting $g_0$-mag. The vertical lines show the limiting magnitude of PAndAS ($g_0 < 25.5$) at the distance of M31 (i.e. shifted by 7.66 magnitudes from Pal 5's current location), and the limiting magnitudes of CHFT ($g_0 < 24$) at the distance of Pal 5 in the Milky Way. We indicate the amount of stars PAndAS should be able to observe for the Pal 5-like (n$^*$ = 68 $\pm~ 8$), 5  $\times$  Pal 5-like (n$^*$ = 292 $\pm~ 43$) and 10 $\times$ Pal 5-like stream (n$^*$ = 623 $\pm~ 84$) in M31 (see n$^*$). 
+{\bf Bottom Left:} This row shows the same as the top row but for a Pal 5-like isochrone from WFIRST bands ($Z087$ and $J129$) and WFIRST limiting magnitudes for a 1 hour exposure ($Z087 <$ 28.54). {\bf Bottom middle:} To compute the WFIRST luminosity function, we sampled the exact same initial masses from the WFIRST isochrone downloaded from the PARSEC system as for the $g_0$-band above. 
+Therefore, the WFIRST luminosity function is normalized to the Pal 5 stream between $20 < g_0 < 23$. 
+{\bf Bottom right:} For an exposure time of 1 hour,
+WFIRST will be able to observe n$^*$ = 1299 $\pm~ 93$ stream stars at the distance of M31 for a Pal 5-like cluster, n$^*$=  6448 $\pm~ 486$ stream stars for the 5 $\times$  more massive cluster, and n$^*$ = 12824 $\pm~ 966$ stream stars for a stream emerging from a cluster with 10 $\times$  the mass of Pal 5. All of these stars should be near the turn-off, on the red giant branch and later evolutionary stages (see left panel).}
 \label{fig:iso_cfht}
 \end{figure*}
 
 
 
-\subsection{Pal 5 data}
+\subsection{Palomar 5 data}
 \label{sec:pal5}
- \citet{ibata16} presented photometric data of Pal 5 taken with the MegaCam instrument at the 3.6m Canada-France-Hawaii Telescope (CFHT) during 2006-2008. The CFHT $g, r$ bands provide data down to $g_0$ = 24 with good precision around the cluster main-sequence turnoff. In particular, their sample of stars with 20 $< g <$ 23 has a completeness of 80\% (see \citealt{ibata16} and \citealt{ibata17} for more details). From \citet{ibata16} figure 7, we estimate that there are 1767 stars in the stream between 20 $< g <$ 23 over a length of 20 $\deg$  and a width of 0.14 $\deg$ if we exclude the cluster stars, which can be used to estimate how many stream stars there are in Pal 5's stellar stream.
+ \citet{ibata16} presented photometric data of Pal 5 taken with the MegaCam instrument at the 3.6m Canada-France-Hawaii Telescope (CFHT) during 2006-2008. The CFHT $g, r$ bands provide data down to $g_0$ = 24 with good precision around the cluster main-sequence turnoff ($g_0$ refers to the extinction corrected value for $g$). In particular, their sample of stars with 20 $< g_0 <$ 23 has a completeness of 80\% (see \citealt{ibata16} and \citealt{ibata17} for more details). From \citet{ibata16} figure 7, we estimate that there are $\sim$1800 stars in the stream between 20 $< g_0 <$ 23 over a length of 20 $\deg$  and a width of 0.14 $\deg$ if we exclude the cluster stars. 
  
-Recently, Bonaca et al. ({\it in prep.}) obtained new DECaLS data of Pal 5, and found that there were $3000 \pm 150$ stars in the Pal 5 stream between 20 $< g <$ 23 excluding the cluster and after subtracting the background. Both Bonaca et al. ({\it in prep.}) and  \citet{ibata16} reach a similar limiting magnitude of ($g < 24$), and the discrepancy in the number of stars  between 20 $< g <$ 23 for the two data sets is likely due to a better star galaxy separation in DECaLS. Throughout the paper, we use $3000 \pm 150$ stars between 20 $< g <$ 23 to estimate how many stream stars there are in Pal 5's stellar stream at an given magnitude (see section below).
-%We use this sample to estimate how many stream stars there are in Pal 5's stellar stream at an given magnitude (see section below). From \citet{ibata16} figure 7, we estimate that there are 1767 stars in the stream between 20 $< g <$ 23 over a length of 20 $\deg$  and a width of 0.14 $\deg$ if we exclude the cluster stars. \todo{Ibata+ 2016 did not remove underlying background population of Galactic (and Sagittarius stream) stars that contaminate the Palomar 5 sample. In Ana Bonaca's new DECaLS data, we see ${\sim}$ 3000 stars between 20 $< g <$ 23 after subtracting the background. I might update the paper to use those numbers instead.}  
+
+Recently, Bonaca et al. ({\it in prep.}) analyzed Pal 5 in the photometric catalog of the DECam Legacy Survey (DECaLS) which is a part of the DESI Legacy Imaging Surveys (\citealt{dey2019}). They found that there were $3000 \pm 150$ stars in the Pal 5 stream between 20 $< g_0 <$ 23 excluding the cluster and after subtracting the background. Both Bonaca et al. ({\it in prep.}) and  \citet{ibata16} reach a similar limiting magnitude of ($g_0 < 24$), and the discrepancy in the number of stars  between 20 $< g_0 <$ 23 for the two data sets is likely due to a better star/galaxy separation in DECaLS. Throughout the paper, we use $3000 \pm 150$ stars between 20 $< g_0 <$ 23 to estimate how many stream stars there are in Pal 5's stellar stream at any given magnitude (see section below).
 
 \subsection{Isochrones \& luminosity functions of streams}
 \label{sec:lum}
-To construct mock streams, we first download isochrones for a Pal 5-like cluster from the PARSEC evolutionary tracks (\citealt{bressan12}). We use the same values for the Pal 5-like cluster as \citet{ibata17}: the age of the cluster is set to 11.5 Gyr and the metallicity is fixed as [Fe/H] $= -1.3$. We download the isochrone for both CFHT bands and WFIRST bands and shift the isochrones to Pal 5's current distance in the Milky Way (d = 23 kpc, $d_{mod} = 16.86$, see left panel of Figure \ref{fig:iso_cfht}). 
+To construct mock-streams, we first download isochrones for a Pal 5-like cluster from the PARSEC evolutionary tracks (\citealt{bressan12}, \citealt{margio17}). We use the same values for the Pal 5-like cluster as \citet{ibata17}: the age of the cluster is set to 11.5 Gyr and the metallicity is fixed as [Fe/H] $= -1.3$. We download the isochrone for both CFHT bands and WFIRST bands and shift the isochrones to Pal 5's current distance in the Milky Way ($d$ = 23.5 kpc, $d_{mod} = 16.86$: \citealt{dotter11}). We plot the shifted isochrone in the CFHT $g_0$ and $i_0$-bands in the upper left panel of Figure \ref{fig:iso_cfht}.  We also plot horizontal lines indicating which part of the isochrone is observable (the part of the isochrone that is above the vertical lines) given CFHT's limiting magnitude  ($g_0 < 24$) at Pal 5's location in the Milky Way, and given PAndAS' limiting magnitude ($g_0 < 25.5$) in M31 (see the top horizontal line). 
 
-Subsequently, we compute a luminosity function, by sampling masses ($m = 0.01 - 120 ~\msun$) from a power law initial mass function (initial mass function: $dN/dm \propto m^{-0.5}$ as used by \citealt{ibata16}), and use the isochrone tables for age = 11.5 Gyr and [Fe/H] $= -1.3$ to infer the stars' magnitudes. 
+Subsequently, we compute a luminosity function, by sampling masses ($m = 0.01 - 120 ~\msun$) from a power law initial mass function (IMF: $dN/dm \propto m^{-0.5}$ as used by \citealt{ibata16}), and use the isochrone tables for age = 11.5 Gyr and [Fe/H] $= -1.3$ to infer the stars' magnitudes. 
 
-To determine how many stars we can observe in a Pal 5-like stream at a given limiting magnitude, we normalize the luminosity function from CFHT such that there are  $3000$ stars (Bonaca et al., {\it in prep.}) with $20 < g < 23$ (see Figure \ref{fig:iso_cfht}, top, middle panel). We then compute the cumulative number of stars at a given limiting magnitude (see Figure \ref{fig:iso_cfht}, top right panel, solid line).
-%3000 +/- 150 given poisson uncertainty in the background and stream
+To determine how many stars we can observe in a Pal 5-like stream at a given limiting magnitude, we normalize the luminosity function from CFHT such that there are  $3000$ stars (Bonaca et al., {\it in prep.}) with $20 < g_0 < 23$ (see Figure \ref{fig:iso_cfht}, top, middle panel). We then compute the cumulative number of stars at a given limiting magnitude (see Figure \ref{fig:iso_cfht}, top right panel, solid line).
 
-Globular clusters have a spread in masses (\citealt{harris96}), and some are more massive than the inferred initial mass of Pal 5 (${\sim} 50,000 ~\msun$: \citealt{ibata17}). We therefore repeat the above exercise for streams with five (dotted line) and ten (dashed line) times the current stellar mass in the Pal 5 stream, where we resample the IMF such that there are   ${\sim}15,000$ stars between $20 < g < 23$  (five times more than for the observed Pal 5-stream) and ${\sim}30,000$  stars between $20 < g < 23$ (ten times more than for the observed Pal 5-stream). 
+Globular clusters have a spread in masses (\citealt{harris96}), and many are more massive than the inferred initial mass of Pal 5 (${\sim} 50,000 ~\msun$: \citealt{ibata17}). We therefore repeat the above exercise for streams with five (dotted line) and ten (dashed line) times the current stellar mass in the Pal 5 stream, where we resample the IMF such that there are 15,000 stars between $20 < g _0< 23$  (five times more than for the observed Pal 5-stream) and 30,000  stars between $20 < g_0 < 23$ (ten times more than for the observed Pal 5-stream). Note that even more massive globular cluster streams exist (see e.g. \citealt{ibata19b}), and that our estimates are therefore conservative.
 
-In the top, right panel of Figure \ref{fig:iso_cfht}, we show that the PAndAS survey should detect ${\sim}61 \pm 8$ stars in a Pal 5-like stream at the distance of M31 ($d_{mod} = 24.46$, see vertical line), ${\sim}310 \pm 43$ stars for a stream that is five times more massive than Pal 5, and ${\sim}609 \pm 84$ stars for a stream that is ten times more massive than Pal 5. The scatter arises due to the IMF sampler, and we have sampled both IMFs 100 times to estimate the 1 sigma deviation from the mean value. All of the observable stars are at brighter magnitudes than the main sequence turnoff (see left panel of Figure \ref{fig:iso_cfht}) and are in the red giant branch (RGB) or more evolved stellar evolutionary stages. The four vertical lines show the limiting magnitudes of various surveys at the distance of Pal 5's current location and if it were residing in M31.
+In the top, right panel of Figure \ref{fig:iso_cfht}, we show that the PAndAS survey (\citealt{McConnachie18}, see more details in Section \ref{sec:PANDAS}) should detect $68 \pm 8$ stars in a Pal 5-like stream at the distance of M31 ($d_{mod} = 24.46$, see vertical line), $292 \pm$ 43 stars for a stream that is five times more massive than Pal 5, and $623 \pm$ 84 stars for a stream that is ten times more massive than Pal 5. The scatter arises due to the IMF sampler, and we have sampled the three IMFs 100 times to estimate the 1$\sigma$ deviation from the mean value. All of the observable stars are at brighter magnitudes than the main sequence turnoff (see left panel of Figure \ref{fig:iso_cfht}) and are in the red giant branch (RGB) or more evolved stellar evolutionary stages. The two vertical lines show the limiting magnitude of the PAndAS  survey if Pal 5 were residing in M31, and the limiting magnitude of \citet{ibata16}'s CHFT Pal 5 survey at the distance of Pal 5's current location in the Milky Way. 
 
-In the bottom row of Figure \ref{fig:iso_cfht}, we show the same panels as in the top row, but now using downloaded PARSEC Pal 5-like isochrones in WFIRST $R062$ and $Z087$ bands. We used the same properties of the Pal 5-like cluster as described above (i.e. Age = 11.5 Gyr and [Fe/H] $= -1.3$). 
+In the bottom row of Figure \ref{fig:iso_cfht}, we show the same panels as in the top row, but now using downloaded PARSEC Pal 5-like isochrones in WFIRST $Z087$ and $J129$-bands. We used the same properties of the Pal 5-like cluster as described above (i.e. Age = 11.5 Gyr and [Fe/H] $= -1.3$). 
 
-To estimate how many stars WFIRST should be able to observe in a Pal 5-like stream, we normalized the luminosity function by sampling the exact same initial masses in the dowloaded WFIRST isochrone as for the $g$-band CFHT masses. This provides us with the number of stars WFIRST will observe at a given magnitude. Throughout the paper, we use the guest observer capabilities as our guideline for the limiting magnitude of WFIRST (\citealt{spergel13}). For the $Z087$ band this is mag $<$ 27.15 for a 1000 second observation.
+To estimate how many stars WFIRST should be able to observe in a Pal 5-like stream, we normalized the luminosity function by sampling the exact same initial masses in the dowloaded WFIRST isochrone as for the $g_0$-band CFHT masses. This provides us with the number of stars WFIRST will observe at a given magnitude. Throughout the paper, we use a 1 hour exposure time to determine the limiting magnitude of WFIRST.  For the $Z087$-band this is $Z087 <$ 28.54. In {\it Appendix} \ref{sec:appendixA}, we show how our results differ if we instead use the WFIRST guest observer capabilities of a 1000 second exposure, where the limiting $Z087$-band magnitude is  $Z087 <$ 27.15 (\citealt{spergel13}). 
 
-At the distance of M31, WFIRST will be able to detect ${\sim}258\pm 17$ stars in a Pal 5-like stream,  ${\sim}1278 \pm 86$ stars for a stream that is five times more massive than Pal 5, and ${\sim} 2448 \pm 165$ stars for a stream that is ten times more massive than Pal 5 (Figure \ref{fig:iso_cfht}, bottom right panel). The number of stars are determined assuming a limiting magnitude of Z087 $<27.17$, which corresponds to 1000 seconds exposure under the WFIRST guest observer program (\citealt{spergel13}). 
-We explore the observability of resolved stars in GC streams in M31 with the PAndAS survey (\citealt{mcconnachie09}) and with WFIRST in Section \ref{sec:resolved}. Note that if the streams are located more than 11.5 Mpc away, even the brightest giants will not be resolved with WFIRST's guest observer program, as the limiting magnitude is $Z087 <$  27.15.
+At the distance of M31 and with a 1 hour exposure time, WFIRST will be able to detect $1299\pm 93$ stars in a Pal 5-like stream,  6448 $\pm~ 486$ stars for a stream that is five times more massive than Pal 5, and $12824 \pm 966$ stars for a stream that is ten times more massive than Pal 5 (Figure \ref{fig:iso_cfht}, bottom right panel). 
+We explore the observability of resolved stars in GC streams in M31 with the PAndAS survey and with WFIRST in Section \ref{sec:resolved}. 
+Note that the tip of the RGB in the $Z087$-band for a Pal 5-like stream is at an absolute magnitude of $-4.3$. Thus, at distances $\geq$38 Mpc ($d_{mod} \geq$ 32.9), even the brightest giants will not be resolved in the $Z087$-band for a 1 hour exposure with WFIRST, as the limiting magnitude is $Z087 <$  28.54 (see Figure \ref{fig:iso_cfht}, lower left). 
 
 
 %-----------------------------------Table-----------------------------------
 %ALL SBs are from IMF-SB.ipynb
-
 \begin{table*}
 \centering
-\caption{Properties of mock streams in M31-like halo}
+\caption{Properties of mock-streams in an M31-like halo\footnote{$n_*$ denotes the number of stars, $l$: the length, $w$: the width, $Area$: the area, $\mu$: the surface brightness of each mock-stream.}}
 \label{tab:Pal5}
 \begin{tabular}{lccc}
 \hline
  & {\bf R$_{GC}$ = 15 kpc }&  {\bf R$_{GC}$ = 35 kpc} &  {\bf R$_{GC}$ = 55 kpc} \\ 
  \hline
- %&[kpc]&[kpc]&[kpc]&[]& [arcsec$^2$]  & mag/[arcsec$^2$]  \\
 {\bf Pal 5-like mass} & &&\\
-$l$ [kpc] & 7.8 & 10.4 &  12.0  \\
+$n_*$ (1000 sec.,  $Z087 <$ 27.15) & 259 $\pm 17$ & \\
+$n_*$ (1 hour, $Z087 <$ 28.54) &1299 $\pm$ 93& \\
+$l$ [kpc] & 7.81 & 10.4 &  12.0  \\
 $w$ [kpc] & 0.053 & 0.094  & 0.127  \\
 $Area$ [kpc$^2$] & 0.414 & 0.973 &1.53 \\
-$n_*$ (1000 sec., Z087 $<$ 27.15) & & \\
-$n_*$ (3600 sec., Z087 $<$ 28.65) & & \\
-%$\sqrt{N_{\rm PAndAS, background}}$\footnote{Number of stars in background for an equal area as stream covers}& .& .&. \\
-%$\sqrt{N_{\rm WFIRST, background}}^{\rm a}$& .& .&. \\
-%$\frac{N_{\rm stream,stars}}{\sqrt{N_{\rm PAndAS}}}$& .& .&. \\
-%$\frac{N_{\rm stream,stars}}{\sqrt{N_{\rm WFIRST}}}$& .& .&. \\
-$\mu$ [mag/arcsec$^2$] ($Z087$-band) &32.0 &32.9 &33.6  \\
-$\mu$ [mag/arcsec$^2$] ($F184$-band) &30.8 &31.7 &32.4  \\
+$\mu$ [mag arcsec$^{-2}$] ($R062$-band) &32.7 $\pm$ 0.12 &33.7 $\pm$ 0.12 &34.1 $\pm$ 0.12\\
+$\mu$ [mag arcsec$^{-2}$] ($Z087$-band) &32.0 $\pm$ 0.16 &33.0 $\pm$ 0.16 &33.4 $\pm$ 0.16 \\
+$\mu$ [mag arcsec$^{-2}$] ($F184$-band) &30.8 $\pm$ 0.23 &31.8 $\pm$ 0.23&32.3 $\pm$ 0.23\\
 
 \hline
 {\bf 5 $\times$ Pal 5-like mass} & &&\\ 
+$n_*$ (1000 sec., $Z087 <$ 27.15) &1233 $\pm 86$ & \\
+$n_*$ (1 hour, $Z087 <$ 28.54) &6448 $\pm$ 486& \\
 $l$ [kpc] &13.3 & 17.7&20.6  \\
 $w$ [kpc]& 0.091 &  0.16& 0.217  \\
 $Area$ [kpc$^2$] & 1.2  &  2.8  &  4.5\\
-$n_*$ (1000 sec., Z087 $<$ 27.15) & & \\
-$n_*$ (3600 sec., Z087 $<$ 28.65) & & \\
-%$\sqrt{N_{\rm PAndAS, background}}^{\rm a}$& .& .&. \\
-%$\sqrt{N_{\rm WFIRST, background}}^{\rm a}$& .& .&. \\
-%$\frac{N_{\rm stream,stars}}{\sqrt{N_{\rm PAndAS}}}$& .& .&. \\
-%$\frac{N_{\rm stream,stars}}{\sqrt{N_{\rm WFIRST}}}$& .& .&. \\
-$\mu$ [mag/arcsec$^2$] ($Z087$-band) & 31.4&  32.3& 32.8 \\
-$\mu$ [mag/arcsec$^2$] ($F184$-band) &30.3 &31.2 &31.7  \\
+$\mu$ [mag arcsec$^{-2}$] ($R062$-band) & 32.2 $\pm$ 0.06 &33.1 $\pm$ 0.06 &33.6 $\pm$ 0.06\\
+$\mu$ [mag arcsec$^{-2}$] ($Z087$-band) & 31.4 $\pm$ 0.08 &  32.4 $\pm$ 0.08& 32.9 $\pm$ 0.08 \\
+$\mu$ [mag arcsec$^{-2}$] ($F184$-band) &30.2 $\pm$ 0.11 &31.2 $\pm$ 0.11 &31.7 $\pm$ 0.11 \\
 
 \hline
 {\bf 10 $\times$ Pal 5-like mass} & &&\\ 
+$n_*$ (1000 sec., $Z087$ $<$ 27.15) &2440 $\pm 165$ & \\
+$n_*$ (1 hour, $Z087$ $<$ 28.54) &12824 $\pm$ 966& \\
 $l$ [kpc] &16.8 & 22.3 & 25.9 \\
 $w$ [kpc]& 0.115 & 0.202 & 0.273  \\
 $Area$ [kpc$^2$] &  1.93& 4.51   & 7.08  \\
-$n_*$ (1000 sec., Z087 $<$ 27.15) & & \\
-$n_*$ (3600 sec., Z087 $<$ 28.65) & & \\
-%$\sqrt{N_{\rm PAndAS, background}}^{\rm a}$& .& .&. \\
-%$\sqrt{N_{\rm WFIRST, background}}^{\rm a}$& .& .&. \\
-%$\frac{N_{\rm stream,stars}}{\sqrt{N_{\rm PAndAS}}}$& .& .&. \\
-%$\frac{N_{\rm stream,stars}}{\sqrt{N_{\rm WFIRST}}}$& .& .&. \\
-$\mu$ [mag/arcsec$^2$] ($Z087$-band) &31.2 &32.1  &32.6  \\
-$\mu$ [mag/arcsec$^2$] ($F184$-band) & 30.1& 31.0& 31.5 \\
-
+$\mu$ [mag arcsec$^{-2}$] ($R062$-band) & 31.9 $\pm$ 0.04 &32.8 $\pm$ 0.04 &33.3 $\pm$ 0.04\\
+$\mu$ [mag arcsec$^{-2}$] ($Z087$-band) &31.2 $\pm$ 0.05 &32.1 $\pm$ 0.05 &32.6 $\pm$ 0.05 \\
+$\mu$ [mag arcsec$^{-2}$] ($F184$-band) & 30.0 $\pm$ 0.07& 30.9 $\pm$ 0.07 & 31.4 $\pm$ 0.07\\
 
 \hline 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{tabular}
 \end{table*}
 
@@ -212,28 +186,29 @@ $\mu$ [mag/arcsec$^2$] ($F184$-band) & 30.1& 31.0& 31.5 \\
 
 \subsection{Length \& width of streams}
 \label{sec:length}
-In the previous section, we found the amount of observable stars in GC streams at the distance of M31 for the limiting magnitudes of PAndAS and WFIRST. In this Section, we describe how we populate mock streams with the given number of stars. In particular, we compute the widths and lengths of mock GC streams on circular orbits, taking Pal 5 as our starting point. 
+In this Section, we describe how we populate mock-streams with the given number of stars found in the previous section. In particular, we compute the widths and lengths of mock GC streams, taking Pal 5 as our starting point. 
 
-To place a Pal 5-like stream in the M31 halo, % we assume a flat rotation curve (constant $v_{circ}$) and keep the age of Pal 5 fixed. Hence Pal 5's dynamical time to form a stream remains unchanged. 
-we scale the mock streams from the initial length and width of Palomar 5 in our Galaxy: length = 8.5 kpc, width = 58 pc (\citealt{ibata16}). For simplicity, we assume a circular orbit with a distance from the center of the Galaxy of R$_{GC}$ = 15 kpc, which is similar to the average of Pal 5's actual apocentric and pericentric distance for its rather elliptical orbit (see e.g. \citealt{erkal17}). 
+To place a Pal 5-like stream in the M31 halo, we scale mock-streams from the initial length and width of the Pal 5 stream in our Galaxy: length = 8.5 kpc, width = 58 pc (\citealt{ibata16}). For simplicity, we assume a circular orbit with a distance from the center of the Galaxy of R$_{GC}$ = 15 kpc, which is similar to the average of Pal 5's apocentric and pericentric distance for its rather elliptical orbit (see e.g. \citealt{erkal17}). 
 
-We follow \citet{johnston98} and \citet{johnston01}, to compute the width and lengths of the streams at three different galactocentric radii: $R_{GC}$ = 15 , 35, 55 kpc in M31's halo. We compute lengths and widths for streams with three different stream masses: 1) a Pal 5-like stream mass 2) a five times more massive Pal 5-like stream 3) a ten times more massive Pal 5-like stream. Note that we do not actually assume a mass for the cluster, but scale stream properties based on the observed properties of Pal 5 in the Milky Way today (i.e. the length, width presented in \citealt{ibata16} and the number of stars presented in Bonaca et al., {\it in prep.}).  
+We follow \citet{johnston98} and \citet{johnston01}, to compute the width and lengths of the streams at three different galactocentric radii: $R_{GC}$ = 15 , 35, 55 kpc in M31's halo. We compute lengths and widths for all the streams with our different stream masses: 1) a Pal 5-like stream mass 2) a five times more massive Pal 5-like stream 3) a ten times more massive Pal 5-like stream. Note that we do not  assume a mass for the cluster, but scale stream properties based on the observed properties of the Pal 5 stream in the Milky Way today (i.e. the length and width presented in \citet{ibata16} and the number of stream stars presented in Bonaca et al., {\it in prep.}, excluding the stars in the cluster itself).  
 
 Following \citet{johnston01} equation 8, we can express the width, $w$, of the streams as:
 
 \begin{equation}
 w = R_{GC} \left[\frac{m}{M(R_{GC})}\right]^{1/3} = R_{GC} \left[\frac{m G}{v_c^2 R_{GC}}\right]^{1/3} 
 \end{equation}
-where $R_{GC}$ is the radius of the orbit of the globular cluster around its host (which is normally expressed as $R_p$, but since we have a circular orbit, this remains constant over the entire orbit), $m$ is the mass of the cluster, $M(R_{GC})$ is the enclosed mass of the host within the stream's orbit, $v_c$ is the circular velocity at radius, $R_{GC}$, and $G$ is the gravitational constant. We assume a flat rotation curve and therefore constant  $v_c$, which is a valid assumption at $R_{GC} > 15$ kpc in M31 (e.g. \citealt{chemin09}). Thus the width of a GC stream scales as:
+where $R_{GC}$ is the radius of the orbit of the globular cluster around its host (which is normally expressed as $R_p$, but since we have a circular orbit, this remains constant over the entire orbit), $m$ is the mass of the cluster, $M(R_{GC})$ is the enclosed mass of the host within the stream's orbit, $v_c$ is the circular velocity at radius $R_{GC}$, and $G$ is the gravitational constant. We assume a flat rotation curve and therefore constant  $v_c$, which is a valid assumption at $R_{GC} > 15$ kpc in M31 (e.g. \citealt{chemin09}). Thus the width of a GC stream scales as:
 
 \begin{equation}
 \label{eq:w}
 w \propto R_{GC}^{2/3} \frac{m^{1/3}}{v_c^{2/3}}
 \end{equation}
 
-We scale the width of Pal 5 based on each parameter in Equation \ref{eq:w} separately. First, we update the width of the stream reflecting, that the circular velocity in M31, $v_{c, M31}= 250 ~\kms$  (\citealt{chemin09}) as opposed to  $v_{c, MW}= 220 ~\kms$. Hence, we correct the width to be narrower by a factor of $v_{corr} =  \left(\frac{v_{c,M31}}{v_{c,MW}}\right)^{-2/3} \sim 0.92$. 
+We scale the width of Pal 5 based on each parameter in Equation \ref{eq:w} separately. First, we update the width of the stream reflecting the fact that the circular velocity in M31 is $v_{c, M31}= 250 ~\kms$ at $R_{GC} = 15$ kpc (\citealt{chemin09}) as opposed to $v_{c, MW}= 217 ~\kms$ for the Milky Way (\citealt{eilers19}). Hence, we correct the width to be narrower by a factor of $v_{corr} =  \left(\frac{v_{c,M31}}{v_{c,MW}}\right)^{-2/3} = 0.91$.
 
 Subsequently, we update the width of the stream based on the location in M31's halo. Thus, as the stream is placed at larger radii, we enlarge the width by a factor of  $R_{corr} = \left(\frac{R_{GC}}{R_{GC,Pal5}}\right)^{2/3}$. Lastly, we scale the mass up by a factor of five and ten and therefore make the stream a factor of $m_{corr} = \left(\frac{5m}{m}\right)^{1/3}= 1.71$  and $m_{corr} = \left(\frac{10m}{m}\right)^{1/3}= 2.15$ wider for the more massive streams. Recall that we do not assume anything about the Pal 5 cluster's initial or present day mass. 
+
+In this work, we do not include the fact that the stream should be wider towards its endpoints. Instead, we sample the stream stars from a normal distribution, with a dispersion (width) calculated using Equation \ref{eq:w} and listed in Table \ref{tab:Pal5} (see also \citealt{ibata16}, fig. 12).
 
 
 Following \citet{johnston01} equation 5, we can express the angular length, $\Psi$, of the stream as:
@@ -242,249 +217,247 @@ Following \citet{johnston01} equation 5, we can express the angular length, $\Ps
 \end{equation}
 where $t$ is the dynamical age of the stream, and $T_{\psi}$ is the azimuthal period of the cluster around its host galaxy. We can re-write the angular length as:
 \begin{equation}
-%L \propto  R_{GC} \left(\frac{m }{v_c^2 R_{GC}}\right)^{1/3}  \frac{v_c}{R_{GC}} = \frac{m^{1/3}}{R_{GC}^{1/3}} v_c^{1/3}
 \Psi \propto \left[\frac{m }{v_c^2 R_{GC}}\right]^{1/3}  \frac{v_c t }{R_{GC}} = \frac{m^{1/3}}{R_{GC}^{4/3}} v_c^{1/3}t
 \end{equation}
 The physical length of the stream can thus be expressed as:
 \begin{equation}
 \label{eq:l}
-%L \propto  R_{GC} \left(\frac{m }{v_c^2 R_{GC}}\right)^{1/3}  \frac{v_c}{R_{GC}} = \frac{m^{1/3}}{R_{GC}^{1/3}} v_c^{1/3}
 L \propto R_{GC} \frac{m^{1/3}}{R_{GC}^{4/3}} v_c^{1/3}t = \frac{m^{1/3}}{R_{GC}^{1/3}} v_c^{1/3}t
 \end{equation}
 
-We scale the length of Pal 5 based on each parameter in Equation \ref{eq:l} separately. Note that we assume the same age of the stream in all cases (t = constant). We first make the stream longer by a factor of $(\frac{v_{c,M31}}{v_{c,MW}})^{1/3} = 1.04$. Subsequently, we update the length of the stream based on the location in M31's halo. Thus, as the stream is placed at larger radii, we shorten the length by a factor of  $R_{corr} = \left(\frac{R_{GC}}{R_{GC,Pal5}}\right)^{-1/3}$, reflecting the fact that these streams will have completed less orbits around their hosts. %(\todo{this is the same as before as I first did $R_{corr} = \left(\frac{R_p}{R_{p,Pal5}}\right)^{2/3}$ and then $ L_{corr} = \frac{R_{p,pal5}}{R_{p,new}}$  }). 
-Additionally, we scale the length of the stream by a factor of $m_{corr} = 5^{1/3}$ and $m_{corr} = 10^{1/3}$ for the more massive streams. 
+We scale the length of Pal 5 based on each parameter in Equation \ref{eq:l} separately. Note that we assume the same age of the stream in all cases (t = constant). We first make the stream longer by a factor of $(\frac{v_{c,M31}}{v_{c,MW}})^{1/3} = 1.05$. Subsequently, we update the length of the stream based on the location in M31's halo. Thus, as the stream is placed at larger radii, we shorten the length by a factor of  $R_{corr} = \left(\frac{R_{GC}}{R_{GC,Pal5}}\right)^{-1/3}$, reflecting the fact that these streams will have completed less orbits around their hosts.
+Additionally, we scale the length of the stream by a factor of $m_{corr} = \left(\frac{5m}{m}\right)^{1/3}$ and $m_{corr} = \left(\frac{10m}{m}\right)^{1/3}$ for the more massive streams. 
 
-To summarize, we have the framework to construct nine different mock stellar streams of various lengths and widths scaled from Pal 5's initial properties of $L = 8.5$ kpc and $w = 58$ pc in the Milky Way (see Table \ref{tab:Pal5}). We populate the mock streams of various widths and lengths on great circles with radii of $R_{GC} =$ 15, 35, 55 kpc, and with the number of stars obtained in Section \ref{sec:lum}. Note that there are several ways we could have constructed mock streams, and that the mock streams presented in this work are meant to illustrate a range of possible streams. In reality, the stellar streams could, of course, have a slightly different range of orbital properties, lengths, widths and number of stars.
-
-
+To summarize, we now have the framework to construct mock stellar streams of various lengths and widths scaled from Pal 5's initial stream properties. We populate nine different mock-streams of various widths and lengths on great circles with radii of $R_{GC} =$ 15, 35, 55 kpc, and with the number of stars obtained in Section \ref{sec:lum} (see Table \ref{tab:Pal5}). Note that there are several ways we could have constructed mock-streams, and that the mock-streams presented in this work are meant to illustrate a range of possible streams. In reality, the stellar streams could have a slightly different range of orbital properties, lengths, widths and number of resolved stars depending on the initial cluster's location, mass, age and metallicity.
 
 
-%
-%\begin{figure*}
-%\centerline{\includegraphics[width=\textwidth]{WFIRST.pdf}}
-%\caption{{\bf Cold streams: what can WFIRST observe.} Same as Figure \ref{fig:iso_cfht}, but for WFIRST bands and limiting magnitudes. {\bf Left:} WFIRST R062-band and Z087-band CMD of a Pal 5-like cluster downloaded from the PARSEC system using the same values for the cluster as \citet{ibata17}: the age of the cluster is set to 11.5 Gyr and [Fe/H] $= -1.3$. The two horizontal lines show faintest magnitude on the CMD that WFIRST can observe at the distance of M31 (d = 770 kpc) and at the current distance of Pal 5 (d = 23 kpc) in the Milky Way. {\bf Middle}: The normalized luminosity function for the PARSEC Pal 5-like cluster using the WFIRST Z087-band magnitudes. \todo{explain how normalization in g band translates to the WFIRST luminosity function}. {\bf Right:} The cumulative number of stars in a Pal 5-like stream (solid) and a 10 times more massive Pal 5-like stream (dashed) for a given limiting WFIRST Z087-band mag. The vertical lines show the limiting magnitude of WFIRST's guest observer program (Z087 $< 27.15$) at the distance of M31 (d = 770 kpc) and at Pal 5's current position (d = 23 kpc).  We note that WFIRST should be able to observe ${\sim}$100 stream stars at the distance of M31 for a Pal 5-like cluster and ${\sim}$1000 stream stars for a stream emerging from a cluster with 10 times the mass of Pal 5. All of these stars should be on the red giant branch and in later evolutionary stages \todo{would there really be this many RGB stars in the stream? Seems like a lot. }.}
-%\label{fig:iso_wfirst}
-%\end{figure*}
+
 
 \begin{figure*}
-\centerline{\includegraphics[width=\textwidth]{Fig2_M31_Pandas_mag255_IMF3000.png}}
-\caption{{\bf Cold streams in M31 - with PAndAS ($g < 25.5$)}. In this plot we demonstrate the observability of a Pal 5-like stream, a 5 times more massive Pal.5-like stream and a 10 times more massive Pal 5-like stream for the PAndAS survey of the M31 halo. Each column shows the PAndAS data at three different M31 galactocentric radii ($R_{GC}$ = 15  kpc, $R_{GC}$ = 35 kpc and $R_{GC}$ = 55 kpc). The fields are shown in kpc and are converted from an angular scale assuming d=785 kpc to M31. The black bar in the top middle panel shows the scale of 10 arcmin for reference. 
-In the first row we show all stars observed in the PAndAS fields, in the second row we show all stars observed in PAndAS with a metallicity [Fe/H] $< 0$, and in the third row we show all stars with [Fe/H] $< -1$. In each panel, we have injected two streams: a Pal 5-like stream and a Pal 5-like stream with 10 times the mass of Pal 5. Recall that the Pal 5-like stream has [Fe/H] $= -1.3$, and should therefore be visible in all three rows.  
-We determine the number of stars in the two streams by summing up the cumulative number of stars in the streams at the limiting magnitude of the PAndAS survey ($g < 25.5$) at the distance of M31 (see Figure \ref{fig:iso_cfht}, right panel). There are ${\sim}609 \pm84$ stars in the ten times more massive stream,  ${\sim}310 \pm 43$ stars in the five times more massive stream and only ${\sim}61 \pm 8$ stars in Pal 5-like stream. At each $R_{GC}$, we have updated the width and lengths of the streams based on the tidal field they experience at these distances. Additionally, the more massive streams are wider and longer by a factor of $m^{1/3}$ (see Section \ref{sec:length}). We note that hints of the Pal 5-like stream is visible in the lower panels, and that the 5 and 10 times more massive stream becomes apparent in the halo when we apply metallicity cuts (see middle and right panels in row two and three). \todo{Att Rodrigo: We can show the homogeneous fields with i $<$ 24 instead of 25.5. Do you think I should do that?}  }
+\centerline{\includegraphics[width=\textwidth]{Fig2.pdf}}
+\caption{
+In this plot we demonstrate the observability of a Pal 5-like stream, a 5 $\times$  more massive Pal 5-like stream, and a 10 $\times$  more massive Pal 5-like stream for the PAndAS survey of the M31 halo. Each column shows the PAndAS data at different M31 galactocentric radii (left: $R_{GC}$ = 15  kpc, middle: $R_{GC}$ = 35 kpc, right: $R_{GC}$ = 55 kpc). The fields are shown in kpc and are converted from an angular scale assuming a dustance of  785 kpc to M31. The black bar in the top middle panel shows the scale of 10 arcmin for reference. 
+In the first row we show all stars observed in the PAndAS fields, and in the second row we show all stars observed in PAndAS with [Fe/H] $< -1$. In each panel, we have injected three streams: a Pal 5-like stream, a Pal 5-like stream with 5 $\times$ the mass of Pal 5, and a Pal 5-like stream with 10 $\times$  the mass of Pal 5. Recall that the Pal 5-like stream has [Fe/H] $= -1.3$, and should therefore be visible in both rows.  
+We determine the number of stars in the three mock-streams by summing up the cumulative number of stars in the streams at the limiting magnitude of the PAndAS survey ($g_0 < 25.5$) at the distance of M31 (see Figure \ref{fig:iso_cfht}, right panel). There are $623$ stars in the ten times more massive stream,  $292$ stars in the five times more massive stream and only $68$ stars in Pal 5-like stream. At each $R_{GC}$, we have updated the width and lengths of the mock-streams based on the tidal field they experience at these distances and based on their masses (see Section \ref{sec:length}). We note that hints of the Pal 5-like stream is visible in the lower panels, and that the 5 and 10 $\times$  more massive stream becomes apparent in the halo when we apply a metallicity cut (see middle and right panels in the second row).}
 \label{fig:M31_pandas}
 \end{figure*}
 
 
 
-
-%\begin{figure}
-%\centerline{\includegraphics[width=\columnwidth]{M31_Pandas_mag24.pdf}}
-%\caption{{\bf Cold streams in M31 - with PANDAS ($i < 24$)}. Same as Figure \ref{fig:M31_pandas}, but using a limiting magnitude of  $i <$ 24 to ensure homogeneity between the fields. At this limiting magnitude, there are 100 stars in the ten times more massive stream and only 10 stars in the Pal 5-like stream. The length and width of streams are updated based on their location in galaxy and the mass of stream. \todo{We should probably just decide to use this or fig \ref{fig:M31_pandas}.}}
-%\label{fig:M31_pandas24}
-%\end{figure}
-
-
-
-
 \section{Results}\label{sec:results}
-In this Section, we present results on the detectability of GC stellar streams for resolved stars in M31 (Section \ref{sec:resolved}), for resolved stars in other external galaxies (Section \ref{sec:resother}), and by using integrated light (Section \ref{sec:integrated}). 
+In this Section, we present results on the detectability of GC stellar streams for resolved stars in M31 (Section \ref{sec:resolved}), for resolved stars in other external galaxies (Section \ref{sec:resother}), and for integrated light (Section \ref{sec:integrated}). 
  
 
 \subsection{Cold streams in M31: resolved stars}
 \label{sec:resolved}
-We first explore whether GC streams should be observable in M31 given the PAndAS limiting magnitudes (subsection \ref{sec:PANDAS}), and test the same scenario given the WFIRST limiting magnitudes and bands (subsection \ref{sec:WFIRST}). As a first step, we define observable as meaning ``easily apparent as an over density by eye".%Additionally, we explore what we can learn from color information and with lower metallicity streams (subsection \ref{sec:color}).
+We first explore whether GC streams should stand out against the background stellar halo of M31 given the PAndAS limiting magnitudes (Section \ref{sec:PANDAS}), and we test the same scenario given WFIRST's limiting magnitudes and bands (Section \ref{sec:WFIRST}). 
 
 
 \subsubsection{PAndAS}
 \label{sec:PANDAS}
-\todo{SP: I need to update the next two subsections based on the new 5xmore massive injected mock stream. }
-The PAndAS survey (e.g. \citealt{mcconnachie09}) has mapped a total area 400 square degrees surrounding M31 using the 1-square-degree field-of-view MegaPrime/MegaCam camera on the 3.6m Canada-France-Hawaii Telescope. It surveyed in $g, i$-bands to depths of $g$ = 26.5, $i$ = 25.5, resolving individual stars with a signal-to-noise ratio of 10. The PAndAS team derive photometric metallicities for all stars by assuming that the width of the red giant branch (RGB) can be interpreted as the spread in metallicity within a galaxy (see e.g. \citealt{crno14}).
+The PAndAS survey (e.g. \citealt{McConnachie18}) has mapped a total area of 400 square degrees surrounding M31 using the 1-square-degree field-of-view MegaPrime/MegaCam camera on the 3.6m Canada-France-Hawaii Telescope. It surveyed in $g, i$-bands to depths of $g$ = 26.5, $i$ = 25.5, resolving individual stars with a signal-to-noise ratio of 10. The PAndAS team derive photometric metallicities for all stars by assuming that the width of the red giant branch (RGB) can be interpreted as the spread in metallicity within a galaxy (see e.g. \citealt{crno14}).
 
-The columns in Figure \ref{fig:M31_pandas} show 10 $\times$ 10 kpc regions from the PAndAS survey of M31's halo at various galactocentric radii ($R_{GC}$ = 15  kpc, $R_{GC}$ = 35 kpc and $R_{GC}$ = 55 kpc), and each row shows the same areas after we have applied various metallicity cuts: [Fe/H] = all,  [Fe/H] = $<$ 0, and  [Fe/H] = $< -1 $, respectively. Recall that the Pal 5 cluster metallicity is  [Fe/H] $= -1.3$, and that all Pal 5 stars will therefore be visible for these metallicity cuts. Note that both PAndAS and WFIRST have photometrically determined metallicities, so a metallicity cut is in principle equivalent to a color cut.
+The columns in Figure \ref{fig:M31_pandas} show 10 $\times$ 10 kpc regions from the PAndAS survey of M31's halo at various galactocentric radii ($R_{GC}$ = 15  kpc, $R_{GC}$ = 35 kpc and $R_{GC}$ = 55 kpc). All plotted stars have $g_0 < 25.5$, and the two rows show the same areas without a metallicity cut: [Fe/H] = all (top row) and after we have applied a metallicity cut of  [Fe/H] = $< -1 $ (bottom row). Recall that the Pal 5 cluster metallicity is  [Fe/H] $= -1.3$, and that all Pal 5 stars will therefore be visible for these metallicity cuts. Note also that PAndAS has and WFIRST will have photometrically determined metallicities, so a metallicity cut is in principle equivalent to a color and magnitude cut.
 
-In each panel, we have injected a Pal 5 mock stellar stream and two mock stellar streams with properties scaled to have 5 and 10 times the mass of Pal 5. We have populated the streams with stars using the PAndAS limiting magnitude calculated in Section \ref{sec:lum} (61, 310 and 609 stars).  The streams' lengths and widths have been calculated based on the streams' distances from M31's galactic center. Additionally, the more massive streams are longer and wider by a factor of $m^{1/3}$ (see Section \ref{sec:length}). 
+In each panel, we have injected a Pal 5 mock stellar stream and two mock stellar streams with properties scaled to have 5 and 10 times  the mass of Pal 5. We have populated the streams with stars using the PAndAS limiting magnitude calculated in Section \ref{sec:lum} (68, 292 and 623 stars).  
+The streams' lengths and widths have been calculated based on the streams' distances from M31's galactic center and the streams' masses (see Section \ref{sec:length}). 
 
-Hints of the Pal 5-like stream are visible in the lower right panels of Figure \ref{fig:M31_pandas} after we have applied metallicity cuts. The 5 and 10 times more massive streams are barely apparent by eye in the first row, but when we apply metallicity cuts (see row two and three), the more massive streams are easily detectable \footnote{Note that we have located the mock streams at the same positions in both Figure \ref{fig:M31_pandas} and \ref{fig:M31_wfirst}.}. The PAndAS team has not reported the detection of massive GC streams, thus M31 might not host GC streams that are much more massive than Pal 5's stream, which is the case for the MW also. However, it should be feasible to find a 5 and 10 times more massive Pal 5-like stream in the PAndAS data, should such a stream exist. Using more sophisticated searching methods and cuts a Pal5-like stellar stream may also be detectable (see also the discussion in Section \ref{sec:color}).
+In Figure \ref{fig:M31_pandas}, we see hints of the Pal 5-like stream and the 5 times more massive stream in the lower panels of Figure \ref{fig:M31_pandas} after we have applied metallicity cuts. The 10 times more massive stream is visible by eye in each panel, but hard to see at large galactocentric radii without metallicity cuts as the stream is wider (see upper right panel)\footnote{Note that we have located the mock-streams at the same positions in both Figure \ref{fig:M31_pandas} and \ref{fig:M31_wfirst}, in case the reader is curious to know where the Pal 5-like streams are located in Figure \ref{fig:M31_pandas}.}.
 
-\begin{figure*}
-\centerline{\includegraphics[width=\textwidth]{Fig3_M31_WFIRST_mag2715_NewBackgrounds.png}}
-\caption{{\bf Cold streams in M31 - with WFIRST}.  This Figure shows the same panels as Figure \ref{fig:M31_pandas}, we have now, however, determine the number of stars in each mock stream by summing up the cumulative number of stars in the streams at the limiting magnitude of WFIRST ($Z068 < 27.15$) at the distance of M31 (see Figure \ref{fig:iso_cfht}, botoom, right panel). Thus, there are 2448 $\pm165$ stars in the ten times more massive stream, 1278 $\pm86$ stars in the five times more massive stream and 258 $\pm 17$ stars in Pal 5-like stream. The black bar in the top middle panel shows the scale of 10 arcmin for reference. All stream stars are assumed to have [Fe/H] $= -1.3$, this all stream stars are resolved in each panel. At each $R_{GC}$, we have updated the width and lengths of the streams based on the tidal field they experience at these distances (see Section \ref{sec:length}). Additionally, we have updated the number of stars in each field such to illustrate what WFIRST will observe in M31 given WFIRST's  deeper limiting magnitude (see details in Section \ref{sec:WFIRST}). 
-We note that hints of the Pal 5 like stream are visible at $R_{GC}$ = 35 kpc and $R_{GC}$ = 55 kpc after applying metallicity cuts, and that the 5 and 10 times more massive Pal 5-like streams are visible by eye in all panels.}
-\label{fig:M31_wfirst}
-\end{figure*}
+The PAndAS team has not yet reported a detection of massive GC streams, thus M31might not host GC streams that are much more massive than Pal 5's stream. It should be feasible, however, to find a 5 and 10 times more massive Pal 5-like stream in the PAndAS data, should such a stream exist in M31. Using more sophisticated searching methods and cuts, a Pal5-like stellar stream may also be detectable (see the discussion in Section \ref{sec:color}).
+
+
 
 \subsubsection{WFIRST}
 \label{sec:WFIRST}
-NASA's Wide Field InfraRed Survey Telescope (WFIRST) is planned to launch in mid-2020s. The space telescope has a 2.4 meter primary mirror and its wide field instrument will have a field of view that is 100 times greater than the Hubble infrared instrument and has a pixel size of 0.11$\arcsec$. Thus, WFIRST is particularly useful for studying resolved stellar populations over large areas. 
+\begin{figure*}
+\centerline{\includegraphics[width=\textwidth]{Fig3.pdf}}
+\caption{
+Like Figure \ref{fig:M31_pandas}, but we now determine the number of stars in each mock-stream by summing up the cumulative number of stars in the streams at the limiting magnitude of WFIRST ($Z087 < 28.54$) at the distance of M31. Given the large number of stars in the background fields and streams, stars are overlapping in these panels, and we use a point size 100 times smaller than in Figure \ref{fig:M31_pandas} to avoid crowding of the background. WFIRST will resolve each individual stream star (see Section \ref{sec:crowding}), and the point sizes in this Figure are larger than the WFIRST pixel sizes of 0.11$\arcsec \times 0.11\arcsec$. Thus, visualizing the stream stars as overlapping points, as the case in this Figure, will be feasible with WFIRST data.
+The black bar in the top middle panel shows the scale of 10 arcmin for reference. At each $R_{GC}$, we have updated the width and lengths of the streams based on the tidal field they experience at these distances (see Section \ref{sec:length}). Additionally, we have updated the number of stars in each field such to illustrate what WFIRST will observe in M31 given WFIRST's  deeper limiting magnitude (see details in Section \ref{sec:WFIRST}). In particular, the ten times more massive stream is populated with 12824 stars, the five times more massive stream has 6448 stars, and the Pal 5-like stream has 1299 stars (see Figure \ref{fig:iso_cfht}, bottom, right panel).  All stream stars have [Fe/H] $= -1.3$, and are therefore plotted in each panel. 
+We note that all mass mock-streams are observable in each panel.}
+\label{fig:M31_wfirst}
+\end{figure*}
+NASA's Wide Field InfraRed Survey Telescope (WFIRST) is planned to launch in mid-2020s. The space telescope has a 2.4 meter primary mirror and its wide field instrument will have a field of view that is a hundred times greater than the Hubble infrared instrument and has a pixel size of 0.11$\arcsec$. Thus, WFIRST is particularly useful for studying resolved stellar populations over large areas. 
 
-To test whether a Pal 5-like stream will be detectable with WFIRST, we first simulate M31's halo for WFIRST bands and limiting magnitudes. We do this by populating the 10 $\times$ 10 kpc PAndAS panels from Figure \ref{fig:M31_pandas} ($R_{GC}$ = 15, 35, 55 kpc) with additional stars to mimic the densities and magnitudes WFIRST will observe. To do this, we first download a grid of isochrones, 16 in total, from the PARSEC system with a metallicity range of [Fe/H] = $-2.5$ - 0.5 in increments of [Fe/H] = 1 dex, and an age range of age = 8.5 - 11.5 Gyr in increments of 1 Gyr. Subsequently, we fit all stars in the color-magnitude diagrams of the three 10 $\times$ 10 kpc  PAndAS M31 panels to these isochrones at the distance of M31, and at a range of distances representative of the Milky Way disk and halo from ${\sim}500$~pc to ${\sim}100$~kpc to fit foreground stars. Using the number of stars fitted to each isochrone and the luminosity functions of the 16 isochrones, we then estimate  for each individual isochrone the number of stars needed to match the stellar population visible for WFIRST magnitude limit (Z087 $<$ 27.15: \citealt{spergel13}). Our mock 10 $\times$ 10 kpc WFIRST M31 halo fields are then populated with these stars with random positions within the field, ages and metallicities corresponding to their respective isochrone, and magnitudes sampled from the part of the luminosity function of the isochrone that is observable within our WFIRST limits.
-%These stars are then added to our mock 10 $\times$ 10 kpc WFIRST M31 halo fields with random positions within the panel, and age and metallicity corresponding to their respective isochrone.
+To test whether a Pal 5-like stream will be detectable with WFIRST, we first simulate M31's halo for WFIRST bands and limiting magnitudes. We do this by populating the 10 $\times$ 10 kpc PAndAS panels from Figure \ref{fig:M31_pandas} ($R_{GC}$ = 15, 35, 55 kpc) with additional stars to mimic the densities and magnitudes WFIRST will observe. To do this, we first download a grid of isochrones, 16 in total, from the PARSEC system with a metallicity range of [Fe/H] = $-2.5$ - 0.5 in increments of [Fe/H] = 1 dex, and an age range of age = 8.5 - 11.5 Gyr in increments of 1 Gyr. Subsequently, we fit all stars in the color-magnitude diagrams of the three 10 $\times$ 10 kpc  PAndAS M31 panels to these isochrones at the distance of M31, and at a range of distances representative of the Milky Way disk and halo from ${\sim}500$~pc to ${\sim}100$~kpc to fit foreground stars. Using the number of stars fitted to each isochrone and the luminosity functions of the 16 isochrones, we then estimate  for each individual isochrone the number of stars needed to match the stellar population visible for a 1 hour exposure with WFIRST ($Z087 <$ 28.54).
 
-Additionally, we convert the deep optical fields from the \citet{brown09} M31 HST halo fields (F606W $<$ 32) to WFIRST bands and apply the limiting magnitude of the WFIRST guest observer program (Z087 $<$ 27.15 for 1000 seconds: \citealt{spergel13}). We then use the stellar density in the three \citet{brown09} halo fields, which are located at $R_{GC}$ = 11, 21, 35 kpc to estimate the stellar density that WFIRST will observe at the location of the 10 $\times$ 10 kpc panels ($R_{GC}$ = 15, 35, 55 kpc), using a power-law fit to the M31 stellar density profile. We use these stellar densities to check the stellar densities for our new M31 halo fields for WFIRST limits. From the power-law fit to the Brown fields stellar densities, the stellar densities that WFIRST will observe in the M31 halo, are $\rho_*  \sim 7 \times 10^5$,  ${\sim}7 \times 10^4$,  ${\sim} 2 \times 10^4$ stars/degrees$^2$ at  $R_{GC}$ = 15, 35, 55 kpc, respectively. The stellar densities that we reach at the same radii by fitting isochrones and adding fake stars are  $2.5e5$, $1.0e5$, and $1.0e5$ stars/degrees$^2$ at  $R_{GC}$ = 15, 35, 55 kpc, respectively.
+Our mock 10 $\times$ 10 kpc WFIRST M31 halo fields are then populated with these stars with random positions within the field, ages and metallicities corresponding to their respective isochrone, and magnitudes sampled from the part of the luminosity function of the isochrone that is observable within WFIRST limits.
 
-Figure \ref{fig:M31_wfirst} shows the same panels as Figure \ref{fig:M31_pandas}, however the background fields now represent WFIRST limiting magnitude and stellar densities. We inject the same mock stellar streams as in Figure \ref{fig:M31_pandas}, but now we populate the streams with a larger amount of stars reflecting the limiting magnitudes and bands of WFIRST (see bottom row of Figure \ref{fig:iso_cfht}). In particular, we populate the Pal 5-like stream with 258 stars, the five times more massive stream with 1278 stars, and the ten times more massive stream with 2448 stars.
+Additionally, we convert the deep optical fields from the \citet{brown09} M31 HST halo fields (F606W $<$ 32) to WFIRST bands and apply the limiting magnitude of the WFIRST. We then use the stellar density in the three \citet{brown09} halo fields, which are located at $R_{GC}$ = 11, 21, 35 kpc to estimate the stellar density that WFIRST will observe at the location of the 10 $\times$ 10 kpc panels ($R_{GC}$ = 15, 35, 55 kpc), using a power-law fit to the M31 stellar density profile. We use these stellar densities to check the stellar densities for our new M31 halo fields for WFIRST limits. From the power-law fit to the Brown fields stellar densities, the stellar densities that WFIRST will observe in the M31 halo, are $\rho_*  \sim 7 \times 10^5$,  ${\sim}7 \times 10^4$,  ${\sim} 2 \times 10^4$ stars degrees$^{-2}$ at  $R_{GC}$ = 15, 35, 55 kpc, respectively. The stellar densities that we reach at the same radii by fitting isochrones and adding fake stars are  $1.2 \times 10^5$, $5.1 \times 10^4$, and $4.5 \times 10^4$ stars degrees$^{-2}$ at  $R_{GC}$ = 15, 35, 55 kpc, respectively. Thus, the fact that the stellar densities in the \citet{brown09} fields are similar to the stellar densities in our simulated fields, after applying WFIRST's magnitude cuts, is encouraging. 
 
-In Figure \ref{fig:M31_wfirst},  hints of the Pal 5 like stream are visible at $R_{GC}$ = 35 kpc and $R_{GC}$ = 55 kpc after applying metallicity cuts, and the 5 and 10 times more massive Pal 5-like stream are clearly visible, by eye, in M31 with WFIRST.\todo{Update with final version of plot.} % if we apply metallicity cuts and $R_{GC} > 35$ kpc (see right two panels in middle row) or  $R_{GC} > 15$ kpc  (see  bottom row). 
-This provides exciting prospects for the detection of thin, stellar streams in M31's halo and could vastly expand our sample of known streams for which we can investigate the morphology and search for gaps in streams. 
+Figure \ref{fig:M31_wfirst} shows the same panels as Figure \ref{fig:M31_pandas}, however the background fields now represent WFIRST limiting magnitudes and stellar densities. We inject the same mock stellar streams as in Figure \ref{fig:M31_pandas}, but now we populate the streams with a larger amount of stars reflecting the limiting magnitudes and bands of WFIRST (see bottom row of Figure \ref{fig:iso_cfht}). In particular, we populate the Pal 5-like stream with 1299 stars, the five times more massive stream with 6448 stars, and the ten times more massive stream with 12824 stars.
 
-We note that the results above are based on the evolutionary tracks of an old globular cluster (Pal 5 like). A younger cluster than Pal 5, on the other hand, would add many more observed stars to the streams given WFIRST's limiting magnitudes, as there would be more stars would have brighter magnitudes. As an example, we downloaded an isochrone from the PARSEC evolutionary tracks (\citealt{bressan12}) for a cluster with age = 500 Myr and  [Fe/H] = 0. We repeated the exercise carried out to produce Figure \ref{fig:iso_cfht}. For this isochrone the number of resolved stars with WFIRST at M31's distance would be ${\sim}$ 5600  for a Pal 5-like stream and ${\sim}$ 56,800 for a ten times more massive stream, thus roughly a factor of 20 more stars. Note that it would be very difficult to form a stream with a significant length 500 Myr after the birth of the cluster. Thus, the example above is included to demonstrate an extreme case.
+All mock-streams are visible in all panels of Figure \ref{fig:M31_wfirst}. This provides exciting prospects for the detection of thin, stellar streams in M31's halo and could vastly expand our sample of known GC streams (see Section \ref{sec:kara}) for which we can investigate the morphology and search for gaps in streams. We note that the results of  Figure \ref{fig:M31_wfirst} are based on the evolutionary tracks of an old globular cluster (Pal 5-like) and are based on a 1 hour exposure time for WFIRST. We refer the reader to {\it Appendix} \ref{sec:appendixA} for details on how a 1000 sec. exposure, which is the guest observer capability of WFIRST (\citealt{spergel13}), would affect our results. 
 
-\todo{Might add paragraph here on 1h exposure.}
-
-\begin{figure}
-\centerline{\includegraphics[width=\columnwidth]{Fig4_distance_IMF3000.pdf}}
-\caption{{\bf Cold streams in external galaxies: resolved stars}. The number of resolved WFIRST $Z087$-band stars in a Pal 5-like stream (solid), a five times more massive Pal 5-like stream (dotted) and a ten times more massive Pal 5-like stream (dashed) as a function of distance. We compute this Figure based on the cumulative luminosity function in the WFIRST $Z087$-band (see right, bottom panel of Figure \ref{fig:iso_cfht}). The vertical lines show the distances to four well-known galaxies within 10 Mpc of the Milky Way. The red star shows the number of stars needed for the Pal 5-like stream to have  C$_{\rm err} > 15$ and thus stand out against an M31-like background at the specific distance at a galactocentric radius of 35 kpc and after a metallicity cut of [Fe/H] $< 0$. The red ``+" similarly shows this for the more massive stream. 
-Pal 5-like streams should be detectable in resolved stars with WFIRST out to the distance of Cen A (see red line), and ten times more massive streams should be observed out to distances slightly smaller than M101 (see red line)\todo{update once I have background Cerr}. %This conclusion is drawn without the use of color-cuts, and we could also use more conservative metallicity cuts than in Figure \ref{fig:M31_pandas}. As seen in Figure \ref{fig:M31_wfirst}, this will also depend on the location in the host galaxy (easier to detect in outer halo), and the exact background and metallicity of the specific host. 
-Note that beyond 11.5 Mpc no stars will be resolved with WFIRST in a Pal 5-like stream. \todo{SP:  I also need to estimate backgrounds at each distance after Ben's test.}}
-\label{fig:distance}
-\end{figure}
-
+A younger cluster than Pal 5, would add many more observable stars to the streams given WFIRST's limiting magnitudes, as more stars would have brighter magnitudes. As an example, we download an isochrone from the PARSEC evolutionary tracks (\citealt{bressan12}) for a cluster with age = 500 Myr and  [Fe/H] = 0. We repeat the exercise carried out to produce Figure \ref{fig:iso_cfht}. For this isochrone the number of resolved stars with WFIRST at M31's distance would be ${\sim}$7797 for a Pal 5-like stream and ${\sim}$38754 for a 5  times more massive stream and ${\sim}$77322 for a 10 times more massive stream. Thus, roughly a factor of 6 more stars. 
+Note, however, that it would be very difficult to form a stream with a significant length 500 Myr after the birth of the cluster. 
 
 \subsection{Cold globular cluster streams in external galaxies: resolved stars}
 \label{sec:resother}
-In the previous Section, we showed that only some streams were detectable by eye against the background of M31. To test the threshold of when streams are detectable, we compute the contribution of the stream signal to the M31 background at different galactocentric radius ($R_{GC} = 15, 35, 55$ kpc), with three different metallicity cuts ([Fe/H] = all, $<$ 0, $< -1$).  In particular, we compute the counting error, C$_{\rm err}$: 
+In addition to exploring WFIRST's capabilities for observing GC streams in M31, we wish to determine WFIRST's ability to observe GC streams in more distant, external galaxies. First, we investigate the impact of including contaminating galaxies for our ability to detect streams (Section \ref{sec:contamination}). Subsequently, we compute the threshold number of stars needed to detect streams in galaxies at various distances (Section \ref{sec:Cerr}). To test the validity of our results, we also investigate the impact of crowding in the WFIRST pixels (Section \ref{sec:crowding}).
+
+\subsubsection{Contaminating galaxies}
+\label{sec:contamination}
+Our ability to detect faint GC streams with resolved stars will be significantly affected by the quality of our star/galaxy separation.  To assess how contaminating background galaxies will affect our ability to detect thin streams, we use the Space Telescope Image Product Simulator (STIPS\footnote{\url{https://github.com/spacetelescope/STScI-STIPS}}) to simulate one WFIRST detector which is $7.5\arcmin \times 7.5\arcmin$ in size centered on the $R_{GC} = 35$ kpc M31 field shown in the top, middle panel of Figure \ref{fig:M31_wfirst}, without an injected mock-stream.  While the limited field size available in STIPS is small compared to the stream and is not yet sufficient for full stream simulations, it is sufficient for testing completeness and contamination rates.  The simulations include an input foreground star-background galaxy catalog with a brightness distribution and a Sersic profile distribution generated from the CANDELS (\citealt{koekemoer11}) deep survey.  We then perform point spread function (PSF) fitting photometry on these images with the DOLPHOT software package, including the newly-developed WFIRST module (\citealt{dolphin00}; \citealt{dolphin16}).
+
+Current techniques for culling non-point sources from resolved stellar photometry typically use cuts on quality metrics such as signal-to-noise, sharpness, and crowding (e.g. for the Panchromatic Hubble Andromeda Treasury; \citealt{williams14}).  Thus, to get a reasonable upper-limit estimate of the contamination we may expect from background galaxies using very simple quality metrics, we use a signal-to-noise cut $>$ 4, a sharpness$^2$ requirement $<$ 0.1, and a crowding limit $<$ 0.2 in the $Z087$ WFIRST band. We do this for both a 1 hour and 1000 second exposure time for WFIRST. 
+
+The resulting stellar catalogs include the stars in the given M31 field, but also all of the objects remaining after our efforts of removing contaminants using the quality cuts listed above. In the coming years, we will be working to improve this culling by including color information and applying sophisticated machine learning techniques.  Such development will only improve the reliability of the star catalogs, reducing the leftover contaminants in this field.  Below, we explore the effects of using both perfect star/galaxy separation and ``worst case scenario" contamination from background galaxies (with simple catalog culling described above) when searching for GC streams in external galaxies in order to bracket the potential sensitivity of WFIRST to GC streams.
+\begin{figure*}
+\centerline{\includegraphics[width=\textwidth]{Fig4.pdf}}
+\caption{
+{\bf Left}: The number of resolved WFIRST $Z087$-band stars in a Pal 5-like stream (solid blue line), a five times more massive Pal 5-like stream (dotted blue line) and a ten times more massive Pal 5-like stream (dashed blue line) as a function of distance with a 1 hour WFIRST exposure time ($Z087 < 28.54$). We calculate the number of resolved stars in each mock-stream at each distance from the cumulative luminosity function in the WFIRST $Z087$-band (see right, bottom panel of Figure \ref{fig:iso_cfht}). The vertical lines show the distances to four well-known galaxies within 10 Mpc of the Milky Way. 
+The red lines shows the threshold number of stars needed in each of the three mass mock-streams, for the streams to have a signal-to-noise of  $C_{\rm err} = 15$, assuming perfect star/galaxy separation (no contamination). 
+To compute the red lines for each mass mock-stream, we have placed each stream at a galactocentric radius of 35 kpc (to fix their areas), and we have used no metallicity for the calculations of $C_{\rm err}$. We mark the distances at which the red lines cross the blue lines for each respective mass mock-stream with a red star. 
+The 5 and 10 times  Pal 5-like mock-streams have $C_{\rm err} > 15$ out to distances $\sim$6.2 and $\sim$7.8 Mpc respectively, and the Pal 5-like mock-stream has $C_{\rm err} > 15$ out to $\sim$1.8 Mpc.
+The gray lines show the same calculation as for the red lines, but now using backgrounds including contaminating galaxies (see Section \ref{sec:contamination}). We mark the distances at which the gray lines cross the blue lines for each respective mass mock-stream with a black circle. In particular, a Pal 5- like stream will be observable out to $\sim$1.1 Mpc, and  5 and 10 times more massive streams will be observable out to  $\sim$1.7 and 3.5 Mpc, respectively.
+Note that beyond 38 Mpc no stars will be resolved in the $Z087$-band for a 1 hour exposure with WFIRST in a Pal 5-like stream.
+{\bf Right:} Same as left panel, but now using a 1000 sec. exposure time ($Z087 < 27.15$).  
+Assuming prefect star/galaxy separation (red lines), the 5 and 10 $\times$  Pal 5-like mock-streams have $C_{\rm err} > 15$ out to distances $\sim$ 2.8 and 3.0 Mpc respectively, and the Pal 5-like mock-stream at $R_{GC} = 35$ kpc has $C_{\rm err} = 15$ at the distance of M31 (see also {\it Appendix} \ref{sec:appendixA}). If we include the effect of contaminating background galaxies, the Pal 5-like stream will not be easily detectable using a 1000 sec. WFIRST exposure at any distance as the gray solid line is above blue solid line at all distances. A simple extrapolation of the solid gray line, however, indicates that Pal 5-like streams could be detectable out to $\sim$400 kpc with a 1000 sec. exposure. 
+The 5 and 10 times more massive streams will be observable out to $\sim$0.8 and 2.0 Mpc, respectively (see black circles). Note that beyond 20 Mpc, no stars will be resolved in the $Z087$-band in a Pal 5-like stream with the guest observer capabilities of WFIRST as even the RGB stars will have magnitudes fainter than $Z087$ = 27.15. The distance limit for detecting streams in external galaxies is likely somewhere in between the perfect star/galaxy separation scenario (red lines) and the conservative star/galaxy separation scenario (gray lines).
+}
+\label{fig:distance}
+\end{figure*}
+
+\subsubsection{Distance limitations for observing GC streams with WFIRST}
+\label{sec:Cerr}
+Only hints of the Pal 5-like stream were present in the PAndAS data (Figure \ref{fig:M31_pandas}). Motivated by this, we compute the signal-to-noise (i.e. the contribution of the stream signal to M31's background) at different galactocentric radii ($R_{GC} = 15, 35, 55$ kpc), with two different metallicity cuts ([Fe/H] = all and $< -1$).  In particular, we compute the counting error, $C_{\rm err}$: 
 
 \begin{equation}
-{\rm C}_{\rm err} = \frac{N_{\rm stream}}{\sqrt{N_{\rm background}}}
+\label{eq:cerr}
+{C}_{\rm err} = \frac{N_{\rm stream}}{\sqrt{N_{\rm background}}}
 \end{equation}
-where $N_{\rm stream}$ is the number of stars in the mock streams, and $N_{\rm background}$ is the number of stars in the M31 background within the same covered area as the specific mock stream (see Table \ref{tab:Pal5}). 
-
-We vary $N_{\rm stream}$ and determine, through visual inspections of mock streams injected to the various panels in Figure \ref{fig:M31_pandas} and \ref{fig:M31_wfirst}, that only streams with C$_{\rm err} > 15$ are detectable by eye against the backgrounds, at all $R_{GC}$ with the three different [Fe/H] cuts. As a reference, in Figure \ref{fig:M31_pandas} the Pal 5-like stream has C$_{\rm err} < 15$ in all 9 panels, although the bottom right panel has a  C$_{\rm err}$ value very close to 15. For the more massive stream, C$_{\rm err} > 15$ in the two right middle panels of and all lower panels of Figure \ref{fig:M31_pandas}. Note that all of these values have  C$_{\rm err} > 10$, and hints of the massive streams are seen in the other panels. \todo{SP: I need to do this for the 5xPal5 stream and update these numbers when I have the correct WFIRST background. }
-
-In Figure \ref{fig:distance} we show the number of resolved stars in a Pal 5-like stream (solid) and a ten times more massive stream (dashed) as a function of distance to external galaxies. We used the normalized luminosity function shown in the bottom panel of Figure \ref{fig:iso_cfht} based on WFIRST's limiting magnitude (Z087 $<$ 27.15), to obtain the number of resolved stars various distances. The vertical lines show the distances to four well-known galaxies in which it could be interesting to search for GC stellar streams. 
-
-%We also assess the background using the same methods (and one metsllicity); then evaluate the minimum number of stars needed in each streams to get C_err>15  at each distance
-
-To assess the background, we evaluate the minimum number of stars needed in each stream to obtain C$_{\rm err} > 15$ at each distance. In particular, we estimate the number of stars in the background covering the same area as the stream at each distance. Note that both the number of stars in the background and the stream decline because the limiting magnitude is fixed. For simplicity, we evaluate C$_{\rm err}$ using only one metallicity cut ([Fe/H] $< 0$) and we assume the mock streams are located at $R_{GC} = 35$ to fix the investigated area. This gives us an estimate of the threshold for the number of stars needed to observe the streams at each distance. We plot the result for the mock streams as red lines in Figure \ref{fig:distance}. \todo{SP: I need to add these lines after we figure out background}.
-
-%
-%Motivated by our finding that only streams that have C$_{\rm err} > 15$ are detectable by eye,  we illustrate the threshold for the number of stars needed to detect the streams. In particular, we add a red star illustrating the threshold at which C$_{\rm err} > 15$ for the Pal 5-like stream and a red ``+" for the more massive stream. The star and ``+" markers are determined by assuming the two mock streams are located at $R_{GC} = 35$ kpc within their host galaxies (to fix the areas of the two mock streams). We additionally apply a metallicity cut of [Fe/H] $<0$ to only use one background estimate.  At each distance, we estimate the number of stars needed to ensure that C$_{\rm err} > 15$ for each stream. Thus, if the solid line is above the red star, the Pal 5-like stream is observable. Similarly, if the dashed line is above the red ``+", the 10 times more massive stream is observable. 
-
-We conclude that Pal 5-like streams should be detectable with WFIRST out to the distance of Cen A, and that ten times more massive streams should be observed out to the distance of M101. We encourage observers to look for these streams in the future, and we emphasize that the results presented in Figure \ref{fig:distance} are conservative, as we could do even better with stricter color cuts (i.e. metallicity cuts). Moreover, our estimates are ``by eye" - and could be improved using more sophisticated techniques (see e.g. \citealt{malhan18}, and the discussion in Section \ref{sec:color}). It is important to note again, however, that beyond 11.5 Mpc WFIRST will not resolve any stars in a Pal 5-like stream, as the tip of the red giant branch of Pal 5 would be be below the detection limit at this distance (see isochrone in bottom left part of Figure \ref{fig:iso_cfht}). To detect thin streams at larger distances than 11.5 Mpc, the GCs would need to have been much younger than Pal 5 to host brighter stars. 
-
-Additionally, we need to ensure that given the number densities of the streams, all stars will be resolved with WFIRST at each distance. Thus, for each mock stream, which span various areas, we calculated the number density of stars. In particular, we calculate the number of stars that can be resolved with WFIRST at a given distance and divide this by the area of each stream in arcsec$^2$ at this given distance. As the stream is moved to a greater distance, we will lose an amount of resolved stars due to WFIRST's limiting magnitude (see Figure \ref{fig:distance}), while the area of the streams decrease. 
-
-To test whether there will be crowding in WFIRST's pixels (i.e. more than 1 star per pixel), we compare the number density above to the pixel size of WFIRST, which is $0.11\arcsec \times 0.11\arcsec$. Hence, we multiply the number of stars per arcsec$^2$ in each stream and at each distance by the area of each WFIRST pixel in arcsec$^2$. The area of the nine different streams vary due to the change in length and width of the streams depending on their location in their host galaxies and their mass (see Table \ref{tab:Pal5}). Thus, the most extreme case where crowding would have the largest effect is for the most massive 10 times Pal 5-like stream at small galactocentric radii ($R_{GC}$ = 15 kpc), where its area covers the smallest region. 
-
-We find that even for the most extreme case, crowing is not an issue. In particular, the number of stream stars per WFIRST pixel increases with distances up to $\sim$5 Mpc by $\sim$1.5 dex, and then plateaus at  less than 0.01 stream stars per WFIRST pixel. For comparison, for the Pal 5-like stream at the largest galactocentric radius ($R_{GC}$ = 55 kpc), the number of stream stars per WFIRST pixel never exceeds $10^{-4}$.
-
-%We show the result of one of these calculations in Figure \ref{fig:dens}, where we plot the number of stars per WFIRST pixel for a Pal 5-like stream located at $R_{GC} = 35$ kpc (solid) and a 10 times more massive stream located at $R_{GC} = 35$ kpc (dashed). Note that the shape of the solid and dashed curve is determined by the luminosity function as we lose certain parts of the luminosity function when moving the streams to greater distances. From Figure \ref{fig:dens}, we conclude that crowding will not be an issue for resolving stars in thin stellar streams with WFIRST. 
+where $N_{\rm stream}$ is the number of stars in the mock-streams, and $N_{\rm background}$ is the  averaged number of stars in the M31 background, covering the same area as the specific mock-stream (see Table \ref{tab:Pal5}). 
 
 
-%\begin{figure}
-%\centerline{\includegraphics[width=\columnwidth]{stars_per_pixel.png}}
-%\caption{ The number of resolved stars per WFIRST pixel (Area = $0.11\arcsec \times 0.11\arcsec$) for a Pal 5-like stream (solid) and 10 times more massive stream (dashed) as a function of distance to their host galaxies. The area of both streams have been fixed based on assuming they are located 35 kpc from their hosts' galactic centers. The shape of the lines reflect the fact that we are losing certain parts of the luminosity function due to the limiting magnitude of WFIRST at each distance. Note that there is less than one star per WFIRST pixel at each distance. \todo{We can maybe omit this figure?}}
-%%HSC: i is the best band, median seeing (limiting resolution) in i is 0.6 arcsec (wavelength dependent), psf for HSC: we need to find. WFIRST imaging should also be on this plot (0.12-0.14 depending on band, psf full width half max.  }
-%\label{fig:dens}
-%\end{figure}
+In Figure \ref{fig:M31_pandas}, the Pal 5-like stream has $C_{\rm err} > 15$ in the three lower panels (in the lower right panel $C_{\rm err} \sim 15$), but has $C_{\rm err} <15$ in the top row. The 5 times more massive stream has a $C_{\rm err} > 10$ in the first row of Figure \ref{fig:M31_pandas}, while $C_{\rm err} > 15$ for all panels in the bottom row. For the 10 times more massive stream, $C_{\rm err} > 15$ in all six panels. For reference, in Figure \ref{fig:M31_wfirst}, all Pal 5-like mock-streams have $C_{\rm err} > 40$, all 5 times more massive streams have $C_{\rm err} > 100$, and all 10 times more massive streams have $C_{\rm err} > 170$.
+
+Motivated by the fact that some streams become hard to see if $C_{\rm err} < 15$, we use $C_{\rm err} = 15$ as our threshold for determining when a stream is ``easily observable" with WFIRST. We note that the choice of $C_{\rm err} = 15$ is somewhat arbitrary and that observers estimating which streams they will be able to detect, can use a more or less conservative signal-to-noise threshold than $C_{\rm err} = 15$. 
+
+Our goal is to estimate the distance to which WFIRST will be able to detect GC streams with  $C_{\rm err} > 15$. As we go to fainter magnitudes in WFIRST, contamination by galaxies will be an issue which is why spatial resolution is essential. We assess both the prospects for detecting streams in external galaxies assuming a perfect star/galaxy separation, and including the effects of contaminating background galaxies.
+
+First, we explore the distance to which we will be able to detect GC streams with  $C_{\rm err} > 15$ for a 1 hour exposure ($Z087 <$ 28.54) with WFIRST. We first use the normalized luminosity function shown in the bottom panel of Figure \ref{fig:iso_cfht}, to obtain the number of resolved stars WFIRST will observe in GC streams at various distances. After moving the stars in the luminosity function to farther distances, in Figure \ref{fig:distance} (left panel) we show the number of resolved stars in a Pal 5-like stream (blue solid line), a 5 times more massive stream (blue dotted line) and a 10 times more massive stream (blue dashed line) as a function of distance to external galaxies. The vertical lines show the distances to four well-known galaxies in which it could be interesting to search for GC stellar streams. The right panel of Figure \ref{fig:distance} shows the same calculation for a 1000 sec. exposure time with WIFRST, which reaches a limiting magnitude of $Z087 <$ 27.15. See {\it Appendix} \ref{sec:appendixA} for details on the number of resolved stream stars in a 1000 sec. WFIRST exposure. 
+
+We evaluate the minimum number of stars needed in the Pal 5-like, 5 $\times$ Pal 5-like and 10 $\times$ Pal 5-like stream to obtain $C_{\rm err} > 15$ at each distance for a 1 hour exposure (Figure \ref{fig:distance}, left) and a 1000 sec. exposure (Figure \ref{fig:distance}, right). In particular, we calculate the average number of stars in the background covering the same area as the stream at each distance. To assess the stellar density in the background, we first use the simulated M31 fields described in Section \ref{sec:WFIRST}, and we keep track of which stars have magnitudes above the limiting magnitude of WFIRST for a 1 hour and 1000 sec. exposure at each distance. Note that both the number of stars in the background and the number of stars in the streams decline with distance. For simplicity, we evaluate $C_{\rm err}$ using all metallicities, and we assume that the mock-streams are located at $R_{GC} = 35$ kpc to fix the areas of the mock-streams with three different masses. This analysis gives us an estimate of the threshold number of stars needed to detect the streams at each distance assuming perfect separation (i.e. no contaminating background galaxies: see red lines). 
+ 
+The solid red line shows the number of stars needed in a Pal 5-like stream, in order for $C_{\rm err}$ = 15, and the dotted and dashed lines show the same $C_{\rm err}$ = 15 thresholds for the 5 $\times$ Pal 5-like and 10 $\times$ Pal 5-like streams, respectively. If the red lines are above the blue line of the respective mock-stream, C$_{err} <$ 15 and the stream is not easily observed; if the red line is below the respective stream, C$_{err} >$ 15, and the stream is easily observed at that distance.  The shape of the red lines differ from the shape of the blue lines, as the M31 background (red lines) has multiple populations of stars with various ages and metallicities (see Section \ref{sec:WFIRST}), where the blue lines only represent the stellar population of a Pal 5-like cluster.
+
+From Figure \ref{fig:distance}, for the 1 hour WFIRST exposure time (left panel), assuming perfect star/galaxy separation, we conclude that Pal-5 like streams should stand out clearly against the stellar halo background stars if the stream is located in a galaxy $<$ 1.8 Mpc from the Milky Way (see red star where the solid blue and red lines cross). The 5 and 10 times  more massive Pal 5-like streams, will have C$_{err} >$ 15 if they are residing in galaxies $<$ 6.2 and $<$7.8 Mpc from the Milky Way (see red stars where the dashed and dotted blue and red lines cross). 
+
+Similarly, for the 1000 sec. WFIRST exposure time (Figure \ref{fig:distance}, right), we find that the Pal-5 like mock-stream located at $R_{GC}$ = 35 kpc will have C$_{err} =$ 15 at the distance of M31 and should therefore not stand out clearly against the stellar halo of a respective host galaxy much further away than M31 (see also {\it Appendix} \ref{sec:appendixA}). The 5 and 10 $\times$  more massive Pal 5-like streams, will have C$_{err} >$ 15 if they are residing in galaxies $<$ 2.8 and $<$3.0 Mpc from the Milky Way, respectively (see red stars where the dashed and dotted blue and red lines cross) and should be easily detectable as over densities out to those distances.
+
+Using the simulated WFIRST M31 field including contaminating galaxies, we re-calculate the average number density of contaminating objects (stars and now also galaxies: see Section \ref{sec:contamination}) in the background at several distances, covering the same areas as the mock-streams located at $R_{GC} = 35$ kpc. In particular, we re-compute the red lines in Figure \ref{fig:distance} using the new background field, and we keep track of which objects have magnitudes above the limiting WFIRST magnitude for a 1 hour (left) and 1000 sec. (right) exposure at various distances (see gray lines in Figure \ref{fig:distance}). 
+
+As there are now more objects in the background, we need a higher number of mock-stream stars, in order for the thin streams to stand out against the background (i.e for C$_{err} = 15$, see Equation \ref{eq:cerr}). In particular, we found that for a 1 hour exposure using the backgrounds which include contaminating galaxies, the distance limit to observe thin streams in external galaxies will be smaller (see black circles where gray lines intersect blue lines in Figure \ref{fig:distance}, left). For a Pal 5-like stream with a 1 hour WFIRST exposure, the stream should stand out clearly against the stellar halo background (i.e. C$_{err} >$ 15) if the stream is located in a galaxy $<1.1$ Mpc from the MW. The 5 and 10 times more massive Pal 5-like streams, will have C$_{err} >$ 15 if they are residing in galaxies $<1.7$ and $<3.5$ Mpc from the Milky Way, respectively. 
+
+Similarly, for the 1000 sec. exposure including contaminating galaxies (see gray lines in Figure \ref{fig:distance}, right) the distance limit to which we can observe thin streams decreases. In fact, the Pal 5-like stream will not be observable beyond M31 as the gray solid line is above the blue solid line at all distances. An extrapolation of the solid gray line to smaller distances than M31, however, indicates that Pal 5-like streams could be detectable out to $\sim$400 kpc with a 1000 sec. exposure. Using a 1000 sec. exposure with WFIRST, the 5 and 10 times more massive streams will be observable out to galaxies $<$0.8 and $<$2.0 Mpc from the Milky Way, respectively.  Thus, if the goal of a future WFIRST survey is to find GC streams in external galaxies, it might be better to target four times fewer galaxies and observe them for four times as long, as the GC streams will then stand out more clearly against the background stellar halos. Although even within a volume of 400 kpc surrounding the Milky Way, there are $>$47 dwarf galaxies (\citealt{kara19}, see more details in Section \ref{sec:kara}).
+ 
+As we might be able to separate stars and galaxies better with machine learning techniques, the gray lines in Figure \ref{fig:distance} are meant to represent  a ``worst case" scenario. The true distance limit to which WFIRST will be able to observe thin, globular cluster streams is likely somewhere in between the black circles and red stars shown in Figure \ref{fig:distance}. To summarize, for a 1 hour WFIRST exposure, depending on the contaminating background, Pal 5-like streams should be observable out to between 1.1 - 1.8 Mpc, 5 times more massive streams should be observable out to between 1.7 - 6.2 Mpc and 10 times more massive streams should be observable out to between 3.5 - 7.8 Mpc. It is possible that even more massive globular cluster streams exist in these galaxies, and our estimates are therefore conservative.
+
+Note that the contaminating background sources will also depend on the exact location and distance to the external galaxy. Furthermore, our background estimates are based on M31's stellar halo at $R_{GC} = 35$ kpc, and the halos of other galaxies, and in particular stellar densities, can be different (most notably for low mass galaxies). Estimating the backgrounds of galaxies closer to us than M31, would require adding more stars to M31's halo, because there would be more stars brighter than the limiting magnitude. As the galaxies closer to us than M31 are low mass galaxies, and therefore have stellar halos which differ substantially from M31's halo, we do not estimate the background densities of these. 
 
 
 
 
-%http://www.stsci.edu/hst/wfc3/documents/handbooks/currentIHB/c06_uvis09.html
+\subsubsection{Crowding}
+\label{sec:crowding}
+The results presented in Figure \ref{fig:distance} are only valid if all stars will be resolved with WFIRST at each distance for the given number densities of the stellar streams. To test this for all mock-streams, which span various areas, we calculate the number density of stars. In particular, we calculate the number of stars that can be resolved with WFIRST at a given distance and divide this by the area of each stream in arcsec$^2$ at this given distance. As the stream is moved to a greater distance, the number of resolved stars decrease due to WFIRST's limiting magnitude (see Figure \ref{fig:distance}), and the area of the streams decrease. Additionally, the area of the nine different streams vary due to the change in length and width of the streams depending on their location in their host galaxies and their masses (see Table \ref{tab:Pal5}).
+
+Using the number density above, we can test whether there will be crowding in WFIRST's pixels (i.e. more than 1 star per pixel), by comparing the number density to the pixel size of WFIRST, which is $0.11\arcsec \times 0.11\arcsec$. To do this, we multiply the number of stars per arcsec$^2$ in each stream at each distance by the area of a WFIRST pixel in arcsec$^2$.  The mock-stream for which crowding would have the largest effect, is for the most massive 10 $\times$  Pal 5-like stream at small galactocentric radii ($R_{GC}$ = 15 kpc), where its area covers the smallest region. 
+
+We find that even for this most extreme case, crowing is not an issue. In particular, the number of stream stars per WFIRST pixel increases with distances up to $\sim$5 Mpc by $\sim$1.5 dex, and then plateaus at less than 0.01 stream stars per WFIRST pixel. For comparison, for the Pal 5-like stream at the largest galactocentric radius ($R_{GC}$ = 55 kpc), the number of stream stars per WFIRST pixel never exceeds $10^{-4}$. Thus, crowding is not a concern for detecting thin cold, streams with WFIRST. 
+
+
+
 
 
 \subsection{Cold streams in external galaxies: Integrated light}
 \label{sec:integrated}
-We can also search for thin stellar streams using integrated light. Current telescopes such as HSC (\citealt{miyazaki12}) and future surveys as WFIRST's imaging program (\citealt{spergel13}) and LSST  (\citealt{ivezi08}) are ideal for integrated light searches for thin, stellar streams. 
+We can also search for thin stellar streams using integrated light. Current telescopes such as HSC (\citealt{miyazaki12}) and future surveys as WFIRST's imaging program (\citealt{spergel13}), LSST (\citealt{ivezi08}) and Euclid (\citealt{racca16}) are ideal for integrated light searches for thin, stellar streams. 
 
-To address whether we should find streams in external galaxies in integrated light, we compute the surface brightness of the Pal 5-like and ten times more massive streams at three different galactocentric radii ($R_{GC}$ = 15  kpc, $R_{GC}$ = 35 kpc and $R_{GC}$ = 55 kpc, see Table \ref{tab:Pal5}). 
+To address whether we should find streams in external galaxies in integrated light, we compute the surface brightness of the Pal 5-like, 5 and 10 times  more massive streams at three different galactocentric radii ($R_{GC}$ = 15  kpc, $R_{GC}$ = 35 kpc and $R_{GC}$ = 55 kpc, see Table \ref{tab:Pal5}). 
+As there is scatter in the IMF sampler from the luminosity function, we repeat the sampling from the luminosity function 100 times, to estimate the standard deviation and the mean surface brightness value.  
+See all values in Table \ref{tab:Pal5}. 
 
-We compute the surface brightness, $\mu$, by converting the magnitudes of each star in the normalized luminosity function (see middle, bottom row, Figure \ref{fig:iso_cfht}), to a luminosity. Subsequently, we sum up the luminosities for all stars in the stream to obtain a total luminosity. We divide the total luminosity by the area of each stream in arcsec$^2$ and calculate the surface brightness, $\mu$, in [mag/arcsec$^2$]. See all values in Table \ref{tab:Pal5}. The surface brightness of a stream is independent of the distance to its host galaxy, as both the total luminosity and the area of the stream decreases with distance squared. The values, however, will change depending on the telescope bands (as the total luminosity changes) and also the IMF sampler to compute the total luminosity. 
-
-We calculated the surface brightnesses of the mock streams in WFIRST, LSST and HSC bands by downloading isochrones from the PARSEC evolutionary tracks (\citealt{bressan12}) assuming Pal-5 like properties ([Fe/H] = -1.3, Age = 11.5 Gyr). The mock streams are brightest if they were located at low galactocentric radii (as their area is smaller) and they are massive (as their surface density is higher). Furthermore, the mock streams are brightest in the F-band for WFIRST, xx band for LSST and xx band for HSC. 
-For the WFIRST F184 to Z087-band, the surface brightness are between $\mu =$ 30.1-33.6 mag/arcsec$^2$ for all mock streams including the most massive. These faint surface brightnesses would make the mock streams extremely hard to detect in integrated light. Similarly, the surface brightness for LSST and HSC are $\mu =$ xx mag/arcsec$^2$  and $\mu =$ xx mag/arcsec$^2$, respectively. \todo{SP: I'll update these numbers.} As with resolved streams, more sophisticated techniques than by-eye identification may substantially help the detectability of stellar streams in external galaxies in integrated light.
-
-A younger, more metal rich cluster than Pal 5 would have more bright stars and should therefore have a higher surface brightness. To test what surface brightness the mock streams would have if they originated from a young, metal rich cluster, computed the surface brightness for mock streams generated with an isochrone with [Fe/H] =  0, Age = 500 Myr (see subsection \ref{sec:WFIRST}). We emphasize that it would be very difficult to form a stream with a significant length 500 Myr after formation of the cluster, and we use these isochrones to demonstrate an extreme case. For these mock streams, we found a range of $\mu =$ 28.3-31.2 mag/arcsec$^2$ in the WFIRST Z087 and F184-bands for the three different mass mock streams at all galactocentric radii. For comparison this is $\mu =$ xx mag/arcsec$^2$ for the xx LSST-band, and $\mu =$ xx mag/arcsec$^2$ for xx HSC-band.
-Thus, we conclude that it will be difficult to detect a thin stellar stream in integrated light as the cluster needs to be very young and yet have formed a long stream.
-%%%%%%%%%%%naaet hertil 
-
-Another component of observing thin stellar streams in integrated light is their widths. The angular width of streams decreases with distance to the external host galaxy. To determine whether we would resolve GC stellar streams with current and upcoming telescopes, given the telescopes resolution limits, in Figure \ref{fig:int} we plot the range of widths for our nine mock-streams (blue shaded band) as a function of distance to the host galaxy. Recall that smaller galactocentric radii and lower mass streams, yield narrower streams and vice versa. %Note that the narrowest massive stream overlaps with the second narrowest Pal 5-like stream. 
-
-The vertical lines in Figure \ref{fig:int} show the distances to four nearby galaxies, which could be targeted for thin stellar stream observations. We have labeled the vertical lines by the typical surface brightness of the stellar halos for these systems. In particular, LMC has a surface brightness $\mu \sim 34$ mag/arcsec$^2$ beyond 20 kpc (\citealt{nidever18}), M31 has a typical surface brightness of  $\mu \sim$ 32 mag/arcsec$^2$ beyond 40 kpc (\citealt{ibata07}, fig. 42), Cen A has  $\mu \sim $ 32 mag/arcsec$^2$ (\citealt{crno16}), and M101 has  $\mu \sim 32 $ mag/arcsec$^2$ beyond 40 kpc (\citealt{dokkum14}, fig. 2). See the range of the Pal 5-like mock stream widths and their surface brightnesses in the legend of Figure \ref{fig:int}. The horizontal lines show the resolution limitations of HSC, LSST (limited by seeing: 0.7$\arcsec$) and WFIRST (limited by the pixel scale: 0.11$\arcsec$: \citealt{spergel13}). 
-
-If we ignore the low surface brightnesses of the mock streams, from Figure \ref{fig:int}, we conclude that Pal 5-like streams can be resolved by HSC and LSST to distances of ${\sim} 2\times 10^4$ kpc, and that 10 times more massive streams should be resolved out to $d \sim$ 10$^5$ kpc (see intersect of HCS/LSST horizontal line with upper and lower limit of blue shaded band). Similarly, WFIRST will be able to resolve a Pal 5-like stream out to ${\sim} 10^5$ kpc, and a ten times more massive stream out to $d \sim 6 \times 10^5$ kpc (see intersect of WFIRST horizontal line with upper and lower limit of blue shaded band). At a distance of $d \sim 6 \times 10^5$ kpc, however, the length of a 10 times more massive stream than Pal 5 would only be ${\sim} 6 \arcsec$ (and the width ${\sim} 0.11\arcsec$). 
-
-As noted above, we caution that unless the thin globular cluster streams in the external galaxies originate from very young, metal rich clusters, the very low surface brightness of Pal 5 like streams ($\mu =$ 31-34 mag/arcsec$^2$) make the streams very difficult to detect in integrated light in any nearby galaxy.
-
-\todo{We could add a paragraph on the 1h exposure here...}
-
-
-%are observable in integrated light to ${\sim} 2\times 10^4$ kpc with HSC and LSST, and that 10 times more massive streams should be detectable out to $ d \sim$ 10$^5$ kpc (see intersect of HCS/LSST horizontal line with upper and lower limit of blue shaded region). Similarly, WFIRST will be able to detect a Pal 5-like stream out to ${\sim} 10^5$ kpc, and a ten times more massive stream out to $d \sim 6 \times 10^5$ kpc (see intersect of WFIRST horizontal line with upper and lower limit of blue shaded region). However, at a distance of $d \sim 6 \times 10^5$ kpc, the length of a 10 times more massive stream than Pal 5 would only be ${\sim} 6 \arcsec$ (and the width ${\sim} 0.11\arcsec$). 
-%
-%The statements about detectability above are only valid if the surface brightness of the streams supersede their hosts' halo surface brightnesses. By comparing the values of the surface brightnesses of the external galaxies with the values for the six streams in Table \ref{tab:Pal5}, we caution that this might be a difficult exercise. However, one could also apply metallicity cuts to the halo stars, which would make it easier to detect the streams (see e.g. \citealt{ibata14}).
-
-
-%Have simple calculation based on survey limit, mass of GC and how many stars you should find. Easy for observers to grab for proposals. 
-%Figure \ref{fig:int}: compute surface brightness for all 6 streams depending on their area (length and width). Surface brightness does not vary with distance. 
-
-
-
-
-%\begin{figure}
-%\centerline{\includegraphics[width=\columnwidth]{M31_Pal5.pdf}}
-%\caption{This plot should have Pal 5-like stream streams at various radii where the length are updated. The streams should be 'great circles' instead of Pal 5 projections. }
-%\label{fig:M31}
-%\end{figure}
-
-
-
+While the surface brightness of a stream is independent of the distance to its host galaxy, the surface brightnesses will change depending on the telescope bands, however.
+We calculate the surface brightnesses of the mock-streams in WFIRST, LSST, Euclid and HSC bands by downloading isochrones from the PARSEC evolutionary tracks (\citealt{bressan12}) assuming Pal-5 like properties ([Fe/H] = $-1.3$, Age = 11.5 Gyr). The mock-streams are brightest if they were located at small galactocentric radii (the stream areas are smaller) and if they are massive (the stream surface densities are higher). The mock-streams are brightest in the F-band for WFIRST, $y$ -band for LSST, $z$-band for HSC and $H$-band for Euclid. 
 
 \begin{figure}
-\centerline{\includegraphics[width=\columnwidth]{Fig5_integrated.pdf}}
-\caption{{\bf Cold streams in external galaxies: integrated light.} The angular width in arcsec of a Pal 5-like stream and a ten times more massive Pal 5-like stream (spanning the range of the shaded blue region) as a function of distance to the streams' external host galaxies. The stream widths are calculated at three different galactocentric radii in a host Galaxy with a mass-profile similar to M31 ($v_{circ} = 250 ~\kms$). The stream is thinnest at smaller $R_{GC}$ and for the lowest mass cluster (see Section \ref{sec:length}). The vertical line show the distances to four well-known galaxies which are labeled with their typical halo surface brightnesses in units of mag/arcsec$^2$. The horizontal lines show the angular resolution of three different current (HSC) and future (LSST, WFIRST) surveys. See where the blue shaded band intersects the HSC/LSST and WFIRST horizontal lines for distance limits of detectability.} %We have calculate the surface brightness of each stream as determined by their integrated light and their length and widths (see Table \ref{tab:Pal5}). The surface brightness of the streams do not change with distance. Therefore, if the surface brightness is larger than the background of a given host galaxy,  Pal 5-like streams should observable to ${\sim} 2\times 10^4$ kpc with HSC, LSST and a ten times more massive stream should be observable to $ d \sim$ 10$^5$ kpc in integrated light.  }
-%HSC: i is the best band, median seeing (limiting resolution) in i is 0.6 arcsec (wavelength dependent), psf for HSC: we need to find. WFIRST imaging should also be on this plot (0.12-0.14 depending on band, psf full width half max.  }
+\centerline{\includegraphics[width=\columnwidth]{Fig5.pdf}}
+\caption{
+The blue shaded region shows the angular width in arcsec for the nine mock stellar streams (53 - 273 pc) as a function of distance to external galaxies. The stream widths are calculated at three different galactocentric radii in a host galaxy with a mass-profile similar to M31. The stream is thinnest at smaller $R_{GC}$ and for the lowest mass mock-stream (see Section \ref{sec:length}). The vertical lines show the distances to four well-known galaxies which are labeled with their typical halo surface brightnesses in units of mag arcsec$^{-2}$. The horizontal lines show the angular resolution of four different current (HSC) and future (LSST, WFIRST, Euclid) surveys. The intersects between the blue shaded region and the horizontal lines show the distance limits of where the stream widths can be resolved with various telescopes. From left to right, the first intersect between the blue shaded region and the horizontal lines demonstrates the distance to which a Pal 5-like stream can be resolved, and the second intersect shows the distance to which the width of a 10 times more massive Pal 5-like stream can be resolved. Note, however, the low surface brightnesses of the mock stellar streams (see figure legend and Table \ref{tab:Pal5}).} 
 \label{fig:int}
 \end{figure}
+
+From the brightest ($F184$) to the faintest ($R062$) WFIRST bands, the surface brightnesses are between $\mu =$ 30.0-34.1 mag arcsec$^{-2}$ for all mock-streams.  The fact that these surface brightnesses are so faint will make the mock-streams extremely hard to detect in integrated light. The surface brightness for the LSST $g$ to $y$-bands are even fainter with $\mu =$ 31.8-36.1 mag arcsec$^{-2}$. Similarly, for HSC,  $\mu =$ 31.9-35.1 mag arcsec$^{-2}$ from the B to z-bands. For Euclid, the streams will be slightly brighter: $\mu =$ 29.3-31.7 mag arcsec$^{-2}$, however the wide field Euclid survey should not probe magnitudes this faint ($\mu_{\rm limit} \sim$ 28.7 mag arcsec$^{-2}$), but the deep field might ($\mu_{\rm limit} \sim$ 29.7 mag arcsec$^{-2}$).  Thus, the streams will be brightest in WFIRST and Euclid bands, but will still be quite faint. 
+
+As the case for resolved streams, more sophisticated techniques than ``by eye" identification may substantially help the detectability of stellar streams in external galaxies in integrated light. Additionally, a younger, more metal rich cluster than Pal 5 would have more bright stars and should therefore have a higher surface brightness. To test what surface brightness the mock-streams would have if they originated from a young, metal rich cluster, we compute the surface brightness for mock-streams generated with an isochrone with [Fe/H] =  0, Age = 500 Myr (see Section \ref{sec:WFIRST}). We emphasize that it would be very difficult to form a stream with a significant length only 500 Myr after formation of the cluster. Nevertheless, we use these isochrones to demonstrate an extreme case. 
+
+For the isochrones with Age = 500 Myr and  [Fe/H] =  0, we found a range of $\mu =$ 26.8-30.7 mag arcsec$^{-2}$ in the WFIRST $F184$ to $R062$-bands for the three different mass mock-streams at all galactocentric radii. While it might be feasible to detect such a stream in integrated light against the background of a given galaxy, we conclude that such a stream will be difficult to detect, as the cluster needs to be very young and yet have formed a stream.
+
+Another component of observing thin stellar streams in integrated light is their widths. The angular width of streams decreases with distance to the external host galaxy. To determine whether we would resolve GC stellar streams with current and upcoming telescopes, given the telescopes resolution limits, in Figure \ref{fig:int} we plot the range of widths for our nine mock-streams (blue shaded band) as a function of distance to the host galaxy. Recall that smaller galactocentric radii and lower mass streams, yield narrower streams.
+
+The vertical lines in Figure \ref{fig:int} show the distances to four nearby galaxies, which could be targeted for thin stellar stream observations. We have labeled the vertical lines by the typical surface brightness of the stellar halos for these systems. In particular, the Large Magellanic Cloud (LMC) has a surface brightness of $\mu \sim 34$ mag arcsec$^{-2}$ beyond 20 kpc (\citealt{nidever18}), M31 has a typical surface brightness of  $\mu \sim$ 32 mag arcsec$^{-2}$ beyond 40 kpc (\citealt{ibata07}, fig. 42), Cen A has  $\mu \sim $ 32 mag arcsec$^{-2}$ (\citealt{crno16}), and M101 has  $\mu \sim 32 $ mag arcsec$^{-2}$ beyond 40 kpc (\citealt{dokkum14}, fig. 2). See the range of the Pal 5-like mock-stream widths and their surface brightnesses in the legend of Figure \ref{fig:int} and in Table \ref{tab:Pal5}. The horizontal lines show the resolution limitations of HSC, LSST (limited by seeing: 0.7$\arcsec$) and WFIRST, Euclid (limited by the pixel scale: 0.11$\arcsec$ for WFIRST: \citealt{spergel13} and a pixel scale of 0.1$\arcsec$ for Euclid: \citealt{racca16}). 
+
+From Figure \ref{fig:int}, we conclude that Pal 5-like streams can be resolved by HSC and LSST to distances of ${\sim} 20$ Mpc, and that 10 times  more massive streams should be resolved out to $ \sim$100 Mpc (see intersect of HCS/LSST horizontal line with upper and lower limit of blue shaded band). Similarly, WFIRST and Euclid will be able to resolve a Pal 5-like stream out to $\sim$100 Mpc, and a ten times more massive stream out to $\sim$600 Mpc (see intersect of WFIRST/Euclid horizontal line with upper and lower limit of blue shaded band). At a distance of $\sim$ 600 Mpc, however, the length of a 10 times  more massive stream than Pal 5 would only be ${\sim} 6\arcsec$ (and the width is ${\sim} 0.11\arcsec$). 
+
+As noted above, we caution that unless the thin globular cluster streams in the external galaxies originate from very young, metal rich clusters, the very low surface brightness of Pal 5-like streams ($\mu =$ 30.0-34.1 mag arcsec$^{-2}$ for WFIRST) make them very difficult to detect in integrated light in any nearby galaxy.
+
+
+
 
 
 \section{Discussion}
 \label{sec:discussion}
 
+\subsection{External galaxies near the Milky Way}
+\label{sec:kara}
+Based on our findings in Section \ref{sec:results}, a 1 hour WFIRST exposure will be able to detect Pal 5-like streams in resolved stars in galaxies $\sim$1.1 - 1.8 Mpc away from the Milky Way, depending on the exact galaxy contamination fraction. We encourage observers to look for these thin streams in the future. 
+
+\citet{kara19} recently presented the distribution of galaxies within 11 Mpc of the Milky Way, 5 out of 6 of which are dwarf galaxies (see their figure 4). Using the data presented in \citet{kara19}, we find that there are 109 - 119 galaxies located between 1.1 and 1.8 Mpc from the Milky Way, where 1.8 Mpc refers to the perfect star/galaxy separation (see red solid line in Figure \ref{fig:distance}), and where 1.1 Mpc is the distance limit estimated when including contaminating galaxies as described in Section \ref{sec:contamination} (see also gray solid line in Figure \ref{fig:distance}). If a Pal 5-like stream is located in either of the 109 - 119 galaxies, WFIRST should be able to detect it in resolved stars. All of these galaxies, except for M31, are dwarfs, and the most luminous dwarfs within this region are M32, M33 and the LMC. The number of observable streams will depend on the GC populations of dwarfs (see e.g. GCs in Fornax: \citealt{shapley38}, \citealt{hodge61a} and the LMC: \citealt{hodge61b}). The exact properties of the streams will further depend on the strength of the dwarfs' tidal fields. 
+
+Similarly, we estimated that the 5 times more massive Pal 5-like streams are easily detectable in external galaxies within $\sim$1.7 - 6.2 Mpc of the Milky Way (see Section \ref{sec:resother}). 
+Within these distance limits, there are 118 - 493 galaxies (\citealt{kara19}, I. Karachentsev, {\it private communication}). Only 4\% of these have luminosities, $L > 5 \times 10^9$ $L_{\odot}$. Similarly, for the 10 times more massive streams, we estimated that the distance limit to external galaxies was  $\sim$3.5 - 7.8 Mpc (see dashed gray lines in Figure \ref{fig:distance}). There are between 199 - 667 galaxies within these limits, and, again, only 4\% of these are more luminous than  $L > 5 \times 10^9$ $L_{\odot}$.
+
+We emphasize that the distance limits to external galaxies presented in Figure \ref{fig:distance} could be larger with stricter color cuts (i.e. metallicity cuts), and as the GCs could be younger and therefore brighter than Pal 5.  Moreover, our constraint that the mock-streams stand out with respect to background stellar halos if C$_{err} >$ 15 could be too conservative. A smaller value than C$_{err} =$ 15 might enable us to include more massive galaxy hosts to surveys searching for thin GC streams (see also the discussion in Section \ref{sec:color}). 
+
+
 \subsection{Finding thin globular cluster streams}
 \label{sec:color}
-Throughout the paper, we have provided conservative estimates for the detectability of thin stellar streams in external galaxies. In reality, there are additional techniques we can apply which can facilitate detections of thin streams to greater distances. 
+There are additional techniques we can apply which can facilitate detections of thin streams to greater distances. Globular clusters have metallicity spreads from [Fe/H]$ = -2.5$ - 0 (\citealt{harris96}). Depending on the properties of the stellar halo of interest, the cluster can stand out more against the background stellar halo of their host galaxy than illustrated in Figure \ref{fig:M31_wfirst} if the clusters have lower metallicities than Pal 5. PAndAS and WFIRST provide photometric metallicities and in Figure \ref{fig:M31_pandas} and \ref{fig:M31_wfirst} we have therefore implicitly used the color info to apply a ``metallicity cut" (color-cut). 
+However, several colors are available for WFIRST and more cuts in color-color diagrams could help detect fainter streams (see e.g. \citealt{shipp18}). 
 
-Globular clusters have metallicity spreads from [Fe/H]$ = -2.5$ - 0 (\citealt{harris96}). Depending on the properties of the stellar halo of interest, the cluster can stand out more against the background stellar halo of their host galaxy than illustrated in Figure \ref{fig:M31_wfirst} if the clusters have lower metallicities than Pal 5. PAndAS and WFIRST provide photometric metallicities and in Figure \ref{fig:M31_pandas} and \ref{fig:M31_wfirst} we have used therefore used the color info to apply a ``metallicity cut" (color-cut). 
-%PAndAS and WFIRST provide photometric metallicities, but if we obtain spectroscopic metallicities this can enhance the distinction of streams from the background, as the color in each band would provide separate information from the metallicity. 
-However, several colors are available for WFIRST and more cuts in color-color diagrams could therefore help detect fainter streams (see e.g. \citealt{shipp18}). 
+In addition to color cuts, we might be able to detect more streams in external galaxies by doing orbit searches using algorithms such as ``stream-finder" (e.g. \citealt{malhan18}, \citealt{ibata19}). This might enable us to find thin stellar streams at larger distances than suggested in Figure \ref{fig:distance}. However, the lack of kinematic information could complicate these searches. Another method to improve detectability is to use a matched filter technique by applying a smoothing criteria matching the estimated width of the stream at a given distance to the external galaxy of interest. Even without kinematics, we can use the fact that streams are continous and search for them using machine vision algorithms such as the ``Rolling Hough Transform" (see \citealt{clark14}). 
 
-In addition to color cuts, we might be able to detect more streams in external galaxies by doing orbit searches using algorithms such as ``stream-finder" (e.g. \citealt{malhan18}, \citealt{ibata19}). This might enable us to find thin stellar streams at larger distances than suggested in Figure \ref{fig:distance}. However, the lack of kinematic information could complicate these searches. Another method to improve detectability is to use a matched filter technique by applying a smoothing criteria matching the estimated width of the stream at a given distance to the external galaxy of interest. Even without kinematics, we can use the fact that streams are continous and search for them using algorithms such as the ``Rolling Hough Transform" (see \citealt{clark14}). 
-
-In Section \ref{sec:lum}, we noted that WFIRST will not be able to resolve stars in a Pal 5-like stream to greater distances than 11.5 Mpc as the limiting magnitude of WFIRST would be brighter than the brightest stars in Pal 5. Therefore, our results indicate that it is unlikely that the reported ``Maybe Stream" at 20 Mpc (\citealt{abraham18}) hosts resolved stars from the remnant of a Pal 5-like globular cluster. The observations presented in \citet{abraham18}  were carried out with one HST orbit, and they reached a limiting magnitudes of AB ${\sim} 26.5$ (Abraham, private communication). For comparison, the tip of the red giant branch of Pal 5 would be  below the detection limit at this distance using deeper WFIRST limits of mag $<$ 27.15, as the isochrone shifts by a factor ${\sim}$14.7 by moving the stream from 23 kpc to 20 Mpc (see isochrone in bottom left part of Figure \ref{fig:iso_cfht}). 
-
-It is possible that \citet{abraham18} are observing the stream in integrated light (see Figure \ref{fig:int}), however the width of the ``Maybe Stream" stream is only 0.1$\arcsec$ at 20 Mpc, which indicates the stream is only 10 pc wide. Thus assuming 10 pc is representative of the full width of the ``Maybe Stream", the stream would be of lower initial mass than Pal 5's cluster For comparison the thin MW streams, GD1 and Pal 5 range in widths from 30-60 pc (\citealt{price18}) and 40-80 pc (Bonaca et al., {\it in prep.}), respectively. It therefore seems unlikely that a low mass cluster would produce such a long, bright stream. One possibility is that the stream's progenitor cluster was much younger than Pal 5 and thereby leaves the ``Maybe Stream" with more bright stars (see  Section \ref{sec:integrated}), and it is also worth noting that the  ``Maybe Stream" could be closer to us than its nearby galaxies. Deeper observations might help resolve these remaining puzzles. 
+In Section \ref{sec:lum}, we noted that using a 1 hour exposure, WFIRST will not be able to resolve stars in a Pal 5-like stream to greater distances than 38 Mpc, as the limiting magnitude of WFIRST ($Z087 = $ 28.54) would be brighter than the brightest stars in Pal 5. %
+The observations of the ``Maybe Stream" presented in \citet{abraham18}  were carried out with one HST orbit, and they reached a limiting magnitudes of AB ${\sim} 26.5$ (Abraham, private communication). The tip of the red giant branch of Pal 5 would be below the detection limit at this distance, as the isochrone shifts by ${\sim}$14.6 magnitudes if the stream is at 20 Mpc instead of 23.5 kpc (i.e. $d_{mod}$ =  31.51 instead of $d_{mod}$ = 16.86, see isochrone in the bottom left part of Figure \ref{fig:iso_cfht}). Therefore, our results indicate that it is unlikely that the reported ``Maybe Stream" at 20 Mpc (\citealt{abraham18}) hosts resolved stars from the remnant of a Pal 5-like globular cluster. It is possible that \citet{abraham18} are observing the stream in integrated light (see Figure \ref{fig:int}), however the width of the ``Maybe Stream" stream is only 0.1$\arcsec$ at 20 Mpc, which indicates the stream is only 10 pc wide. Thus assuming 10 pc is representative of the full width of the ``Maybe Stream", the stream would be of lower initial mass than Pal 5's cluster. As a comparison, the thin MW streams, GD1 and Pal 5 range in widths from 30-60 pc (\citealt{price18}) and 40-80 pc (Bonaca et al., {\it in prep.}), respectively. It therefore seems unlikely that a low mass cluster would produce such a long, bright stream. One possibility is that the stream's progenitor cluster was much younger than Pal 5 and therefore leaves the ``Maybe Stream" with more bright stars (see  Section \ref{sec:integrated}). It is also possible that the  ``Maybe Stream" could be closer to us than its nearby galaxies, but that would not explain the issue of its thinness. Deeper observations might help elucidate these remaining puzzles. 
 
 \subsection{Gaps in cold stellar streams in external galaxies}
+\label{sec:gaps}
 The gravitational interactions between dark matter subhalos and stellar streams provide an intriguing method for probing the dark matter subhalo power spectrum and thereby setting limits on the nature of the dark matter particle (see e.g. \citealt{erkal16}, \citealt{bovy17}, \citealt{price18}, \citealt{bonaca19}). \citet{garrison17} showed that the presence of dark matter subhalos should be suppressed substantially within the orbit of Pal 5 if baryonic disks are included in dark matter only simulations of galaxies.  Despite this fact, gaps and irregularities have been reported in Pal 5 (see e.g. \citealt{erkal17}, Bonaca et al., {\it in prep.}). These irregularities likely arise to due to Pal 5's prograde orientation with respect to the disk of the Galaxy, as Pal 5 will more likely be affected by molecular clouds in the disk (\citealt{amorisco16}), torques from the Galactic bar (\citealt{hattori16}, \citealt{erkal17}, \citealt{pearson17}) or interactions with spiral arms (\citealt{banik19}).
 
-%%This estimates of subhalo populations in the inner Galaxy were made without including baryonic physics, and \citet{garrison17} suggests that many of the subhalos should be destroyed by the MW's disk. 
 The MW GC stellar stream, GD1 (\citealt{grillmair06}), has an orbit which probes a similar region of the Galaxy as Pal 5 (GD1's $r_{peri} \sim 14$ kpc, GD1's $r_{apo} \sim 26-29$ kpc, \citealt{koposov10}). The orientation of its orbit, on the other hand, is retrograde with respect to the disk of the Galaxy and its pericentric distance is larger than Pal 5's. This makes GD1 a cleaner laboratory for searching for potential past interactions with dark matter subhalos. Interestingly, the recent detection of an under density and a ``spur" in GD1 using data from Gaia DR2 (\citealt{gaiadr2}) can be interpreted as an interaction with a dense substructure (\citealt{price18}, \citealt{bonaca19})
 
-Our work shows that WFIRST should detect many thin stellar streams in resolved stars in nearby galaxies. This will open up the possibility of exciting indirect detections of dark matter through density distortions and gaps in thin stellar streams. 
+Our work shows that WFIRST should detect many thin stellar streams in resolved stars in nearby galaxies. This will open up the possibility of exciting indirect detections of dark matter through density distortions and gaps in thin stellar streams. In external galaxies, we have the advantage of being able to select galaxies without spiral arms and bars, limiting the possible stream perturbers. As discussed in Section \ref{sec:kara}, most of the galaxies in the Local Volume are low mass galaxies (\citealt{kara19}), which could be ideal stream hosts. 
 
-In external galaxies, we have the privilege of selecting galaxies without spiral arms and bars, limiting the possible stream perturbers. Ideal hosts could be dwarfs as well as elliptical galaxies, and we could in principle build up statistical samples to measure subhalo properties as a function of host mass. 
-
-Furthermore, we will  have the opportunity to look for streams at greater galactocentric distances, where more subahlos should reside (\citealt{garrison17}). We will still have to exclude interactions with globular clusters and satellites (see e.g. \citealt{bonaca19}), which will be more difficult due to the lack of kinematic information. However, we hypothesize that vastly increasing the number of thin stellar streams with resolved stars in external galaxies, will be crucial in our quest for an understanding of dark matter. 
+Furthermore, we will  have the opportunity to look for streams at greater galactocentric distances, where more subahlos should reside (\citealt{garrison17}), and we can potentially build up statistical samples to measure subhalo properties as a function of host mass. 
+We will still have to exclude interactions with globular clusters and satellites (see e.g. \citealt{bonaca19}), which will be more difficult due to the lack of kinematic information. However, we hypothesize that vastly increasing the number of thin stellar streams with resolved stars in external galaxies, will be crucial in our quest for an understanding of dark matter. 
 
 \section{Conclusion}\label{sec:conclusion}
-In this paper, we have created mock globular cluster stellar streams and investigated the observability of thin, globular cluster stellar streams in external galaxies. Based on our findings we make the following conclusions:
+In this paper, we have created mock globular cluster stellar streams and investigated the observability of thin, globular cluster streams in external galaxies. We have used the physical properties of the MW stellar stream, Pal 5, as our reference stream, and we have explored GC streams with a maximum of ten times the mass of Pal 5's stream. Our estimates are conservative, as more massive GC streams can exist. Based on our findings we make the following conclusions:
 
 \begin{itemize}
-\item[1.]  WFIRST will be able to detect GC stellar streams in resolved stars in galaxies within xx Mpc.
-\item[2.]  Current and future imaging surveys, using integrated light, can resolve thin stellar streams out to distances of $d \sim 600$ Mpc, depending on the streams' width and their location in their host galaxies. However, the very low surface brightness of the streams will prohibit easy detection of these streams, unless the streams are from much more massive, younger, and metal rich clusters than Pal 5. 
-%will be able to detect thin globular cluster streams out to distances of $d \sim 600$ Mpc, depending on the streams' width, their location in their host galaxies, and the surface brightnesses of the hosts' halos. 
+\item[1.]  For a survey with a 1 hour (1000 sec.) exposure, including contaminating galaxies, WFIRST will be able to detect old, metal poor globular cluster stellar streams in resolved stars to 3.5 Mpc (2.0 Mpc). This volume contains 199 (122) galaxies (\citealt{kara19}), of which 7 (1) are more luminous than 0.1$\times {\rm L}_{\rm MW}$. The exact number of streams will depend on the globular cluster population in the surveyed galaxies.
+\item[2.] Assuming perfect star/galaxy separation, for a 1 hour (1000 sec.) exposure, WFIRST will be able to detect old, metal poor globular cluster stellar streams in resolved stars to distances of 7.8 Mpc (3 Mpc), a volume which contains 667 (150) galaxies, of which 25 (2) are more luminous than 0.1$\times {\rm L}_{\rm MW}$. 
+The distance limit for detecting streams in external galaxies is likely somewhere in between the limits presented in 1. (perfect star/galaxy separation) and 2. (conservative star/galaxy separation).
+\item[3.]  Current and future imaging surveys, using integrated light, can resolve thin stellar streams out to distances of $\sim$600 Mpc, depending on the streams' width and location in their host galaxies. However, the very low surface brightness of the streams (typically $>$30 mag/arcsec$^{2}$) will likely prohibit the detection of such systems, unless the streams originate from much more massive, young, and metal rich clusters than Pal 5. 
 \end{itemize}
 
-Our work provides a positive outlook on the future prospects of using thin streams in external galaxies to both indirectly probe the nature of dark matter through gaps in streams, and to map orbit structures in external galaxies and potentially the triaxiality of external halos (see Yavetz et al., {\it in prep.}). 
+Our work provides a positive outlook on the future prospects of finding thin stellar streams in resolved stars with WFIRST in external galaxies. We emphasize that detecting these systems in integrated light will be difficult. The thin streams in external galaxies can be used to both indirectly probe the nature of dark matter through gaps in streams, and to map orbit structures in external galaxies and potentially the triaxiality of external dark matter halos (see Yavetz et al., {\it in prep.}). 
 
 \acknowledgements
-We thank Robyn Sanderson, David Spergel, Rubab Khan and Anil C. Seth for insightful discussions on WIFRST. SP thanks Adrian Price-Whelan and David W. Hogg for insightful questions. KVJ's contributions were supported by NSF grant AST-1614743. The Flatiron Institute is supported by the Simons Foundation. This research made use of Astropy,\footnote{http://www.astropy.org} a community-developed core Python package for Astronomy \citep{astropy:2013, astropy:2018}.
-%
-%\appendix\label{sec:appendix}
-%Throughout the paper, we have ...
-
+We thank Rubab Khan, Andrew Dolphin and Eric Bell for their contributions to the WFIRST image simulations and reduction software and catalogs. We also thank Robyn Sanderson, Adrian Price-Whelan, Anil C. Seth, David W. Hogg and David Spergel for insightful discussions, and and we thank Igor Karachentsev for sharing his data on external galaxies. SP's, TKS's and KVJ's work was performed in part during the Gaia19 workshop and the 2019 Santa Barbara Gaia Sprint (also supported by the Heising-Simons Foundation), both hosted by the Kavli Institute for Theoretical Physics at the University of California, Santa Barbara and supported but the the National Science Foundation under grants NSF PHY-1748958. The Flatiron Institute is supported by the Simons Foundation. KVJ’s contributions were inspired by the WFIRST Infrared Nearby Galaxies Survey  collaboration and supported in part by NASA grant NNG16PJ28C through subcontract from the University of Washington and the National Science Foundation under grants NSF AST-1614743. 
 
 
 \software{
@@ -495,6 +468,522 @@ We thank Robyn Sanderson, David Spergel, Rubab Khan and Anil C. Seth for insight
 }
 
 \bibliographystyle{aasjournal}
-\bibliography{pal5ext}
+%\bibliography{pal5ext}
+
+\begin{thebibliography}{}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\providecommand{\url}[1]{\href{#1}{#1}}
+\providecommand{\dodoi}[1]{doi:~\href{http://doi.org/#1}{\nolinkurl{#1}}}
+\providecommand{\doeprint}[1]{\href{http://ascl.net/#1}{\nolinkurl{http://ascl.net/#1}}}
+\providecommand{\doarXiv}[1]{\href{https://arxiv.org/abs/#1}{\nolinkurl{https://arxiv.org/abs/#1}}}
+
+\bibitem[{{Abraham} {et~al.}(2018){Abraham}, {Danieli}, {van Dokkum}, {Conroy},
+  {Kruijssen}, {Cohen}, {Merritt}, {Zhang}, {Lokhorst}, {Mowla}, {Brodie},
+  {Romanowsky}, \& {Janssens}}]{abraham18}
+{Abraham}, R., {Danieli}, S., {van Dokkum}, P., {et~al.} 2018, Research Notes
+  of the American Astronomical Society, 2, 16, \dodoi{10.3847/2515-5172/aac087}
+
+\bibitem[{{Amorisco} {et~al.}(2016){Amorisco}, {G{\'o}mez}, {Vegetti}, \&
+  {White}}]{amorisco16}
+{Amorisco}, N.~C., {G{\'o}mez}, F.~A., {Vegetti}, S., \& {White}, S.~D.~M.
+  2016, \mnras, 463, L17, \dodoi{10.1093/mnrasl/slw148}
+
+\bibitem[{{Annibali} {et~al.}(2012){Annibali}, {Tosi}, {Aloisi}, {van der
+  Marel}, \& {Martinez-Delgado}}]{annibali12}
+{Annibali}, F., {Tosi}, M., {Aloisi}, A., {van der Marel}, R.~P., \&
+  {Martinez-Delgado}, D. 2012, \apjl, 745, L1,
+  \dodoi{10.1088/2041-8205/745/1/L1}
+
+\bibitem[{{Astropy Collaboration} {et~al.}(2013){Astropy Collaboration},
+  {Robitaille}, {Tollerud}, {Greenfield}, {Droettboom}, {Bray}, {Aldcroft},
+  {Davis}, {Ginsburg}, {Price-Whelan}, {Kerzendorf}, {Conley}, {Crighton},
+  {Barbary}, {Muna}, {Ferguson}, {Grollier}, {Parikh}, {Nair}, {Unther},
+  {Deil}, {Woillez}, {Conseil}, {Kramer}, {Turner}, {Singer}, {Fox}, {Weaver},
+  {Zabalza}, {Edwards}, {Azalee Bostroem}, {Burke}, {Casey}, {Crawford},
+  {Dencheva}, {Ely}, {Jenness}, {Labrie}, {Lim}, {Pierfederici}, {Pontzen},
+  {Ptak}, {Refsdal}, {Servillat}, \& {Streicher}}]{astropy:2013}
+{Astropy Collaboration}, {Robitaille}, T.~P., {Tollerud}, E.~J., {et~al.} 2013,
+  \aap, 558, A33, \dodoi{10.1051/0004-6361/201322068}
+
+\bibitem[{{Astropy Collaboration} {et~al.}(2018){Astropy Collaboration},
+  {Price-Whelan}, {Sip{\H o}cz}, {G{\"u}nther}, {Lim}, {Crawford}, {Conseil},
+  {Shupe}, {Craig}, {Dencheva}, {Ginsburg}, {VanderPlas}, {Bradley},
+  {P{\'e}rez-Su{\'a}rez}, {de Val-Borro}, {Aldcroft}, {Cruz}, {Robitaille},
+  {Tollerud}, {Ardelean}, {Babej}, {Bach}, {Bachetti}, {Bakanov}, {Bamford},
+  {Barentsen}, {Barmby}, {Baumbach}, {Berry}, {Biscani}, {Boquien}, {Bostroem},
+  {Bouma}, {Brammer}, {Bray}, {Breytenbach}, {Buddelmeijer}, {Burke},
+  {Calderone}, {Cano Rodr{\'{\i}}guez}, {Cara}, {Cardoso}, {Cheedella},
+  {Copin}, {Corrales}, {Crichton}, {D'Avella}, {Deil}, {Depagne}, {Dietrich},
+  {Donath}, {Droettboom}, {Earl}, {Erben}, {Fabbro}, {Ferreira}, {Finethy},
+  {Fox}, {Garrison}, {Gibbons}, {Goldstein}, {Gommers}, {Greco}, {Greenfield},
+  {Groener}, {Grollier}, {Hagen}, {Hirst}, {Homeier}, {Horton}, {Hosseinzadeh},
+  {Hu}, {Hunkeler}, {Ivezi{\'c}}, {Jain}, {Jenness}, {Kanarek}, {Kendrew},
+  {Kern}, {Kerzendorf}, {Khvalko}, {King}, {Kirkby}, {Kulkarni}, {Kumar},
+  {Lee}, {Lenz}, {Littlefair}, {Ma}, {Macleod}, {Mastropietro}, {McCully},
+  {Montagnac}, {Morris}, {Mueller}, {Mumford}, {Muna}, {Murphy}, {Nelson},
+  {Nguyen}, {Ninan}, {N{\"o}the}, {Ogaz}, {Oh}, {Parejko}, {Parley}, {Pascual},
+  {Patil}, {Patil}, {Plunkett}, {Prochaska}, {Rastogi}, {Reddy Janga},
+  {Sabater}, {Sakurikar}, {Seifert}, {Sherbert}, {Sherwood-Taylor}, {Shih},
+  {Sick}, {Silbiger}, {Singanamalla}, {Singer}, {Sladen}, {Sooley},
+  {Sornarajah}, {Streicher}, {Teuben}, {Thomas}, {Tremblay}, {Turner},
+  {Terr{\'o}n}, {van Kerkwijk}, {de la Vega}, {Watkins}, {Weaver}, {Whitmore},
+  {Woillez}, {Zabalza}, \& {Astropy Contributors}}]{astropy:2018}
+{Astropy Collaboration}, {Price-Whelan}, A.~M., {Sip{\H o}cz}, B.~M., {et~al.}
+  2018, \aj, 156, 123, \dodoi{10.3847/1538-3881/aabc4f}
+
+\bibitem[{{Banik} \& {Bovy}(2019)}]{banik19}
+{Banik}, N., \& {Bovy}, J. 2019, \mnras, 484, 2009,
+  \dodoi{10.1093/mnras/stz142}
+
+\bibitem[{{Belokurov} {et~al.}(2006){Belokurov}, {Zucker}, {Evans}, {Gilmore},
+  {Vidrih}, {Bramich}, {Newberg}, {Wyse}, {Irwin}, {Fellhauer}, {Hewett},
+  {Walton}, {Wilkinson}, {Cole}, {Yanny}, {Rockosi}, {Beers}, {Bell},
+  {Brinkmann}, {Ivezi{\'c}}, \& {Lupton}}]{belokurov06}
+{Belokurov}, V., {Zucker}, D.~B., {Evans}, N.~W., {et~al.} 2006, \apjl, 642,
+  L137, \dodoi{10.1086/504797}
+
+\bibitem[{{Bonaca} {et~al.}(2018){Bonaca}, {Hogg}, {Price-Whelan}, \&
+  {Conroy}}]{bonaca19}
+{Bonaca}, A., {Hogg}, D.~W., {Price-Whelan}, A.~M., \& {Conroy}, C. 2018, arXiv
+  e-prints.
+\newblock \doarXiv{1811.03631}
+
+\bibitem[{{Bovy} {et~al.}(2016){Bovy}, {Bahmanyar}, {Fritz}, \&
+  {Kallivayalil}}]{bovy16}
+{Bovy}, J., {Bahmanyar}, A., {Fritz}, T.~K., \& {Kallivayalil}, N. 2016, \apj,
+  833, 31, \dodoi{10.3847/1538-4357/833/1/31}
+
+\bibitem[{{Bovy} {et~al.}(2017){Bovy}, {Erkal}, \& {Sanders}}]{bovy17}
+{Bovy}, J., {Erkal}, D., \& {Sanders}, J.~L. 2017, \mnras, 466, 628,
+  \dodoi{10.1093/mnras/stw3067}
+
+\bibitem[{{Bressan} {et~al.}(2012){Bressan}, {Marigo}, {Girardi}, {Salasnich},
+  {Dal Cero}, {Rubele}, \& {Nanni}}]{bressan12}
+{Bressan}, A., {Marigo}, P., {Girardi}, L., {et~al.} 2012, \mnras, 427, 127,
+  \dodoi{10.1111/j.1365-2966.2012.21948.x}
+
+\bibitem[{{Brown} {et~al.}(2009){Brown}, {Smith}, {Ferguson}, {Guhathakurta},
+  {Kalirai}, {Kimble}, {Renzini}, {Rich}, {Sweigart}, \& {Vanden
+  Berg}}]{brown09}
+{Brown}, T.~M., {Smith}, E., {Ferguson}, H.~C., {et~al.} 2009, \apjs, 184, 152,
+  \dodoi{10.1088/0067-0049/184/1/152}
+
+\bibitem[{{Chemin} {et~al.}(2009){Chemin}, {Carignan}, \& {Foster}}]{chemin09}
+{Chemin}, L., {Carignan}, C., \& {Foster}, T. 2009, \apj, 705, 1395,
+  \dodoi{10.1088/0004-637X/705/2/1395}
+
+\bibitem[{{Clark} {et~al.}(2014){Clark}, {Peek}, \& {Putman}}]{clark14}
+{Clark}, S.~E., {Peek}, J.~E.~G., \& {Putman}, M.~E. 2014, \apj, 789, 82,
+  \dodoi{10.1088/0004-637X/789/1/82}
+
+\bibitem[{{Crnojevi{\'c}} {et~al.}(2014){Crnojevi{\'c}}, {Ferguson}, {Irwin},
+  {McConnachie}, {Bernard}, {Fardal}, {Ibata}, {Lewis}, {Martin}, {Navarro},
+  {No{\"e}l}, \& {Pasetto}}]{crno14}
+{Crnojevi{\'c}}, D., {Ferguson}, A.~M.~N., {Irwin}, M.~J., {et~al.} 2014,
+  \mnras, 445, 3862, \dodoi{10.1093/mnras/stu2003}
+
+\bibitem[{{Crnojevi{\'c}} {et~al.}(2016){Crnojevi{\'c}}, {Sand}, {Spekkens},
+  {Caldwell}, {Guhathakurta}, {McLeod}, {Seth}, {Simon}, {Strader}, \&
+  {Toloba}}]{crno16}
+{Crnojevi{\'c}}, D., {Sand}, D.~J., {Spekkens}, K., {et~al.} 2016, \apj, 823,
+  19, \dodoi{10.3847/0004-637X/823/1/19}
+
+\bibitem[{{Dey} {et~al.}(2019){Dey}, {Schlegel}, {Lang}, {Blum}, {Burleigh},
+  {Fan}, {Findlay}, {Finkbeiner}, {Herrera}, {Juneau}, {Landriau}, {Levi},
+  {McGreer}, {Meisner}, {Myers}, {Moustakas}, {Nugent}, {Patej}, {Schlafly},
+  {Walker}, {Valdes}, {Weaver}, {Y{\`e}che}, {Zou}, {Zhou}, {Abareshi},
+  {Abbott}, {Abolfathi}, {Aguilera}, {Alam}, {Allen}, {Alvarez}, {Annis},
+  {Ansarinejad}, {Aubert}, {Beechert}, {Bell}, {BenZvi}, {Beutler}, {Bielby},
+  {Bolton}, {Brice{\~n}o}, {Buckley-Geer}, {Butler}, {Calamida}, {Carlberg},
+  {Carter}, {Casas}, {Castander}, {Choi}, {Comparat}, {Cukanovaite}, {Delubac},
+  {DeVries}, {Dey}, {Dhungana}, {Dickinson}, {Ding}, {Donaldson}, {Duan},
+  {Duckworth}, {Eftekharzadeh}, {Eisenstein}, {Etourneau}, {Fagrelius},
+  {Farihi}, {Fitzpatrick}, {Font-Ribera}, {Fulmer}, {G{\"a}nsicke},
+  {Gaztanaga}, {George}, {Gerdes}, {Gontcho}, {Gorgoni}, {Green}, {Guy},
+  {Harmer}, {Hernand ez}, {Honscheid}, {Huang}, {James}, {Jannuzi}, {Jiang},
+  {Joyce}, {Karcher}, {Karkar}, {Kehoe}, {Kneib}, {Kueter-Young}, {Lan},
+  {Lauer}, {Le Guillou}, {Le Van Suu}, {Lee}, {Lesser}, {Perreault Levasseur},
+  {Li}, {Mann}, {Marshall}, {Mart{\'\i}nez-V{\'a}zquez}, {Martini}, {du Mas des
+  Bourboux}, {McManus}, {Meier}, {M{\'e}nard}, {Metcalfe},
+  {Mu{\~n}oz-Guti{\'e}rrez}, {Najita}, {Napier}, {Narayan}, {Newman}, {Nie},
+  {Nord}, {Norman}, {Olsen}, {Paat}, {Palanque-Delabrouille}, {Peng},
+  {Poppett}, {Poremba}, {Prakash}, {Rabinowitz}, {Raichoor}, {Rezaie},
+  {Robertson}, {Roe}, {Ross}, {Ross}, {Rudnick}, {Safonova}, {Saha},
+  {S{\'a}nchez}, {Savary}, {Schweiker}, {Scott}, {Seo}, {Shan}, {Silva},
+  {Slepian}, {Soto}, {Sprayberry}, {Staten}, {Stillman}, {Stupak}, {Summers},
+  {Sien Tie}, {Tirado}, {Vargas-Maga{\~n}a}, {Vivas}, {Wechsler}, {Williams},
+  {Yang}, {Yang}, {Yapici}, {Zaritsky}, {Zenteno}, {Zhang}, {Zhang}, {Zhou}, \&
+  {Zhou}}]{dey2019}
+{Dey}, A., {Schlegel}, D.~J., {Lang}, D., {et~al.} 2019, \aj, 157, 168,
+  \dodoi{10.3847/1538-3881/ab089d}
+
+\bibitem[{{Diemand} {et~al.}(2008){Diemand}, {Kuhlen}, {Madau}, {Zemp},
+  {Moore}, {Potter}, \& {Stadel}}]{diemand08}
+{Diemand}, J., {Kuhlen}, M., {Madau}, P., {et~al.} 2008, \nat, 454, 735,
+  \dodoi{10.1038/nature07153}
+
+\bibitem[{{Dolphin}(2016)}]{dolphin16}
+{Dolphin}, A. 2016, {DOLPHOT: Stellar photometry}, Astrophysics Source Code
+  Library.
+\newblock \doeprint{1608.013}
+
+\bibitem[{{Dolphin}(2000)}]{dolphin00}
+{Dolphin}, A.~E. 2000, \pasp, 112, 1383, \dodoi{10.1086/316630}
+
+\bibitem[{{Dotter} {et~al.}(2011){Dotter}, {Sarajedini}, \&
+  {Anderson}}]{dotter11}
+{Dotter}, A., {Sarajedini}, A., \& {Anderson}, J. 2011, \apj, 738, 74,
+  \dodoi{10.1088/0004-637X/738/1/74}
+
+\bibitem[{{Eilers} {et~al.}(2019){Eilers}, {Hogg}, {Rix}, \& {Ness}}]{eilers19}
+{Eilers}, A.-C., {Hogg}, D.~W., {Rix}, H.-W., \& {Ness}, M.~K. 2019, \apj, 871,
+  120, \dodoi{10.3847/1538-4357/aaf648}
+
+\bibitem[{{Erkal} {et~al.}(2016){Erkal}, {Belokurov}, {Bovy}, \&
+  {Sanders}}]{erkal16}
+{Erkal}, D., {Belokurov}, V., {Bovy}, J., \& {Sanders}, J.~L. 2016, \mnras,
+  463, 102, \dodoi{10.1093/mnras/stw1957}
+
+\bibitem[{{Erkal} {et~al.}(2017){Erkal}, {Koposov}, \& {Belokurov}}]{erkal17}
+{Erkal}, D., {Koposov}, S.~E., \& {Belokurov}, V. 2017, \mnras, 470, 60,
+  \dodoi{10.1093/mnras/stx1208}
+
+\bibitem[{{Gaia Collaboration} {et~al.}(2018){Gaia Collaboration}, {Brown},
+  {Vallenari}, {Prusti}, {de Bruijne}, {Babusiaux}, {Bailer-Jones}, {Biermann},
+  {Evans}, {Eyer}, \& et~al.}]{gaiadr2}
+{Gaia Collaboration}, {Brown}, A.~G.~A., {Vallenari}, A., {et~al.} 2018, \aap,
+  616, A1, \dodoi{10.1051/0004-6361/201833051}
+
+\bibitem[{{Garrison-Kimmel} {et~al.}(2017){Garrison-Kimmel}, {Wetzel},
+  {Bullock}, {Hopkins}, {Boylan-Kolchin}, {Faucher-Gigu{\`e}re}, {Kere{\v s}},
+  {Quataert}, {Sanderson}, {Graus}, \& {Kelley}}]{garrison17}
+{Garrison-Kimmel}, S., {Wetzel}, A., {Bullock}, J.~S., {et~al.} 2017, \mnras,
+  471, 1709, \dodoi{10.1093/mnras/stx1710}
+
+\bibitem[{{Grillmair} \& {Dionatos}(2006)}]{grillmair06}
+{Grillmair}, C.~J., \& {Dionatos}, O. 2006, \apjl, 643, L17,
+  \dodoi{10.1086/505111}
+
+\bibitem[{{Harris}(1996)}]{harris96}
+{Harris}, W.~E. 1996, \aj, 112, 1487, \dodoi{10.1086/118116}
+
+\bibitem[{{Hattori} {et~al.}(2016){Hattori}, {Erkal}, \& {Sanders}}]{hattori16}
+{Hattori}, K., {Erkal}, D., \& {Sanders}, J.~L. 2016, \mnras, 460, 497,
+  \dodoi{10.1093/mnras/stw1006}
+
+\bibitem[{{Hodge}(1961{\natexlab{a}})}]{hodge61a}
+{Hodge}, P.~W. 1961{\natexlab{a}}, \aj, 66, 83, \dodoi{10.1086/108378}
+
+\bibitem[{{Hodge}(1961{\natexlab{b}})}]{hodge61b}
+{Hodge}, P.~W. 1961{\natexlab{b}}, \apj, 133, 413, \dodoi{10.1086/147044}
+
+\bibitem[{Hunter(2007)}]{Hunter:2007}
+Hunter, J.~D. 2007, Computing In Science \& Engineering, 9, 90,
+  \dodoi{10.1109/MCSE.2007.55}
+
+\bibitem[{{Ibata} {et~al.}(2001{\natexlab{a}}){Ibata}, {Irwin}, {Lewis},
+  {Ferguson}, \& {Tanvir}}]{ibata00}
+{Ibata}, R., {Irwin}, M., {Lewis}, G., {Ferguson}, A.~M.~N., \& {Tanvir}, N.
+  2001{\natexlab{a}}, \nat, 412, 49
+
+\bibitem[{{Ibata} {et~al.}(2001{\natexlab{b}}){Ibata}, {Irwin}, {Lewis}, \&
+  {Stolte}}]{ibata01}
+{Ibata}, R., {Irwin}, M., {Lewis}, G.~F., \& {Stolte}, A. 2001{\natexlab{b}},
+  \apjl, 547, L133, \dodoi{10.1086/318894}
+
+\bibitem[{{Ibata} {et~al.}(2019{\natexlab{a}}){Ibata}, {Malhan}, \&
+  {Martin}}]{ibata19}
+{Ibata}, R., {Malhan}, K., \& {Martin}, N. 2019{\natexlab{a}}, arXiv e-prints.
+\newblock \doarXiv{1901.07566}
+
+\bibitem[{{Ibata} {et~al.}(2007){Ibata}, {Martin}, {Irwin}, {Chapman},
+  {Ferguson}, {Lewis}, \& {McConnachie}}]{ibata07}
+{Ibata}, R., {Martin}, N.~F., {Irwin}, M., {et~al.} 2007, \apj, 671, 1591,
+  \dodoi{10.1086/522574}
+
+\bibitem[{{Ibata} {et~al.}(2019{\natexlab{b}}){Ibata}, {Bellazzini}, {Malhan},
+  {Martin}, \& {Bianchini}}]{ibata19b}
+{Ibata}, R.~A., {Bellazzini}, M., {Malhan}, K., {Martin}, N., \& {Bianchini},
+  P. 2019{\natexlab{b}}, Nature Astronomy, 258,
+  \dodoi{10.1038/s41550-019-0751-x}
+
+\bibitem[{{Ibata} {et~al.}(2002){Ibata}, {Lewis}, {Irwin}, \&
+  {Quinn}}]{ibata02}
+{Ibata}, R.~A., {Lewis}, G.~F., {Irwin}, M.~J., \& {Quinn}, T. 2002, \mnras,
+  332, 915, \dodoi{10.1046/j.1365-8711.2002.05358.x}
+
+\bibitem[{{Ibata} {et~al.}(2016){Ibata}, {Lewis}, \& {Martin}}]{ibata16}
+{Ibata}, R.~A., {Lewis}, G.~F., \& {Martin}, N.~F. 2016, \apj, 819, 1,
+  \dodoi{10.3847/0004-637X/819/1/1}
+
+\bibitem[{{Ibata} {et~al.}(2017){Ibata}, {Lewis}, {Thomas}, {Martin}, \&
+  {Chapman}}]{ibata17}
+{Ibata}, R.~A., {Lewis}, G.~F., {Thomas}, G., {Martin}, N.~F., \& {Chapman}, S.
+  2017, \apj, 842, 120, \dodoi{10.3847/1538-4357/aa7514}
+
+\bibitem[{{Ivezi{\'c}} {et~al.}(2008){Ivezi{\'c}}, {Kahn}, {Tyson}, {Abel},
+  {Acosta}, {Allsman}, {Alonso}, {AlSayyad}, {Anderson}, {Andrew}, \&
+  et~al.}]{ivezi08}
+{Ivezi{\'c}}, {\v Z}., {Kahn}, S.~M., {Tyson}, J.~A., {et~al.} 2008, ArXiv
+  e-prints.
+\newblock \doarXiv{0805.2366}
+
+\bibitem[{{Johnston}(1998)}]{johnston98}
+{Johnston}, K.~V. 1998, \apj, 495, 297, \dodoi{10.1086/305273}
+
+\bibitem[{{Johnston} {et~al.}(2001){Johnston}, {Sackett}, \&
+  {Bullock}}]{johnston01}
+{Johnston}, K.~V., {Sackett}, P.~D., \& {Bullock}, J.~S. 2001, \apj, 557, 137,
+  \dodoi{10.1086/321644}
+
+\bibitem[{{Johnston} {et~al.}(2002){Johnston}, {Spergel}, \&
+  {Haydn}}]{johnston02}
+{Johnston}, K.~V., {Spergel}, D.~N., \& {Haydn}, C. 2002, \apj, 570, 656,
+  \dodoi{10.1086/339791}
+
+\bibitem[{{Johnston} {et~al.}(1999){Johnston}, {Zhao}, {Spergel}, \&
+  {Hernquist}}]{johnston99}
+{Johnston}, K.~V., {Zhao}, H., {Spergel}, D.~N., \& {Hernquist}, L. 1999,
+  \apjl, 512, L109, \dodoi{10.1086/311876}
+
+\bibitem[{Jones {et~al.}(2001)Jones, Oliphant, Peterson, {et~al.}}]{scipy}
+Jones, E., Oliphant, T., Peterson, P., {et~al.} 2001, {SciPy}: Open source
+  scientific tools for {Python}.
+\newblock \url{http://www.scipy.org/}
+
+\bibitem[{{Karachentsev} \& {Kaisina}(2019)}]{kara19}
+{Karachentsev}, I.~D., \& {Kaisina}, E.~I. 2019, arXiv e-prints.
+\newblock \doarXiv{1905.08477}
+
+\bibitem[{{Koekemoer} {et~al.}(2011){Koekemoer}, {Faber}, {Ferguson}, {Grogin},
+  {Kocevski}, {Koo}, {Lai}, {Lotz}, {Lucas}, {McGrath}, {Ogaz}, {Rajan},
+  {Riess}, {Rodney}, {Strolger}, {Casertano}, {Castellano}, {Dahlen},
+  {Dickinson}, {Dolch}, {Fontana}, {Giavalisco}, {Grazian}, {Guo}, {Hathi},
+  {Huang}, {van der Wel}, {Yan}, {Acquaviva}, {Alexander}, {Almaini}, {Ashby},
+  {Barden}, {Bell}, {Bournaud}, {Brown}, {Caputi}, {Cassata}, {Challis},
+  {Chary}, {Cheung}, {Cirasuolo}, {Conselice}, {Roshan Cooray}, {Croton},
+  {Daddi}, {Dav{\'e}}, {de Mello}, {de Ravel}, {Dekel}, {Donley}, {Dunlop},
+  {Dutton}, {Elbaz}, {Fazio}, {Filippenko}, {Finkelstein}, {Frazer}, {Gardner},
+  {Garnavich}, {Gawiser}, {Gruetzbauch}, {Hartley}, {H{\"a}ussler},
+  {Herrington}, {Hopkins}, {Huang}, {Jha}, {Johnson}, {Kartaltepe},
+  {Khostovan}, {Kirshner}, {Lani}, {Lee}, {Li}, {Madau}, {McCarthy},
+  {McIntosh}, {McLure}, {McPartland}, {Mobasher}, {Moreira}, {Mortlock},
+  {Moustakas}, {Mozena}, {Nandra}, {Newman}, {Nielsen}, {Niemi}, {Noeske},
+  {Papovich}, {Pentericci}, {Pope}, {Primack}, {Ravindranath}, {Reddy},
+  {Renzini}, {Rix}, {Robaina}, {Rosario}, {Rosati}, {Salimbeni}, {Scarlata},
+  {Siana}, {Simard}, {Smidt}, {Snyder}, {Somerville}, {Spinrad}, {Straughn},
+  {Telford}, {Teplitz}, {Trump}, {Vargas}, {Villforth}, {Wagner}, {Wandro},
+  {Wechsler}, {Weiner}, {Wiklind}, {Wild}, {Wilson}, {Wuyts}, \&
+  {Yun}}]{koekemoer11}
+{Koekemoer}, A.~M., {Faber}, S.~M., {Ferguson}, H.~C., {et~al.} 2011, \apjs,
+  197, 36, \dodoi{10.1088/0067-0049/197/2/36}
+
+\bibitem[{{Koposov} {et~al.}(2010){Koposov}, {Rix}, \& {Hogg}}]{koposov10}
+{Koposov}, S.~E., {Rix}, H.-W., \& {Hogg}, D.~W. 2010, \apj, 712, 260,
+  \dodoi{10.1088/0004-637X/712/1/260}
+
+\bibitem[{{Law} \& {Majewski}(2010)}]{law10}
+{Law}, D.~R., \& {Majewski}, S.~R. 2010, \apj, 714, 229,
+  \dodoi{10.1088/0004-637X/714/1/229}
+
+\bibitem[{{Malhan} \& {Ibata}(2018)}]{malhan18}
+{Malhan}, K., \& {Ibata}, R.~A. 2018, \mnras, 477, 4063,
+  \dodoi{10.1093/mnras/sty912}
+
+\bibitem[{{Marigo} {et~al.}(2017){Marigo}, {Girardi}, {Bressan}, {Rosenfield},
+  {Aringer}, {Chen}, {Dussin}, {Nanni}, {Pastorelli}, {Rodrigues}, {Trabucchi},
+  {Bladh}, {Dalcanton}, {Groenewegen}, {Montalb{\'a}n}, \& {Wood}}]{margio17}
+{Marigo}, P., {Girardi}, L., {Bressan}, A., {et~al.} 2017, \apj, 835, 77,
+  \dodoi{10.3847/1538-4357/835/1/77}
+
+\bibitem[{{Mart{\'{\i}}nez-Delgado} {et~al.}(2010){Mart{\'{\i}}nez-Delgado},
+  {Gabany}, {Crawford}, {Zibetti}, {Majewski}, {Rix}, {Fliri},
+  {Carballo-Bello}, {Bardalez-Gagliuffi}, {Pe{\~n}arrubia}, {Chonis}, {Madore},
+  {Trujillo}, {Schirmer}, \& {McDavid}}]{delgado10}
+{Mart{\'{\i}}nez-Delgado}, D., {Gabany}, R.~J., {Crawford}, K., {et~al.} 2010,
+  \aj, 140, 962, \dodoi{10.1088/0004-6256/140/4/962}
+
+\bibitem[{{Mart{\'{\i}}nez-Delgado} {et~al.}(2012){Mart{\'{\i}}nez-Delgado},
+  {Romanowsky}, {Gabany}, {Annibali}, {Arnold}, {Fliri}, {Zibetti}, {van der
+  Marel}, {Rix}, {Chonis}, {Carballo-Bello}, {Aloisi}, {Macci{\`o}},
+  {Gallego-Laborda}, {Brodie}, \& {Merrifield}}]{delgado12}
+{Mart{\'{\i}}nez-Delgado}, D., {Romanowsky}, A.~J., {Gabany}, R.~J., {et~al.}
+  2012, \apjl, 748, L24, \dodoi{10.1088/2041-8205/748/2/L24}
+
+\bibitem[{{McConnachie} {et~al.}(2018){McConnachie}, {Ibata}, {Martin},
+  {Ferguson}, {Collins}, {Gwyn}, {Irwin}, {Lewis}, {Mackey}, \&
+  {Davidge}}]{McConnachie18}
+{McConnachie}, A.~W., {Ibata}, R., {Martin}, N., {et~al.} 2018, \apj, 868, 55,
+  \dodoi{10.3847/1538-4357/aae8e7}
+
+\bibitem[{{Miyazaki} {et~al.}(2012){Miyazaki}, {Komiyama}, {Nakaya}, {Kamata},
+  {Doi}, {Hamana}, {Karoji}, {Furusawa}, {Kawanomoto}, {Morokuma}, {Ishizuka},
+  {Nariai}, {Tanaka}, {Uraguchi}, {Utsumi}, {Obuchi}, {Okura}, {Oguri},
+  {Takata}, {Tomono}, {Kurakami}, {Namikawa}, {Usuda}, {Yamanoi}, {Terai},
+  {Uekiyo}, {Yamada}, {Koike}, {Aihara}, {Fujimori}, {Mineo}, {Miyatake},
+  {Yasuda}, {Nishizawa}, {Saito}, {Tanaka}, {Uchida}, {Katayama}, {Wang},
+  {Chen}, {Lupton}, {Loomis}, {Bickerton}, {Price}, {Gunn}, {Suzuki},
+  {Miyazaki}, {Muramatsu}, {Yamamoto}, {Endo}, {Ezaki}, {Itoh}, {Miwa},
+  {Yokota}, {Matsuda}, {Ebinuma}, \& {Takeshi}}]{miyazaki12}
+{Miyazaki}, S., {Komiyama}, Y., {Nakaya}, H., {et~al.} 2012, in \procspie, Vol.
+  8446, Ground-based and Airborne Instrumentation for Astronomy IV, 84460Z
+
+\bibitem[{{Nidever} {et~al.}(2018){Nidever}, {Olsen}, {Choi}, {de Boer},
+  {Blum}, {Bell}, {Zaritsky}, {Martin}, {Saha}, {Conn}, {Besla}, {van der
+  Marel}, {Noel}, {Monachesi}, {Stringfellow}, {Massana}, {Cioni}, {Gallart},
+  {Monelli}, {Martinez-Delgado}, {Munoz}, {Majewski}, {Vivas}, {Walker},
+  {Kaleida}, \& {Chu}}]{nidever18}
+{Nidever}, D.~L., {Olsen}, K., {Choi}, Y., {et~al.} 2018, arXiv e-prints.
+\newblock \doarXiv{1805.02671}
+
+\bibitem[{{Odenkirchen} {et~al.}(2001){Odenkirchen}, {Grebel}, {Rockosi},
+  {Dehnen}, {Ibata}, {Rix}, {Stolte}, {Wolf}, {Anderson}, {Bahcall},
+  {Brinkmann}, {Csabai}, {Hennessy}, {Hindsley}, {Ivezi{\'c}}, {Lupton},
+  {Munn}, {Pier}, {Stoughton}, \& {York}}]{oden01}
+{Odenkirchen}, M., {Grebel}, E.~K., {Rockosi}, C.~M., {et~al.} 2001, \apjl,
+  548, L165, \dodoi{10.1086/319095}
+
+\bibitem[{{Pearson} {et~al.}(2015){Pearson}, {K{\"u}pper}, {Johnston}, \&
+  {Price-Whelan}}]{pearson15}
+{Pearson}, S., {K{\"u}pper}, A.~H.~W., {Johnston}, K.~V., \& {Price-Whelan},
+  A.~M. 2015, \apj, 799, 28, \dodoi{10.1088/0004-637X/799/1/28}
+
+\bibitem[{{Pearson} {et~al.}(2017){Pearson}, {Price-Whelan}, \&
+  {Johnston}}]{pearson17}
+{Pearson}, S., {Price-Whelan}, A.~M., \& {Johnston}, K.~V. 2017, Nature
+  Astronomy, 1, 633, \dodoi{10.1038/s41550-017-0220-3}
+
+\bibitem[{{Price-Whelan} \& {Bonaca}(2018)}]{price18}
+{Price-Whelan}, A.~M., \& {Bonaca}, A. 2018, \apjl, 863, L20,
+  \dodoi{10.3847/2041-8213/aad7b5}
+
+\bibitem[{{Price-Whelan} {et~al.}(2016){Price-Whelan}, {Johnston}, {Valluri},
+  {Pearson}, {K{\"u}pper}, \& {Hogg}}]{price16}
+{Price-Whelan}, A.~M., {Johnston}, K.~V., {Valluri}, M., {et~al.} 2016, \mnras,
+  455, 1079, \dodoi{10.1093/mnras/stv2383}
+
+\bibitem[{{Racca} {et~al.}(2016){Racca}, {Laureijs}, {Stagnaro}, {Salvignol},
+  {Lorenzo Alvarez}, {Saavedra Criado}, {Gaspar Venancio}, {Short}, {Strada},
+  {B{\"o}nke}, {Colombo}, {Calvi}, {Maiorano}, {Piersanti}, {Prezelus},
+  {Rosato}, {Pinel}, {Rozemeijer}, {Lesna}, {Musi}, {Sias}, {Anselmi},
+  {Cazaubiel}, {Vaillon}, {Mellier}, {Amiaux}, {Berth{\'e}}, {Sauvage},
+  {Azzollini}, {Cropper}, {Pottinger}, {Jahnke}, {Ealet}, {Maciaszek},
+  {Pasian}, {Zacchei}, {Scaramella}, {Hoar}, {Kohley}, {Vavrek}, {Rudolph}, \&
+  {Schmidt}}]{racca16}
+{Racca}, G.~D., {Laureijs}, R., {Stagnaro}, L., {et~al.} 2016, in \procspie,
+  Vol. 9904, Space Telescopes and Instrumentation 2016: Optical, Infrared, and
+  Millimeter Wave, 99040O
+
+\bibitem[{{Rich} {et~al.}(2012){Rich}, {Collins}, {Black}, {Longstaff}, {Koch},
+  {Benson}, \& {Reitzel}}]{rich12}
+{Rich}, R.~M., {Collins}, M.~L.~M., {Black}, C.~M., {et~al.} 2012, \nat, 482,
+  192, \dodoi{10.1038/nature10837}
+
+\bibitem[{{R{\"o}ser} {et~al.}(2019){R{\"o}ser}, {Schilbach}, \&
+  {Goldman}}]{roser19}
+{R{\"o}ser}, S., {Schilbach}, E., \& {Goldman}, B. 2019, \aap, 621, L2,
+  \dodoi{10.1051/0004-6361/201834608}
+
+\bibitem[{{Sanderson} {et~al.}(2015){Sanderson}, {Helmi}, \&
+  {Hogg}}]{sanderson15}
+{Sanderson}, R.~E., {Helmi}, A., \& {Hogg}, D.~W. 2015, \apj, 801, 98,
+  \dodoi{10.1088/0004-637X/801/2/98}
+
+\bibitem[{{Shapley}(1938)}]{shapley38}
+{Shapley}, H. 1938, \nat, 142, 715, \dodoi{10.1038/142715b0}
+
+\bibitem[{{Shipp} {et~al.}(2018){Shipp}, {Drlica-Wagner}, {Balbinot},
+  {Ferguson}, {Erkal}, {Li}, {Bechtol}, {Belokurov}, {Buncher}, {Carollo},
+  {Carrasco Kind}, {Kuehn}, {Marshall}, {Pace}, {Rykoff}, {Sevilla-Noarbe},
+  {Sheldon}, {Strigari}, {Vivas}, {Yanny}, {Zenteno}, {Abbott}, {Abdalla},
+  {Allam}, {Avila}, {Bertin}, {Brooks}, {Burke}, {Carretero}, {Castander},
+  {Cawthon}, {Crocce}, {Cunha}, {D'Andrea}, {da Costa}, {Davis}, {De Vicente},
+  {Desai}, {Diehl}, {Doel}, {Evrard}, {Flaugher}, {Fosalba}, {Frieman},
+  {Garc{\'{\i}}a-Bellido}, {Gaztanaga}, {Gerdes}, {Gruen}, {Gruendl},
+  {Gschwend}, {Gutierrez}, {Hartley}, {Honscheid}, {Hoyle}, {James}, {Johnson},
+  {Krause}, {Kuropatkin}, {Lahav}, {Lin}, {Maia}, {March}, {Martini},
+  {Menanteau}, {Miller}, {Miquel}, {Nichol}, {Plazas}, {Romer}, {Sako},
+  {Sanchez}, {Santiago}, {Scarpine}, {Schindler}, {Schubnell}, {Smith},
+  {Smith}, {Sobreira}, {Suchyta}, {Swanson}, {Tarle}, {Thomas}, {Tucker},
+  {Walker}, {Wechsler}, \& {DES Collaboration}}]{shipp18}
+{Shipp}, N., {Drlica-Wagner}, A., {Balbinot}, E., {et~al.} 2018, \apj, 862,
+  114, \dodoi{10.3847/1538-4357/aacdab}
+
+\bibitem[{{Spergel} {et~al.}(2013){Spergel}, {Gehrels}, {Breckinridge},
+  {Donahue}, {Dressler}, {Gaudi}, {Greene}, {Guyon}, {Hirata}, {Kalirai},
+  {Kasdin}, {Moos}, {Perlmutter}, {Postman}, {Rauscher}, {Rhodes}, {Wang},
+  {Weinberg}, {Centrella}, {Traub}, {Baltay}, {Colbert}, {Bennett},
+  {Kiessling}, {Macintosh}, {Merten}, {Mortonson}, {Penny}, {Rozo},
+  {Savransky}, {Stapelfeldt}, {Zu}, {Baker}, {Cheng}, {Content}, {Dooley},
+  {Foote}, {Goullioud}, {Grady}, {Jackson}, {Kruk}, {Levine}, {Melton},
+  {Peddie}, {Ruffa}, \& {Shaklan}}]{spergel13}
+{Spergel}, D., {Gehrels}, N., {Breckinridge}, J., {et~al.} 2013, ArXiv
+  e-prints.
+\newblock \doarXiv{1305.5422}
+
+\bibitem[{{Spergel} {et~al.}(2015){Spergel}, {Gehrels}, {Baltay}, {Bennett},
+  {Breckinridge}, {Donahue}, {Dressler}, {Gaudi}, {Greene}, {Guyon}, {Hirata},
+  {Kalirai}, {Kasdin}, {Macintosh}, {Moos}, {Perlmutter}, {Postman},
+  {Rauscher}, {Rhodes}, {Wang}, {Weinberg}, {Benford}, {Hudson}, {Jeong},
+  {Mellier}, {Traub}, {Yamada}, {Capak}, {Colbert}, {Masters}, {Penny},
+  {Savransky}, {Stern}, {Zimmerman}, {Barry}, {Bartusek}, {Carpenter}, {Cheng},
+  {Content}, {Dekens}, {Demers}, {Grady}, {Jackson}, {Kuan}, {Kruk}, {Melton},
+  {Nemati}, {Parvin}, {Poberezhskiy}, {Peddie}, {Ruffa}, {Wallace}, {Whipple},
+  {Wollack}, \& {Zhao}}]{spergel15}
+{Spergel}, D., {Gehrels}, N., {Baltay}, C., {et~al.} 2015, arXiv e-prints,
+  arXiv:1503.03757.
+\newblock \doarXiv{1503.03757}
+
+\bibitem[{{van der Walt} {et~al.}(2011){van der Walt}, {Colbert}, \&
+  {Varoquaux}}]{walt2011}
+{van der Walt}, S., {Colbert}, S.~C., \& {Varoquaux}, G. 2011, Computing in
+  Science and Engineering, 13, 22, \dodoi{10.1109/MCSE.2011.37}
+
+\bibitem[{{van Dokkum} {et~al.}(2014){van Dokkum}, {Abraham}, \&
+  {Merritt}}]{dokkum14}
+{van Dokkum}, P.~G., {Abraham}, R., \& {Merritt}, A. 2014, \apjl, 782, L24,
+  \dodoi{10.1088/2041-8205/782/2/L24}
+
+\bibitem[{{Williams} {et~al.}(2014){Williams}, {Lang}, {Dalcanton}, {Dolphin},
+  {Weisz}, {Bell}, {Bianchi}, {Byler}, {Gilbert}, {Girardi}, {Gordon},
+  {Gregersen}, {Johnson}, {Kalirai}, {Lauer}, {Monachesi}, {Rosenfield},
+  {Seth}, \& {Skillman}}]{williams14}
+{Williams}, B.~F., {Lang}, D., {Dalcanton}, J.~J., {et~al.} 2014, \apjs, 215,
+  9, \dodoi{10.1088/0067-0049/215/1/9}
+
+\bibitem[{{Yoon} {et~al.}(2011){Yoon}, {Johnston}, \& {Hogg}}]{yoon11}
+{Yoon}, J.~H., {Johnston}, K.~V., \& {Hogg}, D.~W. 2011, \apj, 731, 58,
+  \dodoi{10.1088/0004-637X/731/1/58}
+
+\end{thebibliography}
+
+
+\appendix
+\section{WFIRST exposure times}
+\label{sec:appendixA}
+Throughout the paper we have used a 1 hour exposure as our guideline for the limiting magnitude of WFIRST. In this {\it Appendix}, we show how some of our results will differ if we instead use the guest observer capabilities of 1000 sec. exposures for WFIRST instead. A 1000 sec. exposure yields a $Z087$-band limiting magnitude of mag $< 27.15$ as opposed to mag $< $ 28.54 for a 1 hour exposure (see \citealt{spergel13}). 
+
+In Figure \ref{fig:A1}, we recompute the cumulative number of stars WFIRST would observe in a Pal 5-like, 5 $\times$ Pal 5-like and 10 $\times$ Pal 5-like stream (see Figure \ref{fig:iso_cfht} for details) for a 1000 sec. exposure with WFIRST as a function of  $Z087$-band limiting magnitude. From the Figure, we conclude that we lose $\sim$5 times the amount of stars for a 1000 sec. exposure as compared to the amount of observable resolved stars for a 1 hour exposure (see Figure \ref{fig:iso_cfht}). 
+
+As we go to brighter limiting magnitudes, the amount of stars in the background of M31 will also decrease vastly. We recompute Figure \ref{fig:M31_wfirst} using the updated amount of stars in each stream (see Figure \ref{fig:A1}). We estimate the stellar halo backgrounds as described in Section \ref{sec:WFIRST}, but now with a limiting magnitude $< 27.15$ instead of $< $ 28.54. In Figure \ref{fig:A2}, we show the results of injecting three mock-streams in each 10 $\times$ 10 kpc region, using a limiting magnitude of $< 27.15$ to estimate the number of stars in the background and in each mock-stream.  
+We conclude that using the guest observer capabilities of WFIRST in M31, yields a similar (but slightly better) result for resolving GC streams as currently possible with the PAndAS data (see Figure \ref{fig:M31_pandas}). In particular, we find that $C_{err} \sim 15$ (see Section \ref{sec:Cerr}) for the Pal 5-like stream in the top row, and that the Pal 5-like streams are more apparent in the bottom row, where $C_{err} > 20$. For the 5 and 10 more massive streams, $C_{err}$ is much larger than 15, and the streams will be clearly visible against the background.
+
+
+
+\begin{figure*}
+\centerline{\includegraphics[width=0.7\textwidth]{Fig6.pdf}}
+\caption{The cumulative number of stars in a Pal 5-like stream (solid line), a 5 $\times$  more massive Pal 5-like stream (dotted line), and a 10 $\times$  more massive Pal 5-like stream (dashed line) for a given limiting $Z$-mag. The vertical lines show the limiting magnitude of WFIRST for a 1 hour exposure ($Z087 < 27.15$) at the distance of M31 (i.e. shifted by 7.66 magnitudes from Pal 5's current location), and at the distance of Pal 5 in the Milky Way. We indicate the amount of stars WFIRST should be able to observe for the Pal 5-like, 5  $\times$ Pal 5-like and 10 $\times$ Pal 5-like stream in M31 (see n$^*$). 
+} 
+\label{fig:A1}
+\end{figure*}
+
+\begin{figure}
+\centerline{\includegraphics[width=1\textwidth]{Fig7.pdf}}
+\caption{This figure shows the same panels as Figure \ref{fig:M31_wfirst}, but now we determine the number of stars in each mock-stream by summing up the cumulative number of stars in the streams at the limiting magnitude of WFIRST ($Z087 < 27.15$) at the distance of M31. We use a point size which is 10 times smaller than in Figure \ref{fig:M31_pandas} to avoid crowding of the background. The black bar in the top middle panel shows the scale of 10 arcmin for reference. There are 2440 $\pm$ 165 stars in the 10 $\times$ more massive stream, 1233 $\pm$ 86 stars in the 5 $\times$ more massive stream and 259 $\pm$ 17 stars in Pal 5-like stream (see Figure \ref{fig:A1}).  All stream stars are assumed to have [Fe/H] $= -1.3$, thus all stream stars are resolved in each panel. At each $R_{GC}$, we have updated the width and lengths of the streams based on the tidal field they experience at these distances (see Section \ref{sec:length}). Additionally, we have updated the number of stars in each background field to illustrate what WFIRST will observe in M31 for a 1000 sec. exposure.  
+The 5 and 10 $\times$ Pal 5-like mock-streams are clearly visible in each panel, and hints of the Pal 5-like stream are visible in the bottom row after applying metallicity cuts to the backgrounds.} 
+\label{fig:A2}
+\end{figure}
+
+
 
 \end{document}
